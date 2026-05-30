@@ -8,6 +8,13 @@ dependencies = [
   "zensical==0.0.43",
 ]
 
+[dependency-groups]
+dev = [
+  "iscc-sum>=0.1.0",
+  "mdformat-mkdocs[recommended]>=4.1.0",
+  "prek>=0.2.19",
+]
+
 [tool.uv]
 package = false
 
