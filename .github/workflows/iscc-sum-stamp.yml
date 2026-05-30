@@ -1,0 +1,24 @@
+name: ISCC-SUM Stamp
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  prek:
+    name: prek hooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --group dev
+      - name: Run prek hooks
+        run: uv run --group dev prek run --all-files
+      - name: Verify ISCC-SUM stamp explicitly
+        run: uv run --group dev python scripts/update_iscc_stamp.py --check

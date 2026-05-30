@@ -1,0 +1,41 @@
+repos:
+  # Common utilities
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+      - id: end-of-file-fixer
+        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+      - id: mixed-line-ending
+        args: [--fix=lf]
+        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+      - id: check-yaml
+      - id: check-json
+        exclude: ^legacy/python-poc/
+      - id: check-toml
+      - id: check-added-large-files
+
+  # Markdown formatting, following the iscc-usearch setup but limited to the
+  # touched license page to avoid an unrelated whole-site reflow in this PR.
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 1.0.0
+    hooks:
+      - id: mdformat
+        files: ^docs/license\.md$
+        additional_dependencies:
+          - "mdformat-mkdocs[recommended]"
+
+  # ISCC-SUM documentation stamp
+  - repo: local
+    hooks:
+      - id: update-iscc-stamp
+        name: update documentation ISCC-SUM stamp
+        entry: uv run --group dev python scripts/update_iscc_stamp.py
+        language: system
+        pass_filenames: false
+      - id: check-iscc-stamp
+        name: check documentation ISCC-SUM stamp
+        entry: uv run --group dev python scripts/update_iscc_stamp.py --check
+        language: system
+        pass_filenames: false
