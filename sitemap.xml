@@ -4,21 +4,21 @@
         <loc>https://iscc.codes/</loc>
       </url>
       <url>
-        <loc>https://iscc.codes/concept/</loc>
-      </url>
-      <url>
         <loc>https://iscc.codes/features/</loc>
       </url>
       <url>
-        <loc>https://iscc.codes/implementations/</loc>
+        <loc>https://iscc.codes/concept/</loc>
       </url>
       <url>
-        <loc>https://iscc.codes/license/</loc>
+        <loc>https://iscc.codes/specification/</loc>
       </url>
       <url>
         <loc>https://iscc.codes/resources/</loc>
       </url>
       <url>
         <loc>https://iscc.codes/specification/</loc>
+      </url>
+      <url>
+        <loc>https://iscc.codes/license/</loc>
       </url>
 </urlset>
