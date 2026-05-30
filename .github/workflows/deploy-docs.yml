@@ -6,7 +6,8 @@ on:
       - main
     paths:
       - "docs/**"
-      - "maintainers/site-migration.md"
+      - "maintainers/**"
+      - "README.md"
       - "zensical.toml"
       - "scripts/check_site_paths.py"
       - ".github/workflows/deploy-docs.yml"

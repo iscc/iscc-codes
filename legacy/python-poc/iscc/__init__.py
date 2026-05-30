@@ -1,8 +1,17 @@
 # -*- coding: utf-8 -*-
-__version__ = "1.1.0b17"
 import os
+import warnings
 from pathlib import Path
 import click
+
+__version__ = "1.1.0b17"
+
+warnings.warn(
+    "The legacy 'iscc' proof-of-concept implementation is retired. "
+    "Use the maintained 'iscc-sdk' package for new integrations.",
+    FutureWarning,
+    stacklevel=2,
+)
 
 HERE = Path(__file__).parent
 APP_NAME = "iscc"

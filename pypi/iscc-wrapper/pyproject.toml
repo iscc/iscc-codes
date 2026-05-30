@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iscc"
+version = "1.2.0"
+description = "Deprecated compatibility wrapper for the ISCC SDK"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-2-Clause"
+authors = [
+  { name = "ISCC Foundation", email = "hello@iscc.io" }
+]
+keywords = ["iscc", "identifier", "media", "content", "hash", "similarity"]
+classifiers = [
+  "Development Status :: 7 - Inactive",
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "iscc-sdk>=0.9.2,<1",
+]
+
+[project.urls]
+Homepage = "https://iscc.codes/"
+Documentation = "https://sdk.iscc.codes/"
+Repository = "https://github.com/iscc/iscc-codes"
+"Current SDK" = "https://github.com/iscc/iscc-sdk"
+"Core Algorithms" = "https://github.com/iscc/iscc-core"
+
+[tool.setuptools.packages.find]
+where = ["src"]
