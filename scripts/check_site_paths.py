@@ -30,7 +30,7 @@ EXPECTED_SITE_SETTINGS = {
     "site_url": "https://iscc.codes",
     "repo_name": "iscc/iscc-codes",
     "repo_url": "https://github.com/iscc/iscc-codes",
-    "edit_uri": "edit/version-1.1/docs/",
+    "edit_uri": "edit/main/docs/",
 }
 
 OLD_REPOSITORY_SLUG = "iscc/iscc-specs"

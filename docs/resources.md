@@ -4,7 +4,7 @@ authors: Titusz Pan
 
 # ISCC - Resources
 
-If you find something that is missing from this collection of resources for the ISCC, [please add it](https://github.com/iscc/iscc-codes/edit/version-1.1/docs/resources.md).
+If you find something that is missing from this collection of resources for the ISCC, [please add it](https://github.com/iscc/iscc-codes/edit/main/docs/resources.md).
 
 ## ISCC - Official Software & Tools
 

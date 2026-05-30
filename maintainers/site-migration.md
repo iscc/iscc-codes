@@ -11,7 +11,7 @@ forward to the most relevant replacement.
 - Public site: <https://iscc.codes/>
 - Custom domain: `iscc.codes`
 - GitHub repository: `iscc/iscc-codes`
-- Documentation source branch for the current site: `version-1.1`
+- Documentation source branch for the current site: `main`
 - Published GitHub Pages branch: `gh-pages`
 - GitHub Pages source: `gh-pages` branch, repository root
 - Custom domain file: `docs/CNAME` in the source branch and `CNAME` in the
