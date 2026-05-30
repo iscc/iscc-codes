@@ -57,6 +57,6 @@ Pull requests and other contributions are welcome. Use [GitHub Issues](https://g
 
 ## License
 
-Documentation is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The retired proof-of-concept code in `legacy/python-poc/` and the wrapper package scaffold in `pypi/iscc-wrapper/` are licensed under BSD-2-Clause.
