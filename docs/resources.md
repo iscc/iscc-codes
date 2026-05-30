@@ -74,7 +74,7 @@ ISCC - Similarity hashing for digital content identification in decentralized en
 
 ## Organizations and Initiatives
 
-### [ISCC Foundation](https://iscc.foundation/)
+### [ISCC Foundation](https://iscc.io/)
 
 The **ISCC Foundation** is an independent international **nonprofit organization** that promotes information technologies for the common good.
 
