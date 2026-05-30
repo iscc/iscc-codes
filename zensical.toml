@@ -16,10 +16,6 @@ nav = [
     { "History" = "history.md" },
     { "Specification" = "specification.md" },
     { "Resources" = "resources.md" },
-    { "Versions" = [
-        { "Version 1.x" = "specification.md" },
-        { "Version 1.0" = "https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md" },
-    ]},
     { "License" = "license.md" },
 ]
 
