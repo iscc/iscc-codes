@@ -11,7 +11,7 @@ icon: lucide/sparkles
 
 ## Granular Content Management
 
-The ISCC can be generated for any work as well as for parts, chunks or individual elements of the content. These elements could be an image, a table, a chapter or a quote within a given document. The relation between parent and child-elements can be  preserved in the ISCC identifier. Thus, it is possible to connect the various ID's, obtain their relations and identify the work from which any chunk is taken from. This feature can also help to identify plagiarism, in case chunks from one work have been used in a different work - only with access to the ISCC identifiers.
+The ISCC can be generated for any work as well as for parts, chunks or individual elements of the content. These elements could be an image, a table, a chapter or a quote within a given document. The relation between parent and child-elements can be preserved in the ISCC-CODE. Thus, it is possible to connect the various codes, obtain their relations and identify the work from which any chunk is taken from. This feature can also help to identify plagiarism, in case chunks from one work have been used in a different work - only with access to the ISCC-CODEs.
 
 [![ISCC Granular Content Identification](images/iscc-pcf.svg)](images/iscc-pcf.svg)
 
