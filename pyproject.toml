@@ -6,7 +6,7 @@ authors = ["Titusz Pan <tp@py7.de>"]
 license="BSD 2-clause"
 readme = "README.md"
 homepage = "https://iscc.codes/"
-repository = "https://github.com/iscc/iscc-specs"
+repository = "https://github.com/iscc/iscc-codes"
 keywords=["iscc", "identifier", "media", "content", "hash", "blockchain", "similarity"]
 classifiers=[
     "Development Status :: 4 - Beta",

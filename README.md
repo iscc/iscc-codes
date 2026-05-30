@@ -1,6 +1,6 @@
 # ISCC - Spec and Reference Code
 
-[![Build](https://github.com/iscc/iscc-specs/actions/workflows/test.yml/badge.svg?branch=version-1.1)](https://github.com/iscc/iscc-specs/actions/workflows/test.yml)
+[![Build](https://github.com/iscc/iscc-codes/actions/workflows/test.yml/badge.svg?branch=version-1.1)](https://github.com/iscc/iscc-codes/actions/workflows/test.yml)
 [![License](https://img.shields.io/pypi/l/iscc.svg)](https://pypi.python.org/pypi/iscc/)
 [![Downloads](https://pepy.tech/badge/iscc)](https://pepy.tech/project/iscc)
 [![DOI](https://zenodo.org/badge/96668860.svg)](https://zenodo.org/badge/latestdoi/96668860)
@@ -73,17 +73,17 @@ A short example on how to create an ISCC Code with the reference implementation.
 The entire **ISCC Specification** is written in plain text [Markdown](https://en.wikipedia.org/wiki/Markdown). The markdown content is than built and published with the excellent [mkdocs](http://www.mkdocs.org/) documetation tool. If you have some basic command line skills you can build and run the specification site on your own computer. Make sure you have the [git](https://git-scm.com/) and [Python](https://www.python.org/) and [Poetry](https://pypi.org/project/poetry/) installed on your system and follow these steps on the command line:
 
 ``` bash
-git clone https://github.com/iscc/iscc-specs.git
-cd iscc-specs
+git clone https://github.com/iscc/iscc-codes.git
+cd iscc-codes
 poetry install
 mkdocs serve
 ```
 
-All specification documents can be found in the `./docs` subfolder or the repository. The recommended editor for the markdown files is [Typora](https://typora.io/). If you have commit rights to the [main repository](https://github.com/iscc/iscc-specs) you can deploy the site with a simple `mkdocs gh-deploy`.
+All specification documents can be found in the `./docs` subfolder or the repository. The recommended editor for the markdown files is [Typora](https://typora.io/). If you have commit rights to the [main repository](https://github.com/iscc/iscc-codes) you can deploy the site with a simple `mkdocs gh-deploy`.
 
 ## Contribute
 
-Pull requests and other contributions are welcome. Use the [Github Issues](https://github.com/iscc/iscc-specs/issues) section of this project to discuss ideas for the **ISCC Specification**. You may also want  join our developer chat on Telegram at <https://t.me/iscc_dev>.
+Pull requests and other contributions are welcome. Use the [Github Issues](https://github.com/iscc/iscc-codes/issues) section of this project to discuss ideas for the **ISCC Specification**. You may also want  join our developer chat on Telegram at <https://t.me/iscc_dev>.
 
 ## License
 
