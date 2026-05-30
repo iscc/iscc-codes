@@ -9,6 +9,19 @@ edit_uri = "edit/main/docs/"
 copyright = "Documentation licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> | Copyright &copy; 2016-2026 The Authors | <a href=\"https://iscc.foundation/privacy\">Privacy Policy</a> | <a href=\"https://iscc.foundation/cookies\">Cookie Policy</a> | <a href=\"https://iscc.foundation/imprint\">Imprint</a> | <a href=\"https://iscc.foundation/disclaimer\">Disclaimer</a>"
 extra_css = ["stylesheets/custom.css"]
 
+nav = [
+    { "Overview" = "index.md" },
+    { "Features" = "features.md" },
+    { "Concept" = "concept.md" },
+    { "Specification" = "specification.md" },
+    { "Resources" = "resources.md" },
+    { "Versions" = [
+        { "Version 1.x" = "specification.md" },
+        { "Version 1.0" = "https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md" },
+    ]},
+    { "License" = "license.md" },
+]
+
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
 link = "https://github.com/iscc"
@@ -23,19 +36,6 @@ link = "https://twitter.com/iscc_foundation"
 
 [project.extra.analytics]
 provider = "custom"
-
-nav = [
-    { "Overview" = "index.md" },
-    { "Features" = "features.md" },
-    { "Concept" = "concept.md" },
-    { "Specification" = "specification.md" },
-    { "Resources" = "resources.md" },
-    { "Versions" = [
-        { "Version 1.x" = "specification.md" },
-        { "Version 1.0" = "https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md" },
-    ]},
-    { "License" = "license.md" },
-]
 
 [project.theme]
 language = "en"
