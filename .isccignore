@@ -1,0 +1,4 @@
+# Exclude the page that displays the documentation tree stamp.
+# This avoids a self-referential ISCC-SUM: changing the embedded stamp in
+# license.md must not change the tree that the stamp identifies.
+license.md
