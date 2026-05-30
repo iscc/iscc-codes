@@ -2045,7 +2045,7 @@
 <li>Encode the resulting 9 byte sequence with <a href="#encode"><code>encode</code></a></li>
 <li>Return encoded Meta-Code, trimmed <code>title</code> and trimmed <code>extra</code> data.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L19">Meta-Code reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L19">Meta-Code reference code</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Text trimming</p>
 <p>When trimming text be sure to trim the byte-length of the UTF-8 encoded version and not the number of characters. The trim point MUST be such that it does not cut into multi-byte characters. Characters might have different UTF-8 byte-length. For example <code>ü</code> is 2-bytes, <code>驩</code> is 3-bytes and <code>𠜎</code> is 4-bytes. So the trimmed version of a string with 128 <code>驩</code>-characters will result in a 42-<abbr title="A character is defined as one Unicode code point">character</abbr> string with a 126-byte UTF-8 encoded length. This is necessary because the results of this operation will be stored as basic metadata with strict byte size limits on the blockchain.</p>
@@ -2119,7 +2119,7 @@
 <li>Prepend the 1-byte component header (<code>0x10</code> full content or <code>0x11</code> partial content).</li>
 <li>Encode and return the resulting 9-byte sequence with <a href="#encode"><code>encode</code></a>.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L54">Content-Code-Text reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L54">Content-Code-Text reference code</a></p>
 <h4 id="content-code-image">Content-Code-Image<a class="headerlink" href="#content-code-image" title="Permanent link">&para;</a></h4>
 <p>For the Content-Code-Image we are opting for a DCT-based perceptual image-hash instead of a more sophisticated key-point detection based method. In view of the generic deployability of the <abbr title="International Standard Content Code">ISCC</abbr> we chose an algorithm that has moderate computation requirements and is easy to implement while still being robust against common image manipulations.</p>
 <p>An <abbr title="International Standard Content Code">ISCC</abbr> generating application MUST provide a <code>content_id_image(image, partial=False)</code> function that accepts a local file path to an image and returns a Content-Code with <abbr title="Generic Media Type">GMT</abbr> type <code>image</code>. The procedure to create a Content-Code-Image is as follows:</p>
@@ -2129,7 +2129,7 @@
 <li>Prepend the 1-byte component header (<code>0x12</code> full content or <code>0x13</code> partial content) to results of the previous step.</li>
 <li>Encode and return the resulting 9-byte sequence with <a href="#encode"><code>encode</code></a></li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L81">Content-Code-Image reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L81">Content-Code-Image reference code</a></p>
 <div class="admonition note">
 <p class="admonition-title">Image Data Input</p>
 <p>The <code>content_id_image</code> function may optionally accept the raw byte data of an encoded image or an internal native image object as input for convenience.</p>
@@ -2148,7 +2148,7 @@
 <li>Prepend the 1-byte component header(<code>0x18</code> full content or <code>0x19</code> partial content)</li>
 <li>Apply <a href="#encode"><code>encode</code></a> to the result of step 5 and return the result.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L102">Content-Code-Mixed reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L102">Content-Code-Mixed reference code</a></p>
 <h4 id="partial-content-flag-pcf">Partial Content Flag (<abbr title="Partial Content Flag">PCF</abbr>)<a class="headerlink" href="#partial-content-flag-pcf" title="Permanent link">&para;</a></h4>
 <p>The last bit of the header byte of the Content-Code is the "Partial Content Flag". It designates if the Content-Code applies to the full content, or just some part of it. The <abbr title="Partial Content Flag">PCF</abbr> MUST be set as a <code>0</code>-bit (<strong>full <abbr title="Generic Media Type">GMT</abbr>-specific content</strong>) by default. Setting the <abbr title="Partial Content Flag">PCF</abbr> to <code>1</code> enables applications to create multiple linked ISCCs of partial extracts of a content collection. The exact semantics of <em>partial content</em> are outside of the scope of this specification. Applications that plan to support partial Content-Codes MUST define their semantics.</p>
 <p><img alt="Partial Contant Flag" src="../images/iscc-pcf.svg" /></p>
@@ -2176,7 +2176,7 @@
 <li>Prepend the 1-byte component header (eg. 0x20).</li>
 <li>Apply <a href="#encode"><code>encode</code></a> to the result of step 6 and return the result.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L123">Data-Code reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L123">Data-Code reference code</a></p>
 <h3 id="instance-code-component">Instance-Code Component<a class="headerlink" href="#instance-code-component" title="Permanent link">&para;</a></h3>
 <p>The Instance-Code is built from the raw data of the media object to be identified and serves as checksum for the media object. The raw data of the media object is split into 64-kB data-chunks. Then we build a hash-tree from those chunks and use the truncated <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr> (Merkle root) as component-body of the Instance-Code.</p>
 <p>To guard against length-extension attacks and second preimage attacks, we use double sha256 for hashing. We also prefix the hash input data with a <code>0x00</code>-byte for the leaf nodes hashes and with a <code>0x01</code>-byte for the internal node hashes. While the Instance-Code itself is a non-cryptographic checksum, the full <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr> may be supplied in the extended metadata of an <abbr title="International Standard Content Code">ISCC</abbr> secure integrity verification is required.</p>
@@ -2194,7 +2194,7 @@
 <li>Hex-Encode the <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr></li>
 <li>Return the Instance-Code and the hex-encoded <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr></li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L144">Instance-Code reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L144">Instance-Code reference code</a></p>
 <p>Applications may carry, store, and process the leaf node hashes for advanced streaming data identification or partial data integrity verification.</p>
 <h2 id="iscc-metadata"><abbr title="International Standard Content Code">ISCC</abbr> Metadata<a class="headerlink" href="#iscc-metadata" title="Permanent link">&para;</a></h2>
 <p>As a generic content identifier, the <abbr title="International Standard Content Code">ISCC</abbr> makes minimal assumptions about metadata that must or should be supplied together with an <abbr title="International Standard Content Code">ISCC</abbr>. The RECOMMENDED data-interchange format for <abbr title="International Standard Content Code">ISCC</abbr> metadata is <a href="https://www.json.org/">JSON</a>. We distinguish between <strong>Basic Metadata</strong> and <strong>Extended Metadata</strong>:</p>
@@ -2296,7 +2296,7 @@
 <p>Applications MAY embed <abbr title="International Standard Content Code">ISCC</abbr> codes that have side effects if they specify a procedure by which the embedded <abbr title="International Standard Content Code">ISCC</abbr> codes can be stripped in such a way that the stripped content will yield the original embedded <abbr title="International Standard Content Code">ISCC</abbr> codes.</p>
 <div class="admonition example">
 <p class="admonition-title"><abbr title="International Standard Content Code">ISCC</abbr> Embedding</p>
-<p>We can embed the following combination of components from the <a href="https://github.com/iscc/iscc-codes/edit/version-1.1/docs/specification.md">markdown version</a> of this document into the document itself because adding or removing them has no side effect:</p>
+<p>We can embed the following combination of components from the <a href="https://github.com/iscc/iscc-codes/edit/main/docs/specification.md">markdown version</a> of this document into the document itself because adding or removing them has no side effect:</p>
 <p><strong><abbr title="International Standard Content Code">ISCC</abbr></strong>: CCDbMYw6NfC8a-CTtW9UFozcmBJ-CDYJsRdBNAERM</p>
 </div>
 <h2 id="iscc-uri-scheme"><abbr title="International Standard Content Code">ISCC</abbr> URI Scheme<a class="headerlink" href="#iscc-uri-scheme" title="Permanent link">&para;</a></h2>
@@ -2325,17 +2325,17 @@
 <h4 id="encode">encode<a class="headerlink" href="#encode" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>encode(digest: bytes) -&gt; str</code></p>
 <p>The <code>encode</code> function accepts a 9-byte <strong><abbr title="International Standard Content Code">ISCC</abbr> Component Digest</strong> and returns the Base58-<abbr title="International Standard Content Code">ISCC</abbr> encoded alphanumeric string of 13 characters, which we call the <strong><abbr title="International Standard Content Code">ISCC</abbr>-Component Code</strong>.</p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L476">Base-<abbr title="International Standard Content Code">ISCC</abbr> Encoding reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L476">Base-<abbr title="International Standard Content Code">ISCC</abbr> Encoding reference code</a></p>
 <h4 id="decode">decode<a class="headerlink" href="#decode" title="Permanent link">&para;</a></h4>
 <p>Signature: decode(code: str) -&gt; bytes</p>
 <p>the <code>decode</code> function accepts a 13-<abbr title="A character is defined as one Unicode code point">character</abbr> <strong><abbr title="International Standard Content Code">ISCC</abbr>-Component Code</strong> and returns the corresponding 9-byte <strong><abbr title="International Standard Content Code">ISCC</abbr>-Component Digest</strong>.</p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L496">Base-<abbr title="International Standard Content Code">ISCC</abbr> Decoding reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L496">Base-<abbr title="International Standard Content Code">ISCC</abbr> Decoding reference code</a></p>
 <h3 id="content-normalization">Content Normalization<a class="headerlink" href="#content-normalization" title="Permanent link">&para;</a></h3>
 <p>The <abbr title="International Standard Content Code">ISCC</abbr> standardizes some content normalization procedures to support reproducible and stable identifiers. Following the list of normalization functions that MUST be provided by a conforming implementation.</p>
 <h4 id="text_trim">text_trim<a class="headerlink" href="#text_trim" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>text_trim(text: str) -&gt; str</code></p>
 <p>Trim text such that its UTF-8 encoded byte representation does not exceed 128-bytes each. Remove leading and trailing whitespace.</p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L175">Text trimming reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L175">Text trimming reference code</a></p>
 <h4 id="text_normalize">text_normalize<a class="headerlink" href="#text_normalize" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>text_normalize(text: str, keep_ws: bool = False) -&gt; str</code></p>
 <p>We define a text normalization function that is specific to our application. It takes text and an optional boolean <code>keep_ws</code> parameter as an input and returns <em>normalized</em> Unicode text for further algorithmic processing. The <code>text_normalize</code> function performs the following operations in the given order while each step works with the results of the previous operation:</p>
@@ -2353,7 +2353,7 @@
 <li>Keep or remove whitespace depending on the <code>keep_ws</code> parameter</li>
 <li>Re-Combine the text by applying <code>Unicode Normalization Form KC (NFKC)</code>.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L180">Text normalization reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L180">Text normalization reference code</a></p>
 <h4 id="image_normalize">image_normalize<a class="headerlink" href="#image_normalize" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>image_normalize(img) -&gt; List[List[int]]</code></p>
 <p>Accepts a file path, byte-stream or raw binary image data and MUST at least support JPEG, PNG, and GIF image formats. Normalize the image with the following steps:</p>
@@ -2362,18 +2362,18 @@
 <li>Resize the image to 32x32 pixels using <a href="https://en.wikipedia.org/wiki/Bicubic_interpolation">bicubic interpolation</a></li>
 <li>Create a 32x32 two-dimensional array of 8-bit gray-scale values from the image data</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L217">Image normalization reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L217">Image normalization reference code</a></p>
 <h3 id="feature-hashing">Feature Hashing<a class="headerlink" href="#feature-hashing" title="Permanent link">&para;</a></h3>
 <p>The <abbr title="International Standard Content Code">ISCC</abbr> standardizes various feature hashing algorithms that reduce content features to a binary vector used as the body of the various Content-Code components.</p>
 <h4 id="similarity_hash">similarity_hash<a class="headerlink" href="#similarity_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>similarity_hash(hash_digests: Sequence[ByteString]) -&gt; bytes</code></p>
 <p>The <code>similarity_hash</code> function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to <code>0</code> if the count is negative or <code>1</code> if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also <a href="http://dx.doi.org/10.1145/509907.509965" title="Charikar, M.S., 2002, May. Similarity estimation techniques from rounding algorithms. In Proceedings of the thirty-fourth annual ACM symposium on theory of computing (pp. 380-388). ACM.">Charikar2002</a>.</p>
 <p><img alt="iscc-similarity-hash" src="../images/iscc-similarity-hash.svg" /></p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L239">Similarity hash reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L239">Similarity hash reference code</a></p>
 <h4 id="minimum_hash">minimum_hash<a class="headerlink" href="#minimum_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>minimum_hash(features: Iterable[int], n: int = 64) -&gt; List[int]</code></p>
 <p>The <code>minimum_hash</code> function takes an arbitrary-sized set of 32-bit integer features and reduces it to a fixed size vector of <code>n</code> features such that it preserves similarity with other sets. It is based on the MinHash implementation of the <a href="https://ekzhu.github.io/datasketch/">datasketch</a> library by <a href="https://github.com/ekzhu">Eric Zhu</a>.</p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L263">Minimum hash reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L263">Minimum hash reference code</a></p>
 <h4 id="image_hash">image_hash<a class="headerlink" href="#image_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>image_hash(pixels: List[List[int]]) -&gt; bytes</code></p>
 <ol>
@@ -2384,15 +2384,15 @@
 <li>Create a 64-bit digest by iterating over the values of step 5 and setting a  <code>1</code>- for values above median and <code>0</code> for values below or equal to the median.</li>
 <li>Return results from step 5.</li>
 </ol>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L274">Image hash reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L274">Image hash reference code</a></p>
 <h3 id="content-defined-chunking">Content Defined Chunking<a class="headerlink" href="#content-defined-chunking" title="Permanent link">&para;</a></h3>
 <p>For shift resistant data chunking, the <abbr title="International Standard Content Code">ISCC</abbr> requires a custom chunking algorithm:</p>
 <h4 id="data_chunks">data_chunks<a class="headerlink" href="#data_chunks" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>data_chunks(data: stream) -&gt; Iterator[bytes]</code></p>
 <p>The <code>data_chunks</code> function accepts a byte-stream and returns variable sized chunks. Chunk boundaries are determined by a gear based chunking algorithm based on <a href="http://dx.doi.org/10.1109/TC.2016.2595565" title="Wen Xia, Yukun Zhou, Hong Jiang, Yu Hua, Yuchong Hu, Yucheng Zhang, Qing Liu, 2016. FastCDC: a Fast and Efficient Content-Defined Chunking Approach for Data Deduplication.">WenXia2016</a>.</p>
-<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L334"><abbr title="Content defined chunking">CDC</abbr> reference code</a></p>
+<p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L334"><abbr title="Content defined chunking">CDC</abbr> reference code</a></p>
 <h2 id="conformance-testing">Conformance Testing<a class="headerlink" href="#conformance-testing" title="Permanent link">&para;</a></h2>
-<p>An application that claims <abbr title="International Standard Content Code">ISCC</abbr> conformance MUST pass all required functions from the <abbr title="International Standard Content Code">ISCC</abbr> conformance test suite. The test suite is available as JSON data in our <a href="https://raw.githubusercontent.com/iscc/iscc-codes/master/tests/test_data.json">Github Repository</a>. Test data is structured as follows:</p>
+<p>An application that claims <abbr title="International Standard Content Code">ISCC</abbr> conformance MUST pass all required functions from the <abbr title="International Standard Content Code">ISCC</abbr> conformance test suite. The test suite is available as JSON data in our <a href="https://raw.githubusercontent.com/iscc/iscc-codes/main/tests/test_data.json">Github Repository</a>. Test data is structured as follows:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;&lt;function_name&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
