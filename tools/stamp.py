@@ -12,7 +12,7 @@ PROJECT_DIR = dirname(dirname(__file__))
 def get_content(mode="text"):
 
     chdir(PROJECT_DIR)
-    call(["mkdocs", "build"])
+    call(["zensical", "build"])
 
     content = "" if mode == "text" else b""
     if mode == "text":

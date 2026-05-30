@@ -493,7 +493,7 @@ The ISCC standardizes various feature hashing algorithms that reduce content fea
 
 Signature: `similarity_hash(hash_digests: Sequence[ByteString]) -> bytes `
 
-The `similarity_hash` function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to `0` if the count is negative or `1` if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also  [[Charikar2002]][#Charikar2002].
+The `similarity_hash` function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to `0` if the count is negative or `1` if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also [Charikar2002][Charikar2002].
 
 ![iscc-similarity-hash](images/iscc-similarity-hash.svg)
 
@@ -528,7 +528,7 @@ For shift resistant data chunking, the ISCC requires a custom chunking algorithm
 
 Signature: `data_chunks(data: stream) -> Iterator[bytes]`
 
-The `data_chunks` function accepts a byte-stream and returns variable sized chunks. Chunk boundaries are determined by a gear based chunking algorithm based on [[WenXia2016]][#WenXia2016].
+The `data_chunks` function accepts a byte-stream and returns variable sized chunks. Chunk boundaries are determined by a gear based chunking algorithm based on [WenXia2016][WenXia2016].
 
 See also: [CDC reference code](https://github.com/iscc/iscc-codes/blob/master/src/iscc/iscc.py#L334)
 
@@ -555,14 +555,16 @@ Outputs that are expected to be raw bytes are embedded as HEX encoded strings in
 !!! example
     Byte outputs in JSON test data:
 
-        {
-          "data_chunks": {
-            "test_001_cat_jpg": {
-              "inputs": ["cat.jpg"],
-              "outputs": ["hex:ffd8ffe1001845786966000049492a0008", ...]
-            }
-          }
+    ```json
+    {
+      "data_chunks": {
+        "test_001_cat_jpg": {
+          "inputs": ["cat.jpg"],
+          "outputs": ["hex:ffd8ffe1001845786966000049492a0008", "..."]
         }
+      }
+    }
+    ```
 
 
 ## License
@@ -596,5 +598,5 @@ Copyright © 2016 - 2020 The Authors, Content Blockchain Project
 
 *[tophash]: Root hash of an Instance-Code hash-tree
 
-[#Charikar2002]:  http://dx.doi.org/10.1145/509907.509965 "Charikar, M.S., 2002, May. Similarity estimation techniques from rounding algorithms. In Proceedings of the thirty-fourth annual ACM symposium on theory of computing (pp. 380-388). ACM."
-[#WenXia2016]: http://dx.doi.org/10.1109/TC.2016.2595565 "Wen Xia, Yukun Zhou, Hong Jiang, Yu Hua, Yuchong Hu, Yucheng Zhang, Qing Liu, 2016. FastCDC: a Fast and Efficient Content-Defined Chunking Approach for Data Deduplication."
+[Charikar2002]:  http://dx.doi.org/10.1145/509907.509965 "Charikar, M.S., 2002, May. Similarity estimation techniques from rounding algorithms. In Proceedings of the thirty-fourth annual ACM symposium on theory of computing (pp. 380-388). ACM."
+[WenXia2016]: http://dx.doi.org/10.1109/TC.2016.2595565 "Wen Xia, Yukun Zhou, Hong Jiang, Yu Hua, Yuchong Hu, Yucheng Zhang, Qing Liu, 2016. FastCDC: a Fast and Efficient Content-Defined Chunking Approach for Data Deduplication."
