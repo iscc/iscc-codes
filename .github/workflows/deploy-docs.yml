@@ -1,0 +1,45 @@
+name: Deploy documentation
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - "docs/**"
+      - "maintainers/site-migration.md"
+      - "zensical.toml"
+      - "scripts/check_site_paths.py"
+      - ".github/workflows/deploy-docs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Zensical
+        run: python -m pip install zensical==0.0.43
+      - name: Check source path compatibility
+        run: python scripts/check_site_paths.py
+      - name: Build site
+        run: zensical build --clean
+      - name: Check generated site compatibility
+        run: python scripts/check_site_paths.py --site-dir site
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./site
+          cname: iscc.codes

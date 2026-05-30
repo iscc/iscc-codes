@@ -1,22 +1,34 @@
-title: ISCC - Content Identifiers
+title: ISCC - International Standard Content Code - ISO 24138
 description: The intelligent digital media identifier.
 authors: Titusz Pan
 
-# ISCC - Content Identifiers
+# ISCC - International Standard Content Code
 
-## A Proposal for a Modern and Open Content-Based Identifier
+## A Modern and Open Content-Based Identifier
 
-![iscc-sample](images/iscc-algo-design2.svg)
+![iscc-sample](images/iscc-algo-design.svg)
 
 ## The ISCC is...
 
-- a universal identifier for multiple generic media-types (text, image, audio, video)
-- a lightweight and similarity-preserving fingerprint designed for digital content
+- a universal identifier for all types of digital content (text, image, audio, video)
+- a lightweight and similarity-preserving fingerprint
 - designed for cross-sector applicability (journalism, books, music, film, etc.)
 - designed to identify content in decentralized and networked environments
 - and most importantly it is free, open-source and transparent
 
-**You want to try it instantly?** Head over to our demo at https://iscc.coblo.net
+## Try out the ISCC
+
+- https://demo.iscc.io
+- https://huggingface.co/spaces/iscc/iscc-playground
+
+
+!!! note "ISCC Standard - ISO 24138"
+    ### Latest status of standardization:
+    [ISO 24138 - Information and documentation - International Standard Content Code (ISCC)](https://www.iso.org/standard/77899.html)
+    ### Official reference implementation:
+    [ISCC - Codec & Algorithms](https://core.iscc.codes)
+
+
 
 ## Motivation
 
@@ -26,15 +38,14 @@ A crucial prerequisite for content-related transactions to succeed in this new a
 
 The overhead and cost of manually assigning and tracking identifiers for such content are prohibitive. But there is a solution to the problem: **auto-generated identifiers** created algorithmically from the content itself.
 
-With the advent of blockchain technology, the Internet is moving towards a network of peer-to-peer transactions.
-
 In a multi-sided ecosystem, **anybody** may have a legitimate interest to generate, lookup, or register an identifier for some digital content – whether they own the content or not.
 
 Authorship or copyright is **not** a requirement to create or use an identifier. But **an identifier is a requirement** to communicate and agree on authorship, origin, copyright, and other information.
 
-Technology allows us to authoritatively map **identifiers to digital content** using open, standardized fingerprinting algorithms.
+Technology allows us to map **identifiers to digital content** without requiring an
+intermediary by using open, standardized fingerprinting algorithms.
 
-Open and accessible **standard identifiers,** designed to manage small and sometimes transient pieces of digital content are fundamental for transactions and sales activities in our increasingly heterogeneous media environment.
+Open and accessible **standard identifiers**, designed to manage small and sometimes transient pieces of digital content are fundamental for transactions and sales activities in our increasingly heterogeneous media environment.
 
 By using standardized, decentralized, algorithmic identifiers for digital content, all ecosystem participants can engage more efficiently in content-related transactions.
 
@@ -45,12 +56,10 @@ By using standardized, decentralized, algorithmic identifiers for digital conten
 - Algorithmic similarity detection and deduplication
 - Low management costs
 - Low barrier of entry
-- Designed for blockchain based registration
 
 ## How it works
 
-**ISCC** identifiers are generated algorithmically **from the content itself**. Content files are processed to build the identifier. The ISCC does not have to be manually assigned, neither does it have to be carried around or embedded within the content. The content itself is the source and authority of the **ISCC Code**.
+**ISCC** identifiers are generated algorithmically **from the content itself**. Content files are processed to build the identifier. The ISCC does not have to be manually assigned, neither does it have to be carried around or embedded within the content. The content itself is the source and authority of the **ISCC-CODE**.
 
-The **ISCC Code** is a unique, hierarchically structured, composite identifier. It is built from a generic and balanced mix of content-derived, locality-sensitive and similarity-preserving hashes generated from metadata and content.
+The **ISCC-CODE** is a unique, hierarchically structured, composite identifier. It is built from a generic and balanced mix of content-derived, locality-sensitive and similarity-preserving hashes generated from metadata and the content itself.
 
-The latest version of these pages can be found at [iscc.codes](http://iscc.codes)

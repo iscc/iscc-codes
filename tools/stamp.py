@@ -12,7 +12,7 @@ PROJECT_DIR = dirname(dirname(__file__))
 def get_content(mode="text"):
 
     chdir(PROJECT_DIR)
-    call(["mkdocs", "build"])
+    call(["zensical", "build"])
 
     content = "" if mode == "text" else b""
     if mode == "text":
@@ -36,10 +36,10 @@ def spec_iscc():
     title = "ISCC - Specification"
     text = open(join(PROJECT_DIR, "docs/specification.md"), encoding="utf-8").read()
     data = open(join(PROJECT_DIR, "docs/specification.md"), "rb").read()
-    mid, title, extra = iscc.meta_id(title)
-    cidt = iscc.content_id_text(text)
-    did = iscc.data_id(data)
-    iid, hash_ = iscc.instance_id(data)
+    mid, title, extra = iscc.code_meta(title)
+    cidt = iscc.code_text(text)
+    did = iscc.code_data(data)
+    iid, hash_ = iscc.code_instance(data)
     code = "-".join((mid, cidt, did, iid))
     print("SPEC:")
     print("TITLE:", title, extra)
@@ -51,10 +51,10 @@ def site_iscc():
     title = "ISCC - Content Identifiers"
     text = get_content("text")
     data = get_content("data")
-    mid, title, extra = iscc.meta_id(title)
-    cidt = iscc.content_id_text(text)
-    did = iscc.data_id(data)
-    iid, hash_ = iscc.instance_id(data)
+    mid, title, extra = iscc.code_meta(title)
+    cidt = iscc.code_text(text)
+    did = iscc.code_data(data)
+    iid, hash_ = iscc.code_instance(data)
     code = "-".join((mid, cidt, did, iid))
     print("SITE:")
     print("TITLE:", title, extra)
