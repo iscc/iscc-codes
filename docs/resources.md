@@ -8,17 +8,21 @@ If you find something that is missing from this collection of resources for the 
 
 ## ISCC - Official Software & Tools
 
-### [ISCC - CLI](https://github.com/iscc/iscc-cli)
+### [iscc-core](https://github.com/iscc/iscc-core)
 
-An open-source command-line tool that can be used on **Windows**, **Linux**, and **Mac** systems by developers and computer savvy persons to create ISCC codes from media files and URLs. The tool is based on the [reference implementation](https://github.com/iscc/iscc-codes) but also includes **new and experimental features** (e.g., Audio-Codes, Video-Codes) that are not yet part of the [public specification](https://iscc.codes/specification/).
+Current Python reference implementation of the ISCC core algorithms defined by [ISO 24138:2024](https://www.iso.org/standard/77899.html). Install from PyPI with `pip install iscc-core`. Documentation: <https://core.iscc.codes/>.
 
-### [ISCC - Web Service](https://github.com/iscc/iscc-service)
+### [iscc-sdk](https://github.com/iscc/iscc-sdk)
 
-A REST OpenAPI backend service application for creating [**ISCC codes**](https://iscc.codes/) for digital media files and URLs. The Webservice is built with [FastAPI](https://github.com/tiangolo/fastapi) and makes use of the [ISCC reference implementation](https://github.com/iscc/iscc-codes) and the [ISCC Command Line Tool](https://github.com/iscc/iscc-cli) and includes interactive API documentation.
+High-level Python toolkit for creating and managing ISCCs from media files. It builds on `iscc-core` and adds media type detection, metadata handling, content extraction, and a command-line interface. Install from PyPI with `pip install iscc-sdk`. Documentation: <https://sdk.iscc.codes/>.
 
-### [ISCC - Specification & Reference Implementation](https://github.com/iscc/iscc-codes)
+### [ISCC Web Demo](https://demo.iscc.io/)
 
-The official ISCC reference implementation. The reference code is published on the [Python Package Index](https://pypi.org/project/iscc/) and can be installed as a library by developers. The ISCC specification is written in markdown and hosted in the same [source code repository](https://github.com/iscc/iscc-codes) and published at [https://iscc.codes/specification](https://iscc.codes/specification/). For contributions and public discussions, please use the corresponding [issue tracker](https://github.com/iscc/iscc-codes/issues).
+Minimal web application for generating ISCCs in the browser. Source code: [iscc-web](https://github.com/iscc/iscc-web).
+
+### [ISCC Codes](https://github.com/iscc/iscc-codes)
+
+Source repository for this `iscc.codes` documentation site and historical ISCC Version 1.1 specification material. The legacy Python package [`iscc`](https://pypi.org/project/iscc/) is an outdated proof-of-concept retained for compatibility; new integrations should use `iscc-core` or `iscc-sdk`.
 
 ## ISCC - Third-Party Implementations
 
@@ -75,4 +79,4 @@ In particular, the foundation supports the **ISCC** and promotes the development
 
 ### [ISO - International Organization for Standardization](https://www.iso.org/committee/48836.html)
 
-**ISO/TC 46/SC 9** (Identification and description) has accepted the **International Standard Content Code** as a preliminary work item and created a new working group (WG 18 - Digital-Content-Based Identification).
+**ISO/TC 46/SC 9** (Identification and description) standardized the **International Standard Content Code** as [ISO 24138:2024](https://www.iso.org/standard/77899.html).
