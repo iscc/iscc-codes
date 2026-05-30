@@ -1,6 +1,9 @@
+---
 title: ISCC - Features
 description: Features of the International Standard Content Code
 authors: Titusz Pan
+icon: lucide/sparkles
+---
 
 # ISCC - Features
 

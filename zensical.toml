@@ -40,13 +40,18 @@ nav = [
 [project.theme]
 language = "en"
 custom_dir = "docs/overrides"
-logo = "images/logo-white.svg"
+logo = "images/logo-black.svg"
 favicon = "images/favicon.png"
 font = false
 features = [
+    "content.code.annotate",
+    "content.code.copy",
+    "content.tooltips",
+    "header.autohide",
     "navigation.expand",
     "navigation.footer",
     "navigation.indexes",
+    "navigation.sections",
     "navigation.top",
     "navigation.tracking",
     "search.highlight",

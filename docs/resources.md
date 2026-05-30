@@ -1,6 +1,9 @@
+---
 title: ISCC - Resources
 description: ISCC software, demos, tools, developer libs, integrations, presentations, articles and other resources
 authors: Titusz Pan
+icon: lucide/library
+---
 
 # ISCC - Resources
 

@@ -13,71 +13,167 @@
   --md-code-font: "JetBrains Mono";
 }
 
+/* ISCC Foundation brand colors
+ *
+ * Zensical's default palette sets Material's primary/accent names. The
+ * [data-md-color-*] selectors below match that specificity and mirror the
+ * iscc-usearch customization pattern with ISCC Blue as the visible header and
+ * link color.
+ */
+
+/* Light mode: override primary (indigo -> ISCC Blue) */
+[data-md-color-primary="indigo"] {
+  --md-primary-fg-color: #0054b2;
+  --md-primary-fg-color--light: #4596f5;
+  --md-primary-fg-color--dark: #123663;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+}
+
+/* Light mode: override accent (indigo -> ISCC Blue) */
+[data-md-color-accent="indigo"] {
+  --md-accent-fg-color: #0054b2;
+  --md-accent-fg-color--transparent: #0054b21a;
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #ffffffb3;
+}
+
+/* Link color for light mode */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color:               #0054b2;
-  --md-primary-fg-color--light:        #7ac2f7;
-  --md-primary-fg-color--dark:         #123663;
-
-  --md-accent-fg-color:                #f56169;
-  --md-accent-bg-color:                #a6db50;
-  --md-typeset-a-color:                #f56169;
-
+  --md-typeset-a-color: #0054b2;
 }
 
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color:               #0054b2;
-  --md-primary-fg-color--light:        #7ac2f7;
-  --md-primary-fg-color--dark:         #123663;
-  --md-accent-fg-color:                #f56169;
-  --md-accent-bg-color:                #a6db50;
-
-  --md-typeset-a-color:                #a6db50;
-  --md-default-fg-color--light:        #a6db50;
+/* Dark mode: override primary/accent */
+[data-md-color-scheme="slate"][data-md-color-primary="indigo"] {
+  --md-primary-fg-color: #4596f5;
+  --md-primary-fg-color--light: #7ac2f7;
+  --md-primary-fg-color--dark: #0054b2;
+  --md-primary-bg-color: #123663;
+  --md-primary-bg-color--light: #12366380;
+  --md-typeset-a-color: #4596f5;
 }
 
+[data-md-color-scheme="slate"][data-md-color-accent="indigo"] {
+  --md-accent-fg-color: #4596f5;
+  --md-accent-fg-color--transparent: #4596f51a;
+}
+
+/* ---------- Light mode: ISCC Blue header ---------- */
+[data-md-color-scheme="default"] .md-header {
+  background-color: #0054b2;
+  color: #ffffff;
+}
+
+[data-md-color-scheme="default"] .md-header .md-header__button,
+[data-md-color-scheme="default"] .md-header .md-header__topic,
+[data-md-color-scheme="default"] .md-header .md-header__title {
+  color: #ffffff;
+}
+
+[data-md-color-scheme="default"] .md-header .md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Search button: white text/icon on blue header */
+[data-md-color-scheme="default"] .md-header .md-search__button {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-md-color-scheme="default"] .md-header .md-search__button::before {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+[data-md-color-scheme="default"] .md-header .md-search__button::after {
+  background-color: #123663;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Use the black logo by default, invert only where it sits on a dark header. */
+[data-md-color-scheme="default"] .md-header__button.md-logo img,
+[data-md-color-scheme="slate"] .md-header__button.md-logo img,
+[data-md-color-scheme="slate"] .md-nav__button.md-logo img {
+  filter: invert(1);
+}
+
+/* ---------- Dark mode: Deep Navy header ---------- */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #123663;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-md-color-scheme="slate"] .md-header .md-header__button,
+[data-md-color-scheme="slate"] .md-header .md-header__topic,
+[data-md-color-scheme="slate"] .md-header .md-header__title {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Footer: Deep Navy ---------- */
+[data-md-color-scheme="default"] .md-footer {
+  background-color: #123663;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-md-color-scheme="default"] .md-footer a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-md-color-scheme="default"] .md-footer-meta {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-md-color-scheme="default"] .md-copyright,
+[data-md-color-scheme="default"] .md-copyright__highlight {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html [data-md-color-scheme="default"] .md-footer-meta.md-typeset a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Existing layout/readability tweaks */
 .md-grid {
   max-width: 1550px;
 }
 
 .md-typeset {
-    font-weight: 200;
+  font-weight: 200;
 }
 
 .md-typeset code {
-    font-size:.6rem;
+  font-size: 0.6rem;
 }
 
 .doc-heading code {
-    font-weight: bold;
-    font-size: 0.9rem;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
-
 .md-typeset__table {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 dt {
-    font-weight: bold;
-    font-size: 1em;
-
+  font-weight: bold;
+  font-size: 1em;
 }
 
 dd {
-    margin: 0;
-    font-size: 0.9em;
-    padding: 0 0 0.5em 0;
+  margin: 0;
+  font-size: 0.9em;
+  padding: 0 0 0.5em 0;
 }
 
 a code {
-    font-size: 0.8em !important;
-    background-color: lightgray !important;
-    padding: 2px 6px 2px 6px !important;
+  font-size: 0.8em !important;
+  background-color: var(--md-code-bg-color) !important;
+  padding: 2px 6px !important;
 }
 
-
 .right {
-    float: right;
-    width: 40%;
-    margin-left: 10px;
+  float: right;
+  width: 40%;
+  margin-left: 10px;
 }
