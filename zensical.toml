@@ -37,7 +37,7 @@ provider = "custom"
 [project.theme]
 language = "en"
 custom_dir = "docs/overrides"
-logo = "images/logo-black.svg"
+logo = "images/logo_light.png"
 favicon = "images/favicon.png"
 font = false
 features = [

@@ -7,7 +7,7 @@ icon: lucide/scale
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AE2KKH4WSOSSYML43ORTKHNCRTKGEVXGSSBCULG5FGPO6IGURSFJY`
+**Documentation source ISCC-SUM**: `ISCC:K4AEKKKH4WCOSSYMK43ORTLHNCRTLGGW57MXD7PTDXVJRFM5EMT5GXI`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via
