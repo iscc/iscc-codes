@@ -9,8 +9,9 @@ from importlib import metadata
 import warnings
 
 warnings.warn(
-    "The 'iscc' PyPI package is a deprecated compatibility wrapper. "
-    "Install and import 'iscc_sdk' directly for new code.",
+    "The 'iscc' package 2.x is a breaking compatibility wrapper and no "
+    "longer provides the original proof-of-concept API. Install and import "
+    "'iscc_sdk' directly for new code: pip install iscc-sdk.",
     FutureWarning,
     stacklevel=2,
 )

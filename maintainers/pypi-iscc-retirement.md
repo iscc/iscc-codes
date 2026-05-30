@@ -27,22 +27,29 @@ If the `iscc` package name is updated on PyPI, publish a final compatibility/wra
 
 Use `pypi/iscc-wrapper/` as the source for the final release. It intentionally does not include the historical implementation.
 
-Recommended version: `1.2.0` or another stable version greater than the current stable `1.0.5`, so a plain `pip install iscc` receives the migration package instead of the old proof-of-concept. Coordinate this with the package owners before publishing.
+Recommended version: `2.0.0`. The wrapper intentionally does not preserve the retired proof-of-concept API, so a major version is the honest signal and lets users pin `iscc<2` if they need the old behavior. Coordinate this with the package owners before publishing.
 
-Recommended maintainer checklist:
+Recommended local maintainer checklist:
 
 ```bash
 cd pypi/iscc-wrapper
-python -m build
-python -m twine check dist/*
+uv build --out-dir dist --clear
+uvx --from twine twine check dist/*
 # Publish only after human review and PyPI owner approval:
-# python -m twine upload dist/*
+# uv publish dist/*
 ```
 
-Publishing to PyPI is an external side effect and must not be done from routine documentation PRs.
+Publishing to PyPI is an external side effect and must not be done from routine documentation PRs. The repository contains a guarded CI workflow in `.github/workflows/publish-iscc-wrapper.yml` that builds the wrapper on pull requests and publishes only from `iscc-v*` tags or an explicit manual dispatch with `publish=true`. It uses the organization-level `PYPI_TOKEN` secret as `UV_PUBLISH_TOKEN`.
+
+For the first real publish, create and push a signed tag that matches the wrapper version exactly:
+
+```bash
+git tag -s iscc-v2.0.0 -m "iscc 2.0.0 wrapper release"
+git push origin iscc-v2.0.0
+```
 
 ## User-facing message
 
 Use this wording consistently:
 
-> The `iscc` PyPI package name was used by an early proof-of-concept. New Python integrations should install and import `iscc-sdk`. Use `iscc-core` only when you need lower-level algorithm access.
+> The `iscc` PyPI package name was used by an early proof-of-concept. Starting with `iscc` 2.0.0 it is a breaking compatibility wrapper that installs `iscc-sdk` and points users to `iscc_sdk`. New Python integrations should install and import `iscc-sdk` directly. Use `iscc-core` only when you need lower-level algorithm access.

@@ -26,7 +26,7 @@ For most application developers, start with `iscc-sdk`.
 
 The PyPI package named [`iscc`](https://pypi.org/project/iscc/) was an early proof-of-concept that predates ISO 24138:2024 and the current `iscc-sdk` / `iscc-core` stack. It is retained only for compatibility with existing pinned installations and should not be used for new work.
 
-The old source tree has been moved to [`legacy/python-poc/`](legacy/python-poc/). A small replacement wrapper package scaffold lives in [`pypi/iscc-wrapper/`](pypi/iscc-wrapper/) for a future final PyPI release of `iscc` that depends on `iscc-sdk` and points users to the maintained package.
+The old source tree has been moved to [`legacy/python-poc/`](legacy/python-poc/). A small replacement wrapper package scaffold lives in [`pypi/iscc-wrapper/`](pypi/iscc-wrapper/) for a future `iscc` 2.0.0 PyPI release that depends on `iscc-sdk` and points users to the maintained package. Because the wrapper does not preserve the retired proof-of-concept API, users who need the old behavior should pin `iscc<2`.
 
 Maintainers: see [`maintainers/pypi-iscc-retirement.md`](maintainers/pypi-iscc-retirement.md) before publishing anything under the `iscc` package name.
 

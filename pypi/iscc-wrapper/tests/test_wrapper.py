@@ -6,5 +6,5 @@ def test_wrapper_import_warns_and_exposes_sdk_api():
         warnings.simplefilter("always")
         import iscc
 
-    assert any("iscc_sdk" in str(item.message) for item in caught)
+    assert any("breaking compatibility wrapper" in str(item.message) for item in caught)
     assert hasattr(iscc, "code_iscc")
