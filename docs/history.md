@@ -1,6 +1,6 @@
 ---
 title: ISCC - History
-description: From a 2016 idea to an international standard: the history of the International Standard Content Code.
+description: "From a 2016 idea to an international standard: the history of the International Standard Content Code."
 authors: Titusz Pan
 icon: lucide/history
 ---
