@@ -65,8 +65,9 @@ Current source files for the public paths:
 - Avoid repository structure or public docs that frame this work as marketing.
 - Keep early migration pull requests mechanical and reviewable: first preserve
   paths, then change the documentation engine, then update stale content.
-- Treat the old Python implementation as historical POC code until a dedicated
-  retirement/archive change handles it.
+- Keep the retired Python proof-of-concept outside the repository root. The
+  archival source lives in `legacy/python-poc/`; the PyPI wrapper scaffold lives
+  in `pypi/iscc-wrapper/`.
 
 ## Verification
 

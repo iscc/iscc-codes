@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "iscc"
 version = "1.1.0-beta.17"
-description = "ISCC: Reference Implementation"
+description = "Retired early ISCC proof-of-concept"
 authors = ["Titusz Pan <tp@py7.de>"]
 license="BSD 2-clause"
 readme = "README.md"
@@ -9,7 +9,7 @@ homepage = "https://iscc.codes/"
 repository = "https://github.com/iscc/iscc-codes"
 keywords=["iscc", "identifier", "media", "content", "hash", "blockchain", "similarity"]
 classifiers=[
-    "Development Status :: 4 - Beta",
+    "Development Status :: 7 - Inactive",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
     "Natural Language :: English",

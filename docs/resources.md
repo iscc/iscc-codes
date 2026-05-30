@@ -25,7 +25,7 @@ Minimal web application for generating ISCCs in the browser. Source code: [iscc-
 
 ### [ISCC Codes](https://github.com/iscc/iscc-codes)
 
-Source repository for this `iscc.codes` documentation site and historical ISCC Version 1.1 specification material. The legacy Python package [`iscc`](https://pypi.org/project/iscc/) is an outdated proof-of-concept retained for compatibility; new integrations should use `iscc-core` or `iscc-sdk`.
+Source repository for this `iscc.codes` documentation site and historical ISCC Version 1.1 specification material. The legacy Python package [`iscc`](https://pypi.org/project/iscc/) is an outdated proof-of-concept retained for compatibility; new integrations should use `iscc-sdk`. Use `iscc-core` only when lower-level algorithm access is needed.
 
 ## ISCC - Third-Party Implementations
 

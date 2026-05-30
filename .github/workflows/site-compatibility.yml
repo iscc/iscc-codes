@@ -6,7 +6,10 @@ on:
       - main
     paths:
       - "docs/**"
-      - "maintainers/site-migration.md"
+      - "maintainers/**"
+      - "pypi/iscc-wrapper/**"
+      - "legacy/python-poc/README.md"
+      - "README.md"
       - "zensical.toml"
       - "scripts/check_site_paths.py"
       - ".github/workflows/site-compatibility.yml"
