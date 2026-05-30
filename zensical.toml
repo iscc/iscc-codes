@@ -13,6 +13,7 @@ nav = [
     { "Overview" = "index.md" },
     { "Features" = "features.md" },
     { "Concept" = "concept.md" },
+    { "History" = "history.md" },
     { "Specification" = "specification.md" },
     { "Resources" = "resources.md" },
     { "Versions" = [
