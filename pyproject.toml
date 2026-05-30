@@ -39,7 +39,7 @@ opencv-contrib-python-headless = { version = "^4.5", optional = true }
 mobi = "^0.3"
 iscc-core = "^0.1"
 Pillow = "^8.4"
-tinytag = "^1.6"
+tinytag = ">=1.6,<3.0"
 install-jdk = "^0.3.0"
 bitarray-hardbyte = "<=1.6.2"
 
