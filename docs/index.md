@@ -1,73 +1,96 @@
 ---
 title: iscc-codes
-description: Modern and open content-based identification.
+description: Open, decentralized content identification — derived from the content itself.
 authors: Titusz Pan
 icon: lucide/house
+hide:
+  - toc
 ---
 
-# ISCC - International Standard Content Code
+# ISCC — International Standard Content Code
 
-## Modern and open Content-Based Identification
+## Open, decentralized content identification — derived from the content itself
 
-![iscc-sample](images/iscc-algo-design.svg)
+**ISCC** ([ISO 24138:2024](https://www.iso.org/standard/77899.html)) is an open standard for content
+identification that works directly from the digital file. Generate a compact, similarity-preserving
+code for any text, image, audio, or video. Anyone can derive the same **ISCC-CODE** from the same
+content, with no registry and no assignment step.
 
-## The ISCC is...
+[Learn how it works](concept.md){ .iscc-btn .iscc-btn--primary }
+[Try it live](https://demo.iscc.io){ .iscc-btn }
 
-- a universal content code for all types of digital content (text, image, audio, video)
-- a lightweight and similarity-preserving fingerprint
-- designed for cross-sector applicability (journalism, books, music, film, etc.)
-- designed to identify content in decentralized and networked environments
-- and most importantly it is free, open-source and transparent
+*Open source · ISO 24138:2024 · maintained by the [ISCC Foundation](https://iscc.io)*
 
-## Try out the ISCC
+## Find your path
 
-- https://demo.iscc.io
-- https://huggingface.co/spaces/iscc/iscc-playground
+<div class="iscc-cards" markdown>
 
-## Developer entry points
+<div class="iscc-card" markdown>
 
-- [iscc-core](https://github.com/iscc/iscc-core) — current Python reference implementation of the ISO 24138 core algorithms
-- [iscc-sdk](https://github.com/iscc/iscc-sdk) — high-level Python toolkit for generating ISCCs from media files
+### Developers
 
+Generate and manage **ISCC-CODEs** from media files in Python or over REST.
 
-!!! note "ISCC Standard - ISO 24138"
-    ### Latest status of standardization:
-    [ISO 24138 - Information and documentation - International Standard Content Code (ISCC)](https://www.iso.org/standard/77899.html)
-    ### Current implementation guidance:
-    [ISCC - Codec & Algorithms](https://core.iscc.codes) and [ISCC Software Development Kit](https://sdk.iscc.codes)
+[Explore the software →](resources.md)
 
+</div>
 
+<div class="iscc-card" markdown>
 
-## Motivation
+### Researchers & technologists
 
-Increasing amounts of dynamic, short-lived, and granular content need to be managed and require new and innovative tools.
+Understand the algorithms and the similarity-preserving design behind the codes.
 
-A crucial prerequisite for content-related transactions to succeed in this new and demanding environment is the capability to address and identify content efficiently. Yet many industries that deal with digital content do not even have standard content codes. There is no existing solution for those industries that deal with short-lived or granular content such as journalism. There is also no widely adopted standardized content code for digital images.
+[Read the concept →](concept.md)
 
-The overhead and cost of manually assigning and tracking codes for such content are prohibitive. But there is a solution to the problem: **auto-generated content codes** created algorithmically from the content itself.
+</div>
 
-In a multi-sided ecosystem, **anybody** may have a legitimate interest to generate, look up, or register a content code for some digital content – whether they own the content or not.
+<div class="iscc-card" markdown>
 
-Authorship or copyright is **not** a requirement to create or use a content code. But shared content-based identification is a requirement to communicate and agree on authorship, origin, copyright, and other information.
+### Standards & policy
 
-Technology allows us to map **codes to digital content** without requiring an
-intermediary by using open, standardized fingerprinting algorithms.
+See how the ISCC relates to ISO 24138 and to established identifiers like ISBN, ISRC, and DOI.
 
-Open and accessible **standard content codes**, designed to manage small and sometimes transient pieces of digital content are fundamental for transactions and sales activities in our increasingly heterogeneous media environment.
+[Read the specification →](specification.md)
 
-By using standardized, decentralized, algorithmic codes for digital content, all ecosystem participants can engage more efficiently in content-related transactions.
+</div>
 
-## Key Features and Differentiators
+</div>
 
-- Decentralized issuance through algorithmic creation
-- Generic content identification (text, images, audio, video)
-- Algorithmic similarity detection and deduplication
-- Low management costs
-- Low barrier of entry
+## One code, derived from the bytes themselves
+
+Most identifiers (ISBN, ISRC, DOI) are assigned by an authority and attached to a work. The ISCC
+inverts this: anyone can compute the code directly from the digital content using open algorithms.
+The same content always produces the same code, even after re-encoding or compression, and similar
+content produces similar codes.
+
+The ISCC complements existing identifiers rather than replacing them. An ISBN identifies an abstract
+product, such as a specific edition of a publication; an ISCC is computed from a file and tells you
+whether two files are the same content, and how similar they are. [Read more in the Concept →](concept.md)
 
 ## How it works
 
-**ISCC-CODEs** are generated algorithmically **from the content itself**. Content files are processed to build the code. The ISCC does not have to be manually assigned, neither does it have to be carried around or embedded within the content. The content itself is the source and authority of the **ISCC-CODE**.
+An **ISCC-CODE** is a composite, hierarchically structured fingerprint. It combines several
+content-derived **ISCC-UNITs** covering embedded metadata, normalized content, and the raw bytes.
+Each unit is a compact, similarity-preserving hash.
 
-The **ISCC-CODE** is a unique, hierarchically structured, composite content fingerprint. It is built from a generic and balanced mix of content-derived, locality-sensitive and similarity-preserving hashes generated from metadata and the content itself.
+[![ISCC algorithmic design](images/iscc-algo-design.svg)](images/iscc-algo-design.svg)
 
+[See the full specification →](specification.md)
+
+## Try it
+
+- **Web demo:** <https://demo.iscc.io>
+- **Playground:** <https://huggingface.co/spaces/iscc/iscc-playground>
+
+## Developer entry points
+
+- [**iscc-core**](https://github.com/iscc/iscc-core) — Python reference implementation of the ISO 24138 core algorithms
+- [**iscc-sdk**](https://github.com/iscc/iscc-sdk) — high-level Python toolkit for generating ISCCs from media files
+
+See the [Resources](resources.md) page for the wider ISCC ecosystem of tools and services.
+
+!!! note "ISCC Standard — ISO 24138:2024"
+    The ISCC is published as [ISO 24138:2024](https://www.iso.org/standard/77899.html) by
+    ISO/TC 46/SC 9. Current implementation guidance lives at
+    [core.iscc.codes](https://core.iscc.codes) and [sdk.iscc.codes](https://sdk.iscc.codes).

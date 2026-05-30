@@ -177,3 +177,91 @@ a code {
   width: 40%;
   margin-left: 10px;
 }
+
+/* ---------- Landing page ---------- */
+
+/* Hero call-to-action buttons */
+.md-typeset .iscc-btn {
+  display: inline-block;
+  margin: 0.4em 0.5em 0.4em 0;
+  padding: 0.55em 1.2em;
+  border: 1px solid var(--md-primary-fg-color);
+  border-radius: 0.2rem;
+  color: var(--md-primary-fg-color);
+  font-weight: 400;
+  transition: background-color 125ms, color 125ms, border-color 125ms;
+}
+
+.md-typeset .iscc-btn:hover {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.md-typeset .iscc-btn--primary {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.md-typeset .iscc-btn--primary:hover {
+  background-color: var(--md-primary-fg-color--dark);
+  border-color: var(--md-primary-fg-color--dark);
+}
+
+/* Audience cards */
+.iscc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.2rem;
+  margin: 1.5em 0;
+}
+
+.md-typeset .iscc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.4rem 1.2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  background-color: var(--md-default-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+/* ISCC-blue gradient accent bar across the top of each card */
+.md-typeset .iscc-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--md-primary-fg-color),
+    var(--md-primary-fg-color--light)
+  );
+}
+
+.md-typeset .iscc-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--md-primary-fg-color--light);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 84, 178, 0.15);
+}
+
+.md-typeset .iscc-card h3 {
+  margin: 0 0 0.5rem;
+  color: var(--md-primary-fg-color);
+  font-weight: 600;
+}
+
+/* Pin the call-to-action to the bottom so cards in a row line up */
+.md-typeset .iscc-card p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-top: 0.7rem;
+}
+
+.md-typeset .iscc-card p:last-child a {
+  font-weight: 600;
+}
