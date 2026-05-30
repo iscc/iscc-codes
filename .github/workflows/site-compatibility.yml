@@ -7,9 +7,10 @@ on:
     paths:
       - "docs/**"
       - "maintainers/site-migration.md"
-      - "mkdocs.yml"
+      - "zensical.toml"
       - "scripts/check_site_paths.py"
       - ".github/workflows/site-compatibility.yml"
+
 jobs:
   check-site-paths:
     runs-on: ubuntu-latest
@@ -20,3 +21,17 @@ jobs:
           python-version: "3.11"
       - name: Check source path compatibility
         run: python scripts/check_site_paths.py
+
+  build-zensical-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Zensical
+        run: python -m pip install zensical==0.0.43
+      - name: Build site
+        run: zensical build --clean
+      - name: Check generated site compatibility
+        run: python scripts/check_site_paths.py --site-dir site

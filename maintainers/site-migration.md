@@ -34,13 +34,14 @@ or configure an explicit redirect to the new location.
 
 ## Historical and compatibility paths
 
-The current MkDocs configuration contains this redirect:
+The previous MkDocs configuration contained this redirect, now preserved as a
+Zensical forwarding page:
 
 - `/implementations/` → `/resources/`
 
-Keep this compatibility path covered in the Zensical migration. It may become a
-redirect to a future implementations, ecosystem, or developer-resources page,
-but it should not become a bare 404.
+Keep this compatibility path covered in future content architecture changes. It
+may become a redirect to a future implementations, ecosystem, or developer-resources
+page, but it should not become a bare 404.
 
 ## Source path mapping
 
@@ -52,8 +53,7 @@ Current source files for the public paths:
 - `/license/` → `docs/license.md`
 - `/resources/` → `docs/resources.md`
 - `/specification/` → `docs/specification.md`
-- `/implementations/` → compatibility redirect currently configured in
-  `mkdocs.yml`
+- `/implementations/` → `docs/implementations.md` compatibility forwarding page
 
 ## Migration rules
 
@@ -85,13 +85,20 @@ python scripts/check_site_paths.py --site-dir site
 The check verifies that required source pages exist and, when a generated site
 is provided, that the generated output still contains the required public paths.
 
-## Notes for future Zensical migration
+## Zensical migration baseline
 
-When the MkDocs configuration is replaced with `zensical.toml`, carry over the
-same compatibility requirements:
+The documentation engine is now configured by `zensical.toml`. The legacy
+`mkdocs.yml` file has been removed from the source branch to avoid two competing
+site configurations.
 
-- Define navigation or page sources for the six canonical paths.
-- Add an explicit redirect or forwarding page for `/implementations/`.
-- Keep `docs/CNAME` or the equivalent Pages custom-domain configuration.
-- Re-run `scripts/check_site_paths.py` against the generated output before
-  publishing.
+The migration baseline carries over:
+
+- Navigation for the six canonical paths.
+- `docs/implementations.md` as a compatibility forwarding page for
+  `/implementations/`.
+- `docs/CNAME` for the custom domain.
+- Plausible analytics through the existing custom analytics partial.
+- Social footer links from the former MkDocs configuration.
+
+Re-run `scripts/check_site_paths.py` against the generated output before
+publishing.

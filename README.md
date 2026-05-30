@@ -70,16 +70,16 @@ A short example on how to create an ISCC Code with the reference implementation.
 | NOTE: This is ISCC Version 1.1 - The specs are not yet updated!!! |
 | --- |
 
-The entire **ISCC Specification** is written in plain text [Markdown](https://en.wikipedia.org/wiki/Markdown). The markdown content is than built and published with the excellent [mkdocs](http://www.mkdocs.org/) documetation tool. If you have some basic command line skills you can build and run the specification site on your own computer. Make sure you have the [git](https://git-scm.com/) and [Python](https://www.python.org/) and [Poetry](https://pypi.org/project/poetry/) installed on your system and follow these steps on the command line:
+The entire **ISCC Specification** is written in plain text [Markdown](https://en.wikipedia.org/wiki/Markdown). The Markdown content is built and published with [Zensical](https://zensical.org/). If you have basic command line skills you can build and run the specification site on your own computer. Make sure you have [git](https://git-scm.com/) and [Python](https://www.python.org/) installed on your system and follow these steps on the command line:
 
-``` bash
+```bash
 git clone https://github.com/iscc/iscc-codes.git
 cd iscc-codes
-poetry install
-mkdocs serve
+python -m pip install zensical==0.0.43
+zensical serve
 ```
 
-All specification documents can be found in the `./docs` subfolder or the repository. The recommended editor for the markdown files is [Typora](https://typora.io/). If you have commit rights to the [main repository](https://github.com/iscc/iscc-codes) you can deploy the site with a simple `mkdocs gh-deploy`.
+All specification documents can be found in the `./docs` subfolder of the repository. The site configuration lives in `zensical.toml`.
 
 ## Contribute
 

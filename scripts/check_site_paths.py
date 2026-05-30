@@ -9,8 +9,8 @@ checks source files. With ``--site-dir`` it also checks generated output.
 from __future__ import annotations
 
 import argparse
-import re
 import sys
+import tomllib
 from pathlib import Path
 
 
@@ -23,10 +23,10 @@ REQUIRED_SOURCE_PATHS = {
     "/specification/": Path("docs/specification.md"),
 }
 
-# Historical path currently handled by mkdocs-redirects.
+# Historical path kept as a compatibility page that forwards to /resources/.
 COMPATIBILITY_PATHS = ("/implementations/",)
 
-EXPECTED_MKDOCS_SETTINGS = {
+EXPECTED_SITE_SETTINGS = {
     "site_url": "https://iscc.codes",
     "repo_name": "iscc/iscc-codes",
     "repo_url": "https://github.com/iscc/iscc-codes",
@@ -62,29 +62,31 @@ def check_source_files(repo_root: Path) -> list[str]:
     elif cname.read_text(encoding="utf-8").strip() != "iscc.codes":
         errors.append("docs/CNAME must contain exactly: iscc.codes")
 
-    mkdocs_config = repo_root / "mkdocs.yml"
-    if mkdocs_config.is_file():
-        mkdocs_text = mkdocs_config.read_text(encoding="utf-8")
-        for key, expected_value in EXPECTED_MKDOCS_SETTINGS.items():
-            setting_pattern = re.compile(
-                rf"^{re.escape(key)}:\s*['\"]{re.escape(expected_value)}['\"]\s*$",
-                re.MULTILINE,
-            )
-            if setting_pattern.search(mkdocs_text) is None:
-                errors.append(f"mkdocs.yml should set {key}: {expected_value}")
+    implementations_source = repo_root / "docs/implementations.md"
+    if not implementations_source.is_file():
+        errors.append("missing compatibility source for /implementations/: docs/implementations.md")
+    else:
+        implementations_text = implementations_source.read_text(encoding="utf-8")
+        if "../resources/" not in implementations_text and "/resources/" not in implementations_text:
+            errors.append("docs/implementations.md should forward to /resources/")
 
-        redirect_pattern = re.compile(
-            r"['\"]?implementations\.md['\"]?\s*:\s*['\"]?resources\.md['\"]?"
-        )
-        if redirect_pattern.search(mkdocs_text) is None:
-            errors.append("mkdocs.yml should preserve implementations.md -> resources.md redirect")
+    zensical_config = repo_root / "zensical.toml"
+    if not zensical_config.is_file():
+        errors.append("missing Zensical configuration: zensical.toml")
+    else:
+        project = tomllib.loads(zensical_config.read_text(encoding="utf-8")).get("project", {})
+        for key, expected_value in EXPECTED_SITE_SETTINGS.items():
+            if project.get(key) != expected_value:
+                errors.append(f"zensical.toml should set {key}: {expected_value}")
 
     old_slug_files = (
         repo_root / "README.md",
         repo_root / "mkdocs.yml",
+        repo_root / "zensical.toml",
         repo_root / "pyproject.toml",
         repo_root / "docs/resources.md",
         repo_root / "docs/specification.md",
+        repo_root / "docs/implementations.md",
         repo_root / "maintainers/site-migration.md",
     )
     for path in old_slug_files:
