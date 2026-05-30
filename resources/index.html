@@ -456,10 +456,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#iscc-cli" class="md-nav__link">
+  <a href="#iscc-core" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - CLI
+        iscc-core
       </span>
     </span>
   </a>
@@ -467,10 +467,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iscc-web-service" class="md-nav__link">
+  <a href="#iscc-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - Web Service
+        iscc-sdk
       </span>
     </span>
   </a>
@@ -478,10 +478,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iscc-specification-reference-implementation" class="md-nav__link">
+  <a href="#iscc-web-demo" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - Specification &amp; Reference Implementation
+        ISCC Web Demo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iscc-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ISCC Codes
       </span>
     </span>
   </a>
@@ -780,10 +791,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#iscc-cli" class="md-nav__link">
+  <a href="#iscc-core" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - CLI
+        iscc-core
       </span>
     </span>
   </a>
@@ -791,10 +802,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iscc-web-service" class="md-nav__link">
+  <a href="#iscc-sdk" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - Web Service
+        iscc-sdk
       </span>
     </span>
   </a>
@@ -802,10 +813,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iscc-specification-reference-implementation" class="md-nav__link">
+  <a href="#iscc-web-demo" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        ISCC - Specification &amp; Reference Implementation
+        ISCC Web Demo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iscc-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ISCC Codes
       </span>
     </span>
   </a>
@@ -1038,12 +1060,14 @@
 <h1 id="iscc-resources">ISCC - Resources<a class="headerlink" href="#iscc-resources" title="Permanent link">&para;</a></h1>
 <p>If you find something that is missing from this collection of resources for the ISCC, <a href="https://github.com/iscc/iscc-codes/edit/main/docs/resources.md">please add it</a>.</p>
 <h2 id="iscc-official-software-tools">ISCC - Official Software &amp; Tools<a class="headerlink" href="#iscc-official-software-tools" title="Permanent link">&para;</a></h2>
-<h3 id="iscc-cli"><a href="https://github.com/iscc/iscc-cli">ISCC - CLI</a><a class="headerlink" href="#iscc-cli" title="Permanent link">&para;</a></h3>
-<p>An open-source command-line tool that can be used on <strong>Windows</strong>, <strong>Linux</strong>, and <strong>Mac</strong> systems by developers and computer savvy persons to create ISCC codes from media files and URLs. The tool is based on the <a href="https://github.com/iscc/iscc-codes">reference implementation</a> but also includes <strong>new and experimental features</strong> (e.g., Audio-Codes, Video-Codes) that are not yet part of the <a href="https://iscc.codes/specification/">public specification</a>.</p>
-<h3 id="iscc-web-service"><a href="https://github.com/iscc/iscc-service">ISCC - Web Service</a><a class="headerlink" href="#iscc-web-service" title="Permanent link">&para;</a></h3>
-<p>A REST OpenAPI backend service application for creating <a href="https://iscc.codes/"><strong>ISCC codes</strong></a> for digital media files and URLs. The Webservice is built with <a href="https://github.com/tiangolo/fastapi">FastAPI</a> and makes use of the <a href="https://github.com/iscc/iscc-codes">ISCC reference implementation</a> and the <a href="https://github.com/iscc/iscc-cli">ISCC Command Line Tool</a> and includes interactive API documentation.</p>
-<h3 id="iscc-specification-reference-implementation"><a href="https://github.com/iscc/iscc-codes">ISCC - Specification &amp; Reference Implementation</a><a class="headerlink" href="#iscc-specification-reference-implementation" title="Permanent link">&para;</a></h3>
-<p>The official ISCC reference implementation. The reference code is published on the <a href="https://pypi.org/project/iscc/">Python Package Index</a> and can be installed as a library by developers. The ISCC specification is written in markdown and hosted in the same <a href="https://github.com/iscc/iscc-codes">source code repository</a> and published at <a href="https://iscc.codes/specification/">https://iscc.codes/specification</a>. For contributions and public discussions, please use the corresponding <a href="https://github.com/iscc/iscc-codes/issues">issue tracker</a>.</p>
+<h3 id="iscc-core"><a href="https://github.com/iscc/iscc-core">iscc-core</a><a class="headerlink" href="#iscc-core" title="Permanent link">&para;</a></h3>
+<p>Current Python reference implementation of the ISCC core algorithms defined by <a href="https://www.iso.org/standard/77899.html">ISO 24138:2024</a>. Install from PyPI with <code>pip install iscc-core</code>. Documentation: <a href="https://core.iscc.codes/">https://core.iscc.codes/</a>.</p>
+<h3 id="iscc-sdk"><a href="https://github.com/iscc/iscc-sdk">iscc-sdk</a><a class="headerlink" href="#iscc-sdk" title="Permanent link">&para;</a></h3>
+<p>High-level Python toolkit for creating and managing ISCCs from media files. It builds on <code>iscc-core</code> and adds media type detection, metadata handling, content extraction, and a command-line interface. Install from PyPI with <code>pip install iscc-sdk</code>. Documentation: <a href="https://sdk.iscc.codes/">https://sdk.iscc.codes/</a>.</p>
+<h3 id="iscc-web-demo"><a href="https://demo.iscc.io/">ISCC Web Demo</a><a class="headerlink" href="#iscc-web-demo" title="Permanent link">&para;</a></h3>
+<p>Minimal web application for generating ISCCs in the browser. Source code: <a href="https://github.com/iscc/iscc-web">iscc-web</a>.</p>
+<h3 id="iscc-codes"><a href="https://github.com/iscc/iscc-codes">ISCC Codes</a><a class="headerlink" href="#iscc-codes" title="Permanent link">&para;</a></h3>
+<p>Source repository for this <code>iscc.codes</code> documentation site and historical ISCC Version 1.1 specification material. The legacy Python package <a href="https://pypi.org/project/iscc/"><code>iscc</code></a> is an outdated proof-of-concept retained for compatibility; new integrations should use <code>iscc-core</code> or <code>iscc-sdk</code>.</p>
 <h2 id="iscc-third-party-implementations">ISCC - Third-Party Implementations<a class="headerlink" href="#iscc-third-party-implementations" title="Permanent link">&para;</a></h2>
 <h3 id="iscc-rs"><a href="https://github.com/iscc/iscc-rs">ISCC-RS</a><a class="headerlink" href="#iscc-rs" title="Permanent link">&para;</a></h3>
 <p>Rust implementation of the <a href="https://iscc.codes/specification">ISCC specification</a>.</p>
@@ -1072,7 +1096,7 @@
 <p>The <strong>ISCC Foundation</strong> is an independent international <strong>nonprofit organization</strong> that promotes information technologies for the common good.</p>
 <p>In particular, the foundation supports the <strong>ISCC</strong> and promotes the development and adoption of open standards and open source technologies as well as tools and services that enable individuals and organizations to better <strong>create, manage, discover, access, share, and monetize digital content, knowledge, and ideas</strong>.</p>
 <h3 id="iso-international-organization-for-standardization"><a href="https://www.iso.org/committee/48836.html">ISO - International Organization for Standardization</a><a class="headerlink" href="#iso-international-organization-for-standardization" title="Permanent link">&para;</a></h3>
-<p><strong>ISO/TC 46/SC 9</strong> (Identification and description) has accepted the <strong>International Standard Content Code</strong> as a preliminary work item and created a new working group (WG 18 - Digital-Content-Based Identification).</p>
+<p><strong>ISO/TC 46/SC 9</strong> (Identification and description) standardized the <strong>International Standard Content Code</strong> as <a href="https://www.iso.org/standard/77899.html">ISO 24138:2024</a>.</p>
 
 
 
