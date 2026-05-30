@@ -4,21 +4,21 @@ authors: Titusz Pan
 
 # ISCC - Resources
 
-If you find something that is missing from this collection of resources for the ISCC, [please add it](https://github.com/iscc/iscc-specs/edit/master/docs/resources.md).
+If you find something that is missing from this collection of resources for the ISCC, [please add it](https://github.com/iscc/iscc-codes/edit/version-1.1/docs/resources.md).
 
 ## ISCC - Official Software & Tools
 
 ### [ISCC - CLI](https://github.com/iscc/iscc-cli)
 
-An open-source command-line tool that can be used on **Windows**, **Linux**, and **Mac** systems by developers and computer savvy persons to create ISCC codes from media files and URLs. The tool is based on the [reference implementation](https://github.com/iscc/iscc-specs) but also includes **new and experimental features** (e.g., Audio-Codes, Video-Codes) that are not yet part of the [public specification](https://iscc.codes/specification/).
+An open-source command-line tool that can be used on **Windows**, **Linux**, and **Mac** systems by developers and computer savvy persons to create ISCC codes from media files and URLs. The tool is based on the [reference implementation](https://github.com/iscc/iscc-codes) but also includes **new and experimental features** (e.g., Audio-Codes, Video-Codes) that are not yet part of the [public specification](https://iscc.codes/specification/).
 
 ### [ISCC - Web Service](https://github.com/iscc/iscc-service)
 
-A REST OpenAPI backend service application for creating [**ISCC codes**](https://iscc.codes/) for digital media files and URLs. The Webservice is built with [FastAPI](https://github.com/tiangolo/fastapi) and makes use of the [ISCC reference implementation](https://github.com/iscc/iscc-specs) and the [ISCC Command Line Tool](https://github.com/iscc/iscc-cli) and includes interactive API documentation.
+A REST OpenAPI backend service application for creating [**ISCC codes**](https://iscc.codes/) for digital media files and URLs. The Webservice is built with [FastAPI](https://github.com/tiangolo/fastapi) and makes use of the [ISCC reference implementation](https://github.com/iscc/iscc-codes) and the [ISCC Command Line Tool](https://github.com/iscc/iscc-cli) and includes interactive API documentation.
 
-### [ISCC - Specification & Reference Implementation](https://github.com/iscc/iscc-specs)
+### [ISCC - Specification & Reference Implementation](https://github.com/iscc/iscc-codes)
 
-The official ISCC reference implementation. The reference code is published on the [Python Package Index](https://pypi.org/project/iscc/) and can be installed as a library by developers. The ISCC specification is written in markdown and hosted in the same [source code repository](https://github.com/iscc/iscc-specs) and published at [http://iscc.codes/specification](https://iscc.codes/specification/). For contributions and public discussions, please use the corresponding [issue tracker](https://github.com/iscc/iscc-specs/issues).
+The official ISCC reference implementation. The reference code is published on the [Python Package Index](https://pypi.org/project/iscc/) and can be installed as a library by developers. The ISCC specification is written in markdown and hosted in the same [source code repository](https://github.com/iscc/iscc-codes) and published at [https://iscc.codes/specification](https://iscc.codes/specification/). For contributions and public discussions, please use the corresponding [issue tracker](https://github.com/iscc/iscc-codes/issues).
 
 ## ISCC - Third-Party Implementations
 

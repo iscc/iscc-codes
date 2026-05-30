@@ -26,6 +26,15 @@ REQUIRED_SOURCE_PATHS = {
 # Historical path currently handled by mkdocs-redirects.
 COMPATIBILITY_PATHS = ("/implementations/",)
 
+EXPECTED_MKDOCS_SETTINGS = {
+    "site_url": "https://iscc.codes",
+    "repo_name": "iscc/iscc-codes",
+    "repo_url": "https://github.com/iscc/iscc-codes",
+    "edit_uri": "edit/version-1.1/docs/",
+}
+
+OLD_REPOSITORY_SLUG = "iscc/iscc-specs"
+
 
 def generated_index_for(site_dir: Path, url_path: str) -> Path:
     """Return the expected generated index.html file for a canonical path."""
@@ -56,11 +65,31 @@ def check_source_files(repo_root: Path) -> list[str]:
     mkdocs_config = repo_root / "mkdocs.yml"
     if mkdocs_config.is_file():
         mkdocs_text = mkdocs_config.read_text(encoding="utf-8")
+        for key, expected_value in EXPECTED_MKDOCS_SETTINGS.items():
+            setting_pattern = re.compile(
+                rf"^{re.escape(key)}:\s*['\"]{re.escape(expected_value)}['\"]\s*$",
+                re.MULTILINE,
+            )
+            if setting_pattern.search(mkdocs_text) is None:
+                errors.append(f"mkdocs.yml should set {key}: {expected_value}")
+
         redirect_pattern = re.compile(
             r"['\"]?implementations\.md['\"]?\s*:\s*['\"]?resources\.md['\"]?"
         )
         if redirect_pattern.search(mkdocs_text) is None:
             errors.append("mkdocs.yml should preserve implementations.md -> resources.md redirect")
+
+    old_slug_files = (
+        repo_root / "README.md",
+        repo_root / "mkdocs.yml",
+        repo_root / "pyproject.toml",
+        repo_root / "docs/resources.md",
+        repo_root / "docs/specification.md",
+        repo_root / "maintainers/site-migration.md",
+    )
+    for path in old_slug_files:
+        if path.is_file() and OLD_REPOSITORY_SLUG in path.read_text(encoding="utf-8"):
+            errors.append(f"old repository slug remains in {path.relative_to(repo_root)}")
 
     return errors
 

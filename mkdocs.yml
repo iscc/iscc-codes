@@ -2,12 +2,12 @@
 site_name: 'ISCC - Content Codes'
 site_description: 'International Standard Content Code - Specification'
 site_author: 'Titusz Pan'
-site_url: 'http://iscc.codes'
+site_url: 'https://iscc.codes'
 
 # Repository
-repo_name: 'iscc/iscc-specs'
-repo_url: 'https://github.com/iscc/iscc-specs'
-edit_uri: 'edit/master/docs/'
+repo_name: 'iscc/iscc-codes'
+repo_url: 'https://github.com/iscc/iscc-codes'
+edit_uri: 'edit/version-1.1/docs/'
 
 # Copyright
 copyright: 'Copyright © 2016-2022 The Authors
@@ -57,7 +57,7 @@ nav:
     - Resources: 'resources.md'
     - Versions:
           - Version 1.x: 'specification.md'
-          - Version 1.0: 'https://github.com/iscc/iscc-specs/blob/version-1.0/docs/specification.md'
+          - Version 1.0: 'https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md'
     - License: 'license.md'
 
 extra:
