@@ -1,6 +1,9 @@
+---
 title: ISCC - Specification
 description: Specification of International Standard Content Codes
 authors: Titusz Pan
+icon: lucide/book-open
+---
 
 # ISCC - Specification v1.x
 

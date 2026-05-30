@@ -1,3 +1,8 @@
+---
+title: ISCC - Concept
+icon: lucide/lightbulb
+---
+
 # ISCC - Concept
 
 !!! note "Historical context"

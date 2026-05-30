@@ -1,3 +1,8 @@
+---
+title: License
+icon: lucide/scale
+---
+
 # License
 
 **TITLE**: ISCC - Content Codes

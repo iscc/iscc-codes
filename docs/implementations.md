@@ -1,4 +1,5 @@
 ---
+icon: lucide/code-xml
 title: Implementations
 location: /resources/
 search:

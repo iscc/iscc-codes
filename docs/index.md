@@ -1,6 +1,9 @@
+---
 title: ISCC - International Standard Content Code - ISO 24138
 description: The intelligent digital media identifier.
 authors: Titusz Pan
+icon: lucide/house
+---
 
 # ISCC - International Standard Content Code
 
