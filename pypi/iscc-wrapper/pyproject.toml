@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iscc"
-version = "1.2.0"
-description = "Deprecated compatibility wrapper for the ISCC SDK"
+version = "2.0.0"
+description = "Breaking compatibility wrapper for the retired ISCC proof-of-concept package"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "BSD-2-Clause"

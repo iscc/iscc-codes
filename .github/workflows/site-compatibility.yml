@@ -10,6 +10,8 @@ on:
       - "pypi/iscc-wrapper/**"
       - "legacy/python-poc/README.md"
       - "README.md"
+      - "pyproject.toml"
+      - "uv.lock"
       - "zensical.toml"
       - "scripts/check_site_paths.py"
       - ".github/workflows/site-compatibility.yml"
@@ -19,22 +21,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.11"
+          enable-cache: true
       - name: Check source path compatibility
-        run: python scripts/check_site_paths.py
+        run: uv run python scripts/check_site_paths.py
 
   build-zensical-site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.11"
-      - name: Install Zensical
-        run: python -m pip install zensical==0.0.43
+          enable-cache: true
       - name: Build site
-        run: zensical build --clean
+        run: uv run zensical build --clean
       - name: Check generated site compatibility
-        run: python scripts/check_site_paths.py --site-dir site
+        run: uv run python scripts/check_site_paths.py --site-dir site

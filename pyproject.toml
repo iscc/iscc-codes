@@ -1,0 +1,15 @@
+[project]
+name = "iscc-codes"
+version = "0.0.0"
+description = "Documentation site and historical material for the International Standard Content Code"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "zensical==0.0.43",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["pypi/iscc-wrapper"]
