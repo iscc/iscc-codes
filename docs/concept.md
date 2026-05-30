@@ -1,8 +1,11 @@
 # ISCC - Concept
 
+!!! note "Historical context"
+    This page preserves early design rationale for the ISCC. Some proof-of-concept and blockchain-specific statements predate the ISO 24138:2024 standardization work and the current `iscc-core` / `iscc-sdk` implementations.
+
 *The internet is shifting towards a network of decentralized peer-to-peer transactions. If we want our transactions on the emerging blockchain networks to be about content we need standardized ways to address content. Our transactions might be payments, attributions, reputation, certification, licenses or entirely new kinds of value transfer. All this will happen much faster and easier if we, as a community, can agree on how to identify content in a decentralized environment.*
 
-This is the higher level concept of an open proposal to the wider content community for a common content identifier. We would like to share our ideas and spark a conversation with journalists, news agencies, content creators, publishers, distributors, libraries, musicians, scientists, developers, lawyers, rights organizations and all the other participants of the content ecosystem.
+This page started as the higher level concept of an open proposal to the wider content community for a common content identifier. We would like to share our ideas and spark a conversation with journalists, news agencies, content creators, publishers, distributors, libraries, musicians, scientists, developers, lawyers, rights organizations and all the other participants of the content ecosystem.
 
 ## Introduction
 

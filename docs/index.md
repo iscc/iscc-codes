@@ -21,12 +21,17 @@ authors: Titusz Pan
 - https://demo.iscc.io
 - https://huggingface.co/spaces/iscc/iscc-playground
 
+## Developer entry points
+
+- [iscc-core](https://github.com/iscc/iscc-core) — current Python reference implementation of the ISO 24138 core algorithms
+- [iscc-sdk](https://github.com/iscc/iscc-sdk) — high-level Python toolkit for generating ISCCs from media files
+
 
 !!! note "ISCC Standard - ISO 24138"
     ### Latest status of standardization:
     [ISO 24138 - Information and documentation - International Standard Content Code (ISCC)](https://www.iso.org/standard/77899.html)
-    ### Official reference implementation:
-    [ISCC - Codec & Algorithms](https://core.iscc.codes)
+    ### Current implementation guidance:
+    [ISCC - Codec & Algorithms](https://core.iscc.codes) and [ISCC Software Development Kit](https://sdk.iscc.codes)
 
 
 

@@ -4,14 +4,14 @@
 [![Downloads](https://pepy.tech/badge/iscc)](https://pepy.tech/project/iscc)
 [![DOI](https://zenodo.org/badge/96668860.svg)](https://zenodo.org/badge/latestdoi/96668860)
 
-| WARNING: The code and specs in this repository are an **out of date** early draft and retained for historic reasons only. For the current reference implementation see: [iscc-core](https://github.com/iscc/iscc-core). For status of specs see: [ISO/DIS 24138](https://www.iso.org/standard/77899.html). |
+| WARNING: The code and specs in this repository are an **out of date** early draft and retained for historic reasons only. For the current reference implementation see: [iscc-core](https://github.com/iscc/iscc-core). For the standardized specification see: [ISO 24138:2024](https://www.iso.org/standard/77899.html). For a high-level Python toolkit see: [iscc-sdk](https://github.com/iscc/iscc-sdk). |
 | --- |
 
-The **International Standard Content Code** is a proposal for an [open standard](https://en.wikipedia.org/wiki/Open_standard) for decentralized content identification. This repository contains the specification of the proposed **ISCC Standard** and a reference implementation in Python3. The latest published version of the specification can be found at [iscc.codes](https://iscc.codes)
+The **International Standard Content Code** is an [open standard](https://en.wikipedia.org/wiki/Open_standard) for content-derived digital media identification. This repository now contains the `iscc.codes` documentation site, historical specification material, and an outdated Python proof-of-concept implementation retained for continuity. The current Python reference implementation lives in [iscc-core](https://github.com/iscc/iscc-core); higher-level media processing is provided by [iscc-sdk](https://github.com/iscc/iscc-sdk).
 
-## Installing the reference code
+## Installing the legacy proof-of-concept code
 
-The reference code is published with the package name [iscc](https://pypi.org/project/iscc/#history) on Python Package Index. Install the latest beta release with:
+The historical proof-of-concept code was published with the package name [iscc](https://pypi.org/project/iscc/#history) on the Python Package Index. It is retained for compatibility only and is not recommended for new integrations. New Python projects should use [iscc-core](https://pypi.org/project/iscc-core/) or [iscc-sdk](https://pypi.org/project/iscc-sdk/). If you need the legacy package, install a pinned release with:
 
 ``` bash
 pip install iscc==1.1.0b17
@@ -32,9 +32,9 @@ from iscc.bin import install
 install()
 ```
 
-## Using the reference code
+## Using the legacy proof-of-concept code
 
-A short example on how to create an ISCC Code with the reference implementation.
+A short historical example on how to create an ISCC Code with the legacy implementation.
 
 ``` python
 >>> import iscc
@@ -66,7 +66,7 @@ A short example on how to create an ISCC Code with the reference implementation.
 
 ## Working with the specification
 
-| NOTE: This is ISCC Version 1.1 - The specs are not yet updated!!! |
+| NOTE: This repository currently carries historical ISCC Version 1.1 material. Current implementation guidance lives in `iscc-core` and `iscc-sdk`. |
 | --- |
 
 The entire **ISCC Specification** is written in plain text [Markdown](https://en.wikipedia.org/wiki/Markdown). The Markdown content is built and published with [Zensical](https://zensical.org/). If you have basic command line skills you can build and run the specification site on your own computer. Make sure you have [git](https://git-scm.com/) and [Python](https://www.python.org/) installed on your system and follow these steps on the command line:

@@ -8,7 +8,7 @@ authors: Titusz Pan
 
 !!! warning
 
-    This document is an **out of date** early draft and retained for historic reasons only. Please follow **current development** at https://ieps.iscc.codes
+    This document is an **out of date** early draft and retained for historic reasons only. For current implementation guidance see [iscc-core](https://github.com/iscc/iscc-core) and [iscc-sdk](https://github.com/iscc/iscc-sdk). For the standardized specification see [ISO 24138:2024](https://www.iso.org/standard/77899.html).
 
 ## Abstract
 
@@ -28,7 +28,7 @@ Public review, discussion and contributions are welcome.
 
 !!! note "Document Version"
 
-    While there is already a [Version 1.0](https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md) spec, we are still expecting backward incompatible changes until **Version 2.0**. Parts of this specification may become stable earlier. We will document this during minor releases. We encourage partners to follow development and test, implement, and give feedback based on the latest (this) version of the ISCC Specification.
+    This page preserves the historical ISCC Version 1.1 specification material for URL continuity and reference. For current implementation guidance see [iscc-core](https://github.com/iscc/iscc-core) and [iscc-sdk](https://github.com/iscc/iscc-sdk). For the standardized specification see [ISO 24138:2024](https://www.iso.org/standard/77899.html).
 
 This document proposes an open and vendor neutral ISCC standard and describes the technical procedures to create and manage ISCC identifiers. The first version of this document resulted from a prototyping project by the [Content Blockchain Project](https://content-blockchain.org) and received funding from the [Google Digital News Initiative (DNI)](https://digitalnewsinitiative.com/dni-projects/content-blockchain-project/). The content of this document results from a voluntary effort of the authors with an open and public consensus process.
 
