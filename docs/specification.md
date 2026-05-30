@@ -15,7 +15,7 @@ icon: lucide/book-open
 
 ## Abstract
 
-The **International Standard Content Code (ISCC)**, is an open and decentralized digital media identifier. An ISCC can be created from digital content and its basic metadata by anybody who follows the procedures of the ISCC specification or by using open source software that supports ISCC creation [conforming to the ISCC specification](#conformance-testing).
+The **International Standard Content Code (ISCC)** is an open and decentralized digital media code. An ISCC can be created from digital content and its basic metadata by anybody who follows the procedures of the ISCC specification or by using open source software that supports ISCC creation [conforming to the ISCC specification](#conformance-testing).
 
 ## Note to Readers
 
@@ -33,7 +33,7 @@ Public review, discussion and contributions are welcome.
 
     This page preserves the historical ISCC Version 1.1 specification material for URL continuity and reference. For current implementation guidance see [iscc-core](https://github.com/iscc/iscc-core) and [iscc-sdk](https://github.com/iscc/iscc-sdk). For the standardized specification see [ISO 24138:2024](https://www.iso.org/standard/77899.html).
 
-This document proposes an open and vendor neutral ISCC standard and describes the technical procedures to create and manage ISCC identifiers. The first version of this document resulted from a prototyping project by the [Content Blockchain Project](https://content-blockchain.org) and received funding from the [Google Digital News Initiative (DNI)](https://digitalnewsinitiative.com/dni-projects/content-blockchain-project/). The content of this document results from a voluntary effort of the authors with an open and public consensus process.
+This document proposes an open and vendor neutral ISCC standard and describes the technical procedures to create and manage ISCC codes. The first version of this document resulted from a prototyping project by the [Content Blockchain Project](https://content-blockchain.org) and received funding from the [Google Digital News Initiative (DNI)](https://digitalnewsinitiative.com/dni-projects/content-blockchain-project/). The content of this document results from a voluntary effort of the authors with an open and public consensus process.
 
 ## Conventions and Terminology
 
@@ -73,7 +73,7 @@ ISCC Digest:
 
 ## Introduction
 
-An ISCC permanently identifies content at multiple levels of *granularity*. It is algorithmically generated from basic metadata and the contents of a digital media object. It is designed for being registered and stored on a public and decentralized blockchain. An ISCC for a media object can be created and registered by the content author, a publisher, a service provider or anybody else. By itself the ISCC and its basic registration on a blockchain does not make any statement or claim about authorship or ownership of the identified content.
+An ISCC provides content-based identification at multiple levels of *granularity*. It is algorithmically generated from basic metadata and the contents of a digital media object. It is designed for being registered and stored on a public and decentralized blockchain. An ISCC for a media object can be created and registered by the content author, a publisher, a service provider or anybody else. By itself the ISCC and its basic registration on a blockchain does not make any statement or claim about authorship or ownership of the identified content.
 
 ## ISCC Structure
 
@@ -329,7 +329,7 @@ Applications may carry, store, and process the leaf node hashes for advanced str
 
 ## ISCC Metadata
 
-As a generic content identifier, the ISCC makes minimal assumptions about metadata that must or should be supplied together with an ISCC. The RECOMMENDED data-interchange format for ISCC metadata is [JSON](https://www.json.org/). We distinguish between **Basic Metadata** and **Extended Metadata**:
+As a generic content code, the ISCC makes minimal assumptions about metadata that must or should be supplied together with an ISCC. The RECOMMENDED data-interchange format for ISCC metadata is [JSON](https://www.json.org/). We distinguish between **Basic Metadata** and **Extended Metadata**:
 
 ### Basic Metadata
 
@@ -361,13 +361,13 @@ Extended metadata entries MUST be wrapped in JSON object of the following struct
 
 ## ISCC Registration
 
-The ISCC is a decentralized identifier. ISCCs can be generated for content by anybody who has access to the content. Because of the clustering properties of its components, the ISCC provides utility in data interchange and de-duplication scenarios even without a global registry. There is no central authority for the registration of ISCC codes or certification of content authorship.
+The ISCC is a decentralized content code. ISCCs can be generated for content by anybody who has access to the content. Because of the clustering properties of its components, the ISCC provides utility in data interchange and de-duplication scenarios even without a global registry. There is no central authority for the registration of ISCC codes or certification of content authorship.
 
 As an open system, the ISCC allows any person or organization to offer ISCC registration services as they see fit and without the need to ask anyone for permission. This also presumes that no person or organization may claim exclusive authority about ISCC registration.
 
 ### Blockchain Registry
 
-To properly address the questions of identifier uniqueness, ownership and authentication within the ISCC Standard, the assignment of a set of canonical blockchain is a requirement. The distributed nature of blockchains are a perfect fit for long-term persistent identifier registration and resolver services.
+To properly address the questions of code uniqueness, ownership and authentication within the ISCC Standard, the assignment of a set of canonical blockchain is a requirement. The distributed nature of blockchains are a perfect fit for long-term persistent code registration and resolver services.
 
 **The assignment of a set of canonical blockchains is NOT YET part of this specification.**
 
@@ -395,7 +395,7 @@ Applications MAY embed ISCC codes that have side effects if they specify a proce
 
 !!! note "Provisional Section"
 
-    The ISCC URI Scheme and link-resolver details ultimately depend on identifier registration, ownership, uniqueness and governance related decisions which are not yet part of this specification. See also: [Blockchain Registry](#blockchain-registry).
+    The ISCC URI Scheme and link-resolver details ultimately depend on code registration, ownership, uniqueness and governance related decisions which are not yet part of this specification. See also: [Blockchain Registry](#blockchain-registry).
 
 The purpose of the ISCC URI scheme based on [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt) is to enable users to discover information like metadata or license offerings from an ISCC marked content by clicking a link on a webpage or by scanning a QR-Code.
 
@@ -447,7 +447,7 @@ See also: [Base-ISCC Decoding reference code](https://github.com/iscc/iscc-codes
 
 ### Content Normalization
 
-The ISCC standardizes some content normalization procedures to support reproducible and stable identifiers. Following the list of normalization functions that MUST be provided by a conforming implementation.
+The ISCC standardizes some content normalization procedures to support reproducible and stable codes. Following the list of normalization functions that MUST be provided by a conforming implementation.
 
 #### text_trim
 
