@@ -279,7 +279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../features/" class="md-nav__link">
+      <a href="../../capabilities/" class="md-nav__link">
         
   
   
@@ -288,7 +288,7 @@
   <span class="md-ellipsis">
     
   
-  Features
+  Capabilities
 
     
   </span>
@@ -1169,7 +1169,7 @@
 <p>An <abbr title="International Standard Content Code">ISCC</abbr> provides content-based identification at multiple levels of <em>granularity</em>. It is algorithmically generated from basic metadata and the contents of a digital media object. It is designed for being registered and stored on a public and decentralized blockchain. An <abbr title="International Standard Content Code">ISCC</abbr> for a media object can be created and registered by the content author, a publisher, a service provider or anybody else. By itself the <abbr title="International Standard Content Code">ISCC</abbr> and its basic registration on a blockchain does not make any statement or claim about authorship or ownership of the identified content.</p>
 <h2 id="iscc-structure"><abbr title="International Standard Content Code">ISCC</abbr> Structure<a class="headerlink" href="#iscc-structure" title="Permanent link">&para;</a></h2>
 <p>A <strong>Fully Qualified <abbr title="Raw binary data of an ISCC">ISCC Digest</abbr></strong> is a fixed size sequence of <strong>36 bytes (288 bits)</strong> assembled from multiple sub-components. The <strong>Fully Qualified  <abbr title="Base58-ISCC encoded string representation of an ISCC">ISCC Code</abbr></strong> is a <strong>52 <abbr title="A character is defined as one Unicode code point">character</abbr></strong> encoded printable string representation of a complete <abbr title="Raw binary data of an ISCC">ISCC Digest</abbr>. This is a high-level overview of the <abbr title="International Standard Content Code">ISCC</abbr> creation process:</p>
-<p><img alt="iscc-creation-process" src="../../images/iscc-creation-process.svg" /></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-creation-process.svg"><img alt="iscc-creation-process" src="../../images/iscc-creation-process.svg" /></a></p>
 <h2 id="iscc-components"><abbr title="International Standard Content Code">ISCC</abbr> Components<a class="headerlink" href="#iscc-components" title="Permanent link">&para;</a></h2>
 <p>The <abbr title="Raw binary data of an ISCC">ISCC Digest</abbr> is built from multiple self-describing 72-bit components:</p>
 <table>
@@ -1493,7 +1493,7 @@
 <p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L102">Content-Code-Mixed reference code</a></p>
 <h4 id="partial-content-flag-pcf">Partial Content Flag (<abbr title="Partial Content Flag">PCF</abbr>)<a class="headerlink" href="#partial-content-flag-pcf" title="Permanent link">&para;</a></h4>
 <p>The last bit of the header byte of the Content-Code is the "Partial Content Flag". It designates if the Content-Code applies to the full content, or just some part of it. The <abbr title="Partial Content Flag">PCF</abbr> MUST be set as a <code>0</code>-bit (<strong>full <abbr title="Generic Media Type">GMT</abbr>-specific content</strong>) by default. Setting the <abbr title="Partial Content Flag">PCF</abbr> to <code>1</code> enables applications to create multiple linked ISCCs of partial extracts of a content collection. The exact semantics of <em>partial content</em> are outside of the scope of this specification. Applications that plan to support partial Content-Codes MUST define their semantics.</p>
-<p><img alt="Partial Contant Flag" src="../../images/iscc-pcf.svg" /></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-pcf.svg"><img alt="Partial Contant Flag" src="../../images/iscc-pcf.svg" /></a></p>
 <div class="admonition example">
 <p class="admonition-title"><abbr title="Partial Content Flag">PCF</abbr> Linking Example</p>
 <p>Let's assume we have a single newspaper issue "The Times - 03 Jan 2009". You would generate one Meta-Code component with the title "The Times" and extra "03 Jan 2009". The resulting Meta-Code component will be the grouping prefix in this scenario.</p>
@@ -1522,7 +1522,7 @@
 <h3 id="instance-code-component">Instance-Code Component<a class="headerlink" href="#instance-code-component" title="Permanent link">&para;</a></h3>
 <p>The Instance-Code is built from the raw data of the media object to be identified and serves as checksum for the media object. The raw data of the media object is split into 64-kB data-chunks. Then we build a hash-tree from those chunks and use the truncated <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr> (Merkle root) as component-body of the Instance-Code.</p>
 <p>To guard against length-extension attacks and second preimage attacks, we use double sha256 for hashing. We also prefix the hash input data with a <code>0x00</code>-byte for the leaf nodes hashes and with a <code>0x01</code>-byte for the internal node hashes. While the Instance-Code itself is a non-cryptographic checksum, the full <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr> may be supplied in the extended metadata of an <abbr title="International Standard Content Code">ISCC</abbr> secure integrity verification is required.</p>
-<p><img alt="iscc-creation-Instance-Code" src="../../images/iscc-creation-instance-code.svg" /></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-creation-instance-code.svg"><img alt="iscc-creation-Instance-Code" src="../../images/iscc-creation-instance-code.svg" /></a></p>
 <p>An <abbr title="International Standard Content Code">ISCC</abbr> generating application MUST provide a <code>instance_id</code> function that accepts the raw data file as input and returns an encoded Instance-Code and a full hex-encoded 256-bit <abbr title="Root hash of an Instance-Code hash-tree">tophash</abbr>.</p>
 <h4 id="generate-instance-code">Generate Instance-Code<a class="headerlink" href="#generate-instance-code" title="Permanent link">&para;</a></h4>
 <ol>
@@ -1710,7 +1710,7 @@
 <h4 id="similarity_hash">similarity_hash<a class="headerlink" href="#similarity_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>similarity_hash(hash_digests: Sequence[ByteString]) -&gt; bytes</code></p>
 <p>The <code>similarity_hash</code> function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to <code>0</code> if the count is negative or <code>1</code> if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also <a href="http://dx.doi.org/10.1145/509907.509965" title="Charikar, M.S., 2002, May. Similarity estimation techniques from rounding algorithms. In Proceedings of the thirty-fourth annual ACM symposium on theory of computing (pp. 380-388). ACM.">Charikar2002</a>.</p>
-<p><img alt="iscc-similarity-hash" src="../../images/iscc-similarity-hash.svg" /></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-similarity-hash.svg"><img alt="iscc-similarity-hash" src="../../images/iscc-similarity-hash.svg" /></a></p>
 <p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L239">Similarity hash reference code</a></p>
 <h4 id="minimum_hash">minimum_hash<a class="headerlink" href="#minimum_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>minimum_hash(features: Iterable[int], n: int = 64) -&gt; List[int]</code></p>
@@ -1762,7 +1762,7 @@
 </div>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>Copyright © 2016 - 2020 The Authors, Content Blockchain Project</p>
-<p><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><a class="glightbox" href="https://i.creativecommons.org/l/by/4.0/88x31.png" data-type="image" data-width="90vw"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 
 
 
