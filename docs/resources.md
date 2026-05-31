@@ -7,8 +7,6 @@ icon: lucide/library
 
 # ISCC - Resources
 
-If you find something that is missing from this collection of resources for the ISCC, [please add it](https://github.com/iscc/iscc-codes/edit/main/docs/resources.md).
-
 ## ISCC - Official Software & Tools
 
 ### [iscc-core](https://github.com/iscc/iscc-core)
@@ -19,52 +17,17 @@ Current Python reference implementation of the ISCC core algorithms defined by [
 
 High-level Python toolkit for creating and managing ISCCs from media files. It builds on `iscc-core` and adds media type detection, metadata handling, content extraction, and a command-line interface. Install from PyPI with `pip install iscc-sdk`. Documentation: <https://sdk.iscc.codes/>.
 
+
+## ISCC - Technical Demos & Integrations
+
 ### [ISCC Web Demo](https://demo.iscc.io/)
 
 Minimal web application for generating ISCCs in the browser. Source code: [iscc-web](https://github.com/iscc/iscc-web).
 
-### [ISCC Codes](https://github.com/iscc/iscc-codes)
+### [ISCC Cover Matching Demo](https://covers.iscc.io/)
 
-Source repository for this `iscc.codes` documentation site and historical ISCC Version 1.1 specification material. The legacy Python package [`iscc`](https://pypi.org/project/iscc/) is an outdated proof-of-concept retained for compatibility; new integrations should use `iscc-sdk`. Use `iscc-core` only when lower-level algorithm access is needed.
+Book covers from the Amazon Reviews'23 dataset - 3 million in total - are indexed and searchable via ISCC similarity matching.
 
-## ISCC - Third-Party Implementations
-
-### [ISCC-RS](https://github.com/iscc/iscc-rs)
-
-Rust implementation of the [ISCC specification](https://iscc.codes/specification).
-
-### [ISCC-RS-CLI](https://github.com/iscc/iscc-rs-cli)
-
-Command-line tool based on the [iscc-rs](https://github.com/iscc/iscc-rs) library.
-
-### [ISCC-GOLANG](https://github.com/coblo/iscc-golang)
-
-Golang implementation of the ISCC protocol.
-
-### [ISCC-DOTNET](https://github.com/iscc/iscc-dotnet)
-
-C# .Net Core implementation of the ISCC protocol.
-
-## ISCC - Technical Demos & Integrations
-
-### [Web Demo](https://iscc.coblo.net/)
-
-A demo web application that can generate and lookup ISCC codes from files or URLs and visualizes differences between ISCC Codes. The [source code](https://github.com/coblo/iscc-demo) is also available.
-
-### [Data Streams](https://explorer.coblo.net/streams/)
-
-The Content Blockchain Testnet is running a public data-stream of ISCC codes for testing and demonstration purposes. The web demo uses the [ISCC data-stream](https://explorer.coblo.net/stream/iscc) for lookups.
-
-### [Clink.ID](https://clink.id/)
-
-[CLink.ID](https://clink.id/) is an interoperable registry, architected to recognize identifiers and meta-data regardless of whether they are Handle- or content-based and/or block-chain inspired. CLink.ID is operated by [CLink Media , Inc.](https://clink.media/) and has integrated [ISCC in its registry](https://clink.id/#objects/20.500.12200.100/5d8e3c3f9d6c6a759261).
-
-### [Smart License Demo](https://smartlicense.coblo.net/)
-
-Prototype demo of a smart licensing framework that uses ISCC codes for content identification. [Source code](https://github.com/coblo/smartlicense) is also available.
-
-### [Blockchain Wallet Demo](https://github.com/coblo/gui-demo)
-An early prototype demo of a blockchain wallet that uses ISCC codes for license tokenization.
 
 ## ISCC - Presentations & Articles
 
