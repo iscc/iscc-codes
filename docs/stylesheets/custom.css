@@ -178,6 +178,30 @@ a code {
   margin-left: 10px;
 }
 
+.left {
+  float: left;
+  width: 50%;
+  margin-right: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Two-column intro: contain the floated image so following blocks
+ * (e.g. the list of codes) clear it and start on a full-width line. */
+.md-typeset .iscc-cols::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Stack the floated image above the text on narrow screens */
+@media screen and (max-width: 44.9375em) {
+  .left {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
 /* ---------- Landing page ---------- */
 
 /* Hero call-to-action buttons */
