@@ -17,8 +17,8 @@ This repository now serves three purposes:
 
 New Python integrations should not use the old `iscc` proof-of-concept package.
 
-- [`iscc-sdk`](https://github.com/iscc/iscc-sdk) — high-level toolkit for generating ISCCs from media files. Install with `pip install iscc-sdk`.
-- [`iscc-core`](https://github.com/iscc/iscc-core) — lower-level implementation of the ISCC core algorithms used by the SDK. Install with `pip install iscc-core` when you need direct algorithm access.
+- [`iscc-sdk`](https://github.com/iscc/iscc-sdk) - high-level toolkit for generating ISCCs from media files. Install with `pip install iscc-sdk`.
+- [`iscc-core`](https://github.com/iscc/iscc-core) - lower-level implementation of the ISCC core algorithms used by the SDK. Install with `pip install iscc-core` when you need direct algorithm access.
 
 For most application developers, start with `iscc-sdk`.
 

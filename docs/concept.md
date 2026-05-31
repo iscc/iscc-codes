@@ -1,13 +1,13 @@
 ---
 title: ISCC - Concept
-description: The idea behind the ISCC — identifying digital content by what it is, and describing sameness in layers.
+description: The idea behind the ISCC - identifying digital content by what it is, and describing sameness in layers.
 authors: Titusz Pan
 icon: lucide/lightbulb
 ---
 
 # ISCC - Concept
 
-This page explains the idea behind the **ISCC** — how it thinks about digital
+This page explains the idea behind the **ISCC** - how it thinks about digital
 content and about what it means for two files to be "the same." The
 [Capabilities](capabilities.md) page describes what the ISCC can do; this page
 explains *why it is shaped the way it is*.
@@ -64,12 +64,12 @@ its own **ISCC-UNIT**, and the units combine into a single composite
 | ------------ | --------------------------------------------------- | -------------------------- |
 | **Creation** | the work as an idea, via its title and metadata     | Meta-Code                  |
 | **Meaning**  | the concepts it conveys, across wording and language | Semantic-Code *(reserved)* |
-| **Content**  | what you read, see, or hear — independent of format | Content-Code               |
+| **Content**  | what you read, see, or hear - independent of format | Content-Code               |
 | **Data**     | the encoded file as a stream of bytes               | Data-Code                  |
 | **Instance** | this one exact file, down to the last bit           | Instance-Code              |
 
-The upper layers describe the *content* — what it is and what it means; the lower
-layers describe the *data* — how it happens to be stored. The **Content-Code**
+The upper layers describe the *content* - what it is and what it means; the lower
+layers describe the *data* - how it happens to be stored. The **Content-Code**
 applies a dedicated algorithm per media type (Text, Image, Audio, Video, and
 Mixed). A complete ISCC-CODE always includes the Data-Code and Instance-Code,
 with the other units added when they are available.
@@ -85,18 +85,18 @@ with the other units added when they are available.
 The layers correspond to a few independent kinds of similarity. Two files can be
 alike on one and differ on another, and the ISCC keeps each kind separate:
 
-- **Data similarity** — nearly the same bytes. *"Almost the same file."*
-- **Content similarity** — the same once decoded and perceived, regardless of
+- **Data similarity** - nearly the same bytes. *"Almost the same file."*
+- **Content similarity** - the same once decoded and perceived, regardless of
   format, compression, or minor edits. *"Looks, reads, or sounds the same."*
-- **Semantic similarity** — the same meaning, including paraphrase and across
+- **Semantic similarity** - the same meaning, including paraphrase and across
   languages. *"Means the same thing."* (reserved; not yet standardized)
 
-A separate axis, **metadata similarity**, compares how content is *described* —
-its title and description — rather than the content itself.
+A separate axis, **metadata similarity**, compares how content is *described* -
+its title and description - rather than the content itself.
 
 Set apart from all of these is **data identity**: the Instance-Code is not a
 similarity measure but an exact, bit-for-bit checksum. It does not ask "how
-similar?" — it answers "is this the very same file?" with yes or no.
+similar?" - it answers "is this the very same file?" with yes or no.
 
 ## Whole works and their parts
 
@@ -104,7 +104,7 @@ Sameness can be judged for an entire work or for parts of it. Two articles may
 share a single quoted paragraph; two recordings may share one sampled passage.
 A *global* comparison asks whether two works match overall, while a *granular*
 comparison finds matching segments within them. The ISCC supports both, so
-partial overlap, quotation, and reuse can be detected — not only whole-file
+partial overlap, quotation, and reuse can be detected - not only whole-file
 duplicates.
 
 ## Design principles
@@ -122,6 +122,6 @@ its design:
 
 ## Where to go next
 
-- [Capabilities](capabilities.md) — what the ISCC can do in practice.
-- [Specification](specification.md) — ISO 24138:2024 and the community IEPs.
-- [Resources](resources.md) — software, demos, and tools for generating ISCCs.
+- [Capabilities](capabilities.md) - what the ISCC can do in practice.
+- [Specification](specification.md) - ISO 24138:2024 and the community IEPs.
+- [Resources](resources.md) - software, demos, and tools for generating ISCCs.
