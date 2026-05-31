@@ -13,9 +13,9 @@ nav = [
     { "Overview" = "index.md" },
     { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
-    { "History" = "history.md" },
-    { "Specification" = "specification.md" },
     { "Resources" = "resources.md" },
+    { "Specification" = "specification.md" },
+    { "History" = "history.md" },
     { "License" = "license.md" },
 ]
 

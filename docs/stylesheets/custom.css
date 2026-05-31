@@ -133,9 +133,12 @@ html [data-md-color-scheme="default"] .md-footer-meta.md-typeset a {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Existing layout/readability tweaks */
-.md-grid {
-  max-width: 1550px;
+/* Content width: cap at 1385px on large screens. Default Material caps at
+ * ~61rem; this widens it on large screens only, capped to 90vw to keep margins. */
+@media screen and (min-width: 76.25em) {
+  .md-grid {
+    max-width: min(1385px, 90vw);
+  }
 }
 
 .md-typeset {
