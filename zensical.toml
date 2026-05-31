@@ -11,7 +11,7 @@ extra_css = ["stylesheets/custom.css"]
 
 nav = [
     { "Overview" = "index.md" },
-    { "Features" = "features.md" },
+    { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
     { "History" = "history.md" },
     { "Specification" = "specification.md" },
@@ -88,3 +88,11 @@ pygments_lang_class = true
 
 [project.markdown_extensions.pymdownx.superfences]
 custom_fences = [{ name = "mermaid", class = "mermaid" }]
+
+# GLightbox image lightbox. With auto = true (default), bare images are wrapped
+# in a lightbox anchor; images already inside a link are left untouched.
+# width sizes the lightbox overlay to most of the viewport; height stays "auto"
+# so wide images scale to the width without being cropped at the sides.
+[project.plugins.glightbox]
+auto = true
+width = "90vw"

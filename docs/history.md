@@ -14,7 +14,7 @@ prototyping project, to ISO standardization and a role in content provenance and
 authenticity.
 
 !!! note "Creator and steward"
-    The ISCC was invented by **[Titusz Pan](https://titusz.org)**, who conceived it in 2016 and
+    The ISCC was invented by **[Titusz Pan](https://titusz.org)**, who designed it in 2016 and
     wrote its open-source reference implementation. He served as the **Principal Editor of
     ISO 24138:2024**, authoring the standard's normative text, and is today the **Chairman
     of the [ISCC Foundation](https://iscc.io)**, the non-profit organization that maintains
@@ -24,8 +24,8 @@ authenticity.
 
 | Year      | Milestone                                                                                                                                                                      |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2016      | Titusz Pan conceives the ISCC at Craft AG; the Content Blockchain Project starts, funded by Google's Digital News Initiative                                                   |
-| 2017      | ISCC prototyped on the "Coblo" blockchain; first concept document and public specification repository                                                                          |
+| 2016      | Titusz Pan designs the ISCC; the Content Blockchain Project starts, funded by Google's Digital News Initiative                                                                 |
+| 2017      | ISCC prototyped on the "Coblo" proof-of-concept blockchain; first concept document and public specification repository                                                         |
 | 2018      | First open-source release (`iscc` v0.9) and the ISCC 1.0 specification; prototyping project completed                                                                          |
 | 2019      | German Digital Publishing Award; ISO/TC 46/SC 9 takes up the ISCC (WG 18 established); ISCC Foundation founded in Leiden                                                       |
 | 2020      | ISCC added to the ONIX for Books code lists; the work item is confirmed as NP 24138                                                                                            |
@@ -37,7 +37,7 @@ authenticity.
 ## Origins (2016)
 
 The first ideas about a content-derived, similarity-preserving identifier were developed
-in early 2016 by **Titusz Pan** at Craft AG in Freiburg, Germany. The motivation was a
+in early 2016 by **Titusz Pan**. The motivation was a
 practical gap: digital content is dynamic, granular, and constantly re-encoded as it moves
 between systems, yet many media industries had no standard way to identify it, and no
 identifier at all for short-lived or user-generated content such as journalism or images.
@@ -89,8 +89,7 @@ within DIN, whose committee for the description and identification of documents
   meeting on **29 October 2019**, initially convened by **Sabine Rüsch**, who chaired that
   DIN committee.
 - The **ISCC Foundation** was established as a non-profit Stichting in **Leiden,
-  Netherlands** (founding deed 8 May 2019), by **Sebastian Posth**, **Kira Lemke**, and
-  **Titusz Pan**, to provide an independent, neutral home for the standard and its
+  Netherlands**, in May 2019 to provide an independent, neutral home for the standard and its
   open-source implementations.
 
 Throughout 2019 the team presented the ISCC at industry events across Europe, and the
@@ -172,23 +171,20 @@ The ISCC is the work of a community, but a few roles are central to its history:
 
 - **Titusz Pan** - inventor of the ISCC, principal developer of its open-source reference
   implementation, **Principal Editor of ISO 24138:2024**, and **Chairman of the
-  [ISCC Foundation](https://iscc.io)**.
-- **Kira Lemke** - co-founder of the ISCC Foundation and current convenor of ISO/TC 46/SC
-  9/WG 18.
+  [ISCC Foundation](https://iscc.io)**
+- **Kira Lemke** - director of the ISCC Foundation and convenor of ISO/TC 46/SC
+  9/WG 18 since May 2025
 - **Martin Etzrodt** - director of the ISCC Foundation (since 2025) and a driving force
-  behind the BioCodes project, which brings the ISCC to scientific and bioimaging data.
-- **Sebastian Posth** - early evangelist and co-founder of the ISCC Foundation, and convenor of
-  ISO/TC 46/SC 9/WG 18 through the standard's publication.
-- **Sabine Rüsch** - first convenor of ISO/TC 46/SC 9/WG 18 (2019).
+  behind the BioCodes project, which brings the ISCC to scientific and bioimaging data
+- **Sebastian Posth** - evangelist and early adopter of the ISCC, convenor of
+  ISO/TC 46/SC 9/WG 18 until May 2025
+- **Sabine Rüsch** - first convenor of ISO/TC 46/SC 9/WG 18 (2019)
 - **Gregor Roschkowski** - project manager at DIN who managed the ISCC standardization
   process from the German side, coordinating the national mirror committee for ISO/TC 46/SC
-  9/WG 18.
+  9/WG 18
 - **Julia Constanze Hahn** - of Beuth Verlag / DIN (today DIN Media), who recognized the
-  ISCC's potential and set its path to ISO standardization in motion through DIN.
-- **Paul Jessop** - founder of County Analytics and a long-standing contributor to ISO's
-  media-identifier standards (ISRC, ISWC, ISNI). Initially critical of the ISCC, he became
-  one of its advocates within ISO/TC 46/SC 9/WG 18 and advised on fingerprinting and soft
-  binding.
+  ISCC's potential and set its path to ISO standardization in motion through DIN
+- **Paul Jessop** - long-standing contributor to ISO's media-identifier standards (ISRC, ISWC, ISNI, DOI). Initially critical of the ISCC, he became one of its advocates within ISO/TC 46/SC 9/WG 18 and advised on fingerprinting and soft bindings.
 
 The ISCC Foundation's work has also been guided by an advisory board whose members
 contribute expertise across standards, libraries, rights management, publishing, and
@@ -196,10 +192,11 @@ research:
 
 - **Roanie Levy** - Licensing and Legal Advisor at the Copyright Clearance Center
 - **Todd Carpenter** - Executive Director of NISO
-- **Philippe Rixhon** - Valunode, active in EU copyright and AI policy
+- **Philippe Rixhon** - CEO of Valunode, active in EU copyright and AI policy
 - **Frank Schulleri** - content licensing and media expert
 - **Lambert Heller** - TIB, Leibniz Information Centre for Science and Technology
-- **Giacomo D'Angelo** - CEO of StreetLib
+- **Giacomo D'Angelo** - CEO of StreetLib and Amlet
+- **Sebastian Posth** - CEO of Liccium
 
 These names are only a selection. The ISCC also owes much to the experts of
 **ISO/TC 46/SC 9/WG 18**, drawn from national bodies and organizations across many

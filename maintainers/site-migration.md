@@ -22,8 +22,8 @@ forward to the most relevant replacement.
 The current sitemap lists these canonical paths:
 
 - `/`
+- `/capabilities/`
 - `/concept/`
-- `/features/`
 - `/license/`
 - `/resources/`
 - `/specification/`
@@ -39,27 +39,34 @@ Zensical forwarding page:
 
 - `/implementations/` → `/resources/`
 
-Keep this compatibility path covered in future content architecture changes. It
-may become a redirect to a future implementations, ecosystem, or developer-resources
-page, but it should not become a bare 404.
+The `Features` page was renamed to `Capabilities`. Its original path is kept as a
+Zensical forwarding page:
+
+- `/features/` → `/capabilities/`
+
+Keep these compatibility paths covered in future content architecture changes.
+`/implementations/` may become a redirect to a future implementations, ecosystem,
+or developer-resources page, but neither path should become a bare 404.
 
 ## Source path mapping
 
 Current source files for the public paths:
 
 - `/` → `docs/index.md`
+- `/capabilities/` → `docs/capabilities.md`
 - `/concept/` → `docs/concept.md`
-- `/features/` → `docs/features.md`
 - `/license/` → `docs/license.md`
 - `/resources/` → `docs/resources.md`
 - `/specification/` → `docs/specification.md`
 - `/implementations/` → `docs/implementations.md` compatibility forwarding page
+- `/features/` → `docs/features.md` compatibility forwarding page
 
 ## Migration rules
 
 - Preserve the custom domain `iscc.codes`.
 - Preserve all current public paths listed above.
 - Preserve `/implementations/` as a compatibility path.
+- Preserve `/features/` as a compatibility path forwarding to `/capabilities/`.
 - Prefer neutral maintainer vocabulary such as "site migration", "URL
   preservation", "link compatibility", "redirect map", and "canonical paths".
 - Avoid repository structure or public docs that frame this work as marketing.
