@@ -16,15 +16,16 @@ from pathlib import Path
 
 REQUIRED_SOURCE_PATHS = {
     "/": Path("docs/index.md"),
+    "/capabilities/": Path("docs/capabilities.md"),
     "/concept/": Path("docs/concept.md"),
-    "/features/": Path("docs/features.md"),
     "/license/": Path("docs/license.md"),
     "/resources/": Path("docs/resources.md"),
     "/specification/": Path("docs/specification.md"),
 }
 
-# Historical path kept as a compatibility page that forwards to /resources/.
-COMPATIBILITY_PATHS = ("/implementations/",)
+# Historical paths kept as compatibility pages that forward to a current page.
+# /implementations/ forwards to /resources/; /features/ forwards to /capabilities/.
+COMPATIBILITY_PATHS = ("/implementations/", "/features/")
 
 EXPECTED_SITE_SETTINGS = {
     "site_url": "https://iscc.codes",
@@ -69,6 +70,14 @@ def check_source_files(repo_root: Path) -> list[str]:
         implementations_text = implementations_source.read_text(encoding="utf-8")
         if "../resources/" not in implementations_text and "/resources/" not in implementations_text:
             errors.append("docs/implementations.md should forward to /resources/")
+
+    features_source = repo_root / "docs/features.md"
+    if not features_source.is_file():
+        errors.append("missing compatibility source for /features/: docs/features.md")
+    else:
+        features_text = features_source.read_text(encoding="utf-8")
+        if "../capabilities/" not in features_text and "/capabilities/" not in features_text:
+            errors.append("docs/features.md should forward to /capabilities/")
 
     zensical_config = repo_root / "zensical.toml"
     if not zensical_config.is_file():

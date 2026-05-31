@@ -11,7 +11,7 @@ extra_css = ["stylesheets/custom.css"]
 
 nav = [
     { "Overview" = "index.md" },
-    { "Features" = "features.md" },
+    { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
     { "History" = "history.md" },
     { "Specification" = "specification.md" },
