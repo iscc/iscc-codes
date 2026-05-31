@@ -4,15 +4,14 @@ repos:
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)
       - id: end-of-file-fixer
-        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)
       - id: mixed-line-ending
         args: [--fix=lf]
-        exclude: ^(docs/(?!license\.md$|\.isccignore$)|legacy/python-poc/)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)
       - id: check-yaml
       - id: check-json
-        exclude: ^legacy/python-poc/
       - id: check-toml
       - id: check-added-large-files
 

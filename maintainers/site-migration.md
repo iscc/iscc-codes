@@ -72,9 +72,10 @@ Current source files for the public paths:
 - Avoid repository structure or public docs that frame this work as marketing.
 - Keep early migration pull requests mechanical and reviewable: first preserve
   paths, then change the documentation engine, then update stale content.
-- Keep the retired Python proof-of-concept outside the repository root. The
-  archival source lives in `legacy/python-poc/`; the PyPI wrapper scaffold lives
-  in `pypi/iscc-wrapper/`.
+- Keep the retired Python proof-of-concept out of the repository. The archival
+  source was removed and now lives only in git history at [`legacy/python-poc/`
+  as of commit `7610643`](https://github.com/iscc/iscc-codes/tree/7610643b9646b61ebe8882dd39a492742159e73c/legacy/python-poc);
+  the PyPI wrapper scaffold lives in `pypi/iscc-wrapper/`.
 
 ## Verification
 
