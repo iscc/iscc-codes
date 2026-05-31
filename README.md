@@ -11,7 +11,7 @@ This repository now serves three purposes:
 
 - source for the public documentation site at <https://iscc.codes/>
 - historical ISCC Version 1.1 specification material, kept so existing URLs remain useful
-- archival home for the early Python proof-of-concept that used the PyPI name [`iscc`](https://pypi.org/project/iscc/)
+- a pointer, via git history, to the early Python proof-of-concept that used the PyPI name [`iscc`](https://pypi.org/project/iscc/)
 
 ## Current Python package
 
@@ -26,7 +26,7 @@ For most application developers, start with `iscc-sdk`.
 
 The PyPI package named [`iscc`](https://pypi.org/project/iscc/) was an early proof-of-concept that predates ISO 24138:2024 and the current `iscc-sdk` / `iscc-core` stack. It is retained only for compatibility with existing pinned installations and should not be used for new work.
 
-The old source tree has been moved to [`legacy/python-poc/`](legacy/python-poc/). A small replacement wrapper package scaffold lives in [`pypi/iscc-wrapper/`](pypi/iscc-wrapper/) for a future `iscc` 2.0.0 PyPI release that depends on `iscc-sdk` and points users to the maintained package. Because the wrapper does not preserve the retired proof-of-concept API, users who need the old behavior should pin `iscc<2`.
+The old source tree has been removed from the repository to clear its unmaintained dependency vulnerabilities. It remains archived in git history at [`legacy/python-poc/` as of commit `7610643`](https://github.com/iscc/iscc-codes/tree/7610643b9646b61ebe8882dd39a492742159e73c/legacy/python-poc). A small replacement wrapper package scaffold lives in [`pypi/iscc-wrapper/`](pypi/iscc-wrapper/) for a future `iscc` 2.0.0 PyPI release that depends on `iscc-sdk` and points users to the maintained package. Because the wrapper does not preserve the retired proof-of-concept API, users who need the old behavior should pin `iscc<2`.
 
 Maintainers: see [`maintainers/pypi-iscc-retirement.md`](maintainers/pypi-iscc-retirement.md) before publishing anything under the `iscc` package name.
 
@@ -59,4 +59,4 @@ Pull requests and other contributions are welcome. Use [GitHub Issues](https://g
 
 Documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-The retired proof-of-concept code in `legacy/python-poc/` and the wrapper package scaffold in `pypi/iscc-wrapper/` are licensed under BSD-2-Clause.
+The retired proof-of-concept code (archived in git history at [`legacy/python-poc/` as of commit `7610643`](https://github.com/iscc/iscc-codes/tree/7610643b9646b61ebe8882dd39a492742159e73c/legacy/python-poc)) and the wrapper package scaffold in `pypi/iscc-wrapper/` are licensed under BSD-2-Clause.

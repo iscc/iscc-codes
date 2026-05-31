@@ -8,7 +8,7 @@ This note records the package-retirement policy for the historical PyPI project 
 - That proof-of-concept predates ISO 24138:2024 and the current package split.
 - Current Python integrations should use [`iscc-sdk`](https://pypi.org/project/iscc-sdk/) for application-level work.
 - [`iscc-core`](https://pypi.org/project/iscc-core/) remains the lower-level core algorithm implementation used by the SDK.
-- The retired proof-of-concept source is archived in `legacy/python-poc/`.
+- The retired proof-of-concept source was removed from the repository to clear its unmaintained dependency vulnerabilities; it remains archived in git history at [`legacy/python-poc/` as of commit `7610643`](https://github.com/iscc/iscc-codes/tree/7610643b9646b61ebe8882dd39a492742159e73c/legacy/python-poc).
 - A replacement wrapper package scaffold is available in `pypi/iscc-wrapper/`.
 
 ## Policy
