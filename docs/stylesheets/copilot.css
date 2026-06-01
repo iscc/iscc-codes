@@ -1,0 +1,117 @@
+/* ISCC Copilot Widget Theme for Documentation Sites
+ *
+ * Styles the Chainlit copilot chat widget to match the ISCC brand.
+ * Injected into the widget Shadow DOM via customCssUrl.
+ *
+ * Zensical sets html { font-size: 125% } (20px) which inflates all rem-based
+ * sizes inside the Chainlit widget by 25%. Instead of blanket zoom (which
+ * over-corrects body text), we pin Tailwind text utilities to their intended
+ * pixel values and zoom only the self-contained toggle button.
+ */
+
+/* Toggle button: self-contained element, zoom works cleanly here */
+#chainlit-copilot-button {
+  zoom: 0.8;
+}
+
+/* --- Fix Tailwind text utilities inflated by 125% root font-size ---
+ * Tailwind rem values resolve against html 20px instead of 16px.
+ * Pin each utility to its intended pixel size. */
+.text-xs  { font-size: 12px !important; line-height: 16px !important; }
+.text-sm  { font-size: 14px !important; line-height: 20px !important; }
+.text-base { font-size: 16px !important; line-height: 24px !important; }
+.text-lg  { font-size: 18px !important; line-height: 28px !important; }
+.text-xl  { font-size: 20px !important; line-height: 28px !important; }
+.text-2xl { font-size: 24px !important; line-height: 32px !important; }
+
+/* --- Widen the chat panel --- */
+.copilot-container-collapsed {
+  min-width: 420px !important;
+}
+
+/* Fix inflated rem-based spacing inside the chat panel.
+ * Scale factor: 0.8rem per intended 1rem (16/20 = 0.8). */
+[data-radix-popper-content-wrapper] {
+  font-size: 16px;
+}
+
+/* Ensure chat message body text renders at readable size */
+#chainlit-copilot-chat p,
+#chainlit-copilot-chat li,
+#chainlit-copilot-chat span:not([class]),
+#chainlit-copilot-chat div:not([class]) > span {
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+}
+
+/* Force light theme variables - ISCC brand on white background.
+ * Target both .light and .dark to override regardless of server theme. */
+:root,
+:host,
+.light,
+.dark {
+  --background: 0 0% 100% !important;
+  --foreground: 213 69% 23% !important;
+  --primary: 356 89% 67% !important;
+  --primary-foreground: 0 0% 100% !important;
+  --secondary: 210 30% 95% !important;
+  --secondary-foreground: 213 69% 23% !important;
+  --accent: 210 30% 95% !important;
+  --accent-foreground: 213 69% 23% !important;
+  --muted: 210 20% 96% !important;
+  --muted-foreground: 213 40% 40% !important;
+  --card: 0 0% 100% !important;
+  --card-foreground: 213 69% 23% !important;
+  --popover: 0 0% 100% !important;
+  --popover-foreground: 213 69% 23% !important;
+  --border: 210 20% 85% !important;
+  --input: 0 0% 100% !important;
+  --ring: 211 100% 35% !important;
+}
+
+/* Floating toggle button - ISCC Coral */
+button.bg-primary.rounded-full,
+button[class*="bg-primary"][class*="rounded-full"] {
+  background-color: #f56169 !important;
+  background: #f56169 !important;
+}
+
+button.bg-primary.rounded-full:hover,
+button[class*="bg-primary"][class*="rounded-full"]:hover {
+  background-color: #e04550 !important;
+  background: #e04550 !important;
+}
+
+/* Send button and primary actions - ISCC Blue */
+button.bg-primary:not(.rounded-full),
+button[class*="bg-primary"]:not([class*="rounded-full"]),
+.bg-primary:not(.rounded-full) {
+  background-color: #0054b2 !important;
+  background: #0054b2 !important;
+}
+
+button.bg-primary:not(.rounded-full):hover,
+button[class*="bg-primary"]:not([class*="rounded-full"]):hover,
+.bg-primary:not(.rounded-full):hover {
+  background-color: #123663 !important;
+  background: #123663 !important;
+}
+
+/* Links - ISCC Blue */
+a {
+  color: #0054b2 !important;
+}
+
+/* Code blocks - ISCC navy */
+pre,
+pre code,
+.hljs {
+  background-color: #0d2847 !important;
+  color: #e6edf5 !important;
+}
+
+/* Inline code */
+code:not(pre code):not(.hljs) {
+  background-color: #e8ebef !important;
+  color: inherit !important;
+}

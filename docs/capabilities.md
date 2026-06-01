@@ -18,8 +18,7 @@ follow from that design.
 
 ![ISCC algorithmic design](images/iscc-algo-design3.svg){ .left }
 
-An **ISCC-CODE** is a composite of several **ISCC-UNITs**, each produced by a distinct algorithm and
-each capturing a different layer of identity or similarity. A composite ISCC-CODE contains at minimum a Data-Code and an Instance-Code. The units are
+An **ISCC-CODE** is a made of several **ISCC-UNITs**, each using a distinct algorithm and capturing a different layer of identity. An ISCC-CODE contains at minimum a Data-Code and an Instance-Code. The units are
 self-describing and can also be used in isolation.
 
 </div>

@@ -1,6 +1,6 @@
 ---
 title: ISCC - Specification
-description: The ISCC specification — ISO 24138:2024 and the community ISCC Enhancement Proposals (IEPs).
+description: The ISCC specification - ISO 24138:2024 and the community ISCC Enhancement Proposals (IEPs).
 authors: Titusz Pan
 icon: lucide/book-open
 ---
@@ -16,7 +16,7 @@ and develops new functionality. The open-source reference implementation connect
     [**ISO 24138:2024 - International Standard Content Code (ISCC)**](https://www.iso.org/standard/77899.html)
     is the authoritative specification of the ISCC.
 
-## ISO 24138:2024 — the International Standard
+## ISO 24138:2024 - the International Standard
 
 ISO 24138:2024 was developed under **ISO/TC 46/SC 9/WG 18** and published on 15 May 2024 as
 the first-edition International Standard for the ISCC. It is the authoritative, normative
@@ -25,13 +25,13 @@ specification.
 The standard defines the ISCC as a multi-component, similarity-preserving code for
 digital content and specifies:
 
-- the **ISCC-CODE** structure — a self-describing header (MainType, SubType, Version, and
+- the **ISCC-CODE** structure - a self-describing header (MainType, SubType, Version, and
   Length) and a composite body assembled from one or more **ISCC-UNITs**;
-- the **Meta-Code** — similarity of the content's metadata;
-- the **Content-Code** — perceptual and structural content similarity, with per-modality
+- the **Meta-Code** - similarity of the content's metadata;
+- the **Content-Code** - perceptual and structural content similarity, with per-modality
   algorithms for Text, Image, Audio, Video, and Mixed content;
-- the **Data-Code** — similarity of the raw bitstream;
-- the **Instance-Code** — exact data identity via a cryptographic checksum.
+- the **Data-Code** - similarity of the raw bitstream;
+- the **Instance-Code** - exact data identity via a cryptographic checksum.
 
 ISO 24138:2024 also carries a normative annex, **Annex D, "Reference implementation"**. The
 reference software is published as a freely available **electronic insert** to the standard at
@@ -42,10 +42,10 @@ techniques, and the reference software cannot add anything to the standard's tex
 description. The code of this electronic insert is maintained as the open-source
 [`iscc-core`](https://github.com/iscc/iscc-core) library.
 
-- [ISO 24138:2024 at ISO](https://www.iso.org/standard/77899.html) — the full standard text
-- [Reference software — electronic insert](https://standards.iso.org/iso/24138/ed-1/en/) — freely available
+- [ISO 24138:2024 at ISO](https://www.iso.org/standard/77899.html) - the full standard text
+- [Reference software - electronic insert](https://standards.iso.org/iso/24138/ed-1/en/) - freely available
 
-## Enhancing the standard — the ISCC Enhancement Proposals
+## Enhancing the standard - the ISCC Enhancement Proposals
 
 ISO 24138:2024 is a complete working specification, and future editions are expected to add
 functionality, track the state of the art, address security concerns, and retire deprecated
@@ -67,12 +67,12 @@ work is substantiated before it can feed into a future edition of the standard.
 
 The process is itself defined in an IEP (IEP-0000). In outline:
 
-1. **Idea and discussion** — a champion develops the idea and fosters public discussion.
-2. **Draft submission** — the proposal is submitted as a pull request to
+1. **Idea and discussion** - a champion develops the idea and fosters public discussion.
+2. **Draft submission** - the proposal is submitted as a pull request to
    [`iscc/iscc-ieps`](https://github.com/iscc/iscc-ieps).
-3. **Editor review and numbering** — an editor assigns a number and category and checks that
+3. **Editor review and numbering** - an editor assigns a number and category and checks that
    the proposal is sound, complete, and motivated.
-4. **Iteration** — the author refines the draft through further pull requests.
+4. **Iteration** - the author refines the draft through further pull requests.
 
 IEPs are categorized as **Core** (changes affecting most implementations; require both a
 design document and a reference implementation), **Informational**, or **Process**. Each IEP
@@ -85,10 +85,10 @@ Several IEPs were contributed as input to ISO/TC 46/SC 9/WG 18, and the correspo
 normative material was published in the standard. Others document ongoing community work that
 extends beyond the current edition.
 
-- **Within the normative scope of ISO 24138:2024** — the ISCC structure, the standardized
+- **Within the normative scope of ISO 24138:2024** - the ISCC structure, the standardized
   ISCC-UNITs (Meta-, Content-, Data-, and Instance-Code), the composite ISCC-CODE, and ISCC
   metadata.
-- **Beyond the current standard** — work such as the ISCC-ID, decentralized content
+- **Beyond the current standard** - work such as the ISCC-ID, decentralized content
   registries, the ISCC DID method, and experimental Semantic-Codes. These may inform a future
   edition but are **not** part of ISO 24138:2024 today.
 
@@ -100,11 +100,11 @@ distinct claims, and consult the published standard for the definitive normative
 The specifications are made executable and verifiable through open-source software, released
 under permissive licenses:
 
-- [**`iscc-core`**](https://core.iscc.codes) — the reference implementation of the
+- [**`iscc-core`**](https://core.iscc.codes) - the reference implementation of the
   standardized codec and fingerprinting algorithms. Its code is the reference software
   published as the normative electronic insert of ISO 24138:2024, and the foundation for all
   ISCC generation.
-- [**`iscc-sdk`**](https://sdk.iscc.codes) — the high-level Python toolkit and primary
+- [**`iscc-sdk`**](https://sdk.iscc.codes) - the high-level Python toolkit and primary
   integration entry point. It builds on `iscc-core` and adds content-type detection, metadata
   extraction and embedding, and content extraction so applications can produce a full
   ISCC-CODE directly from a media file.
@@ -124,10 +124,10 @@ within the [Content Blockchain Project](https://content-blockchain.org). These
 early drafts predate ISO 24138:2024 and current implementations. They are **superseded** and
 retained for historical reference and URL continuity only:
 
-- [ISCC Specification v1.x](legacy/specification.md) — the archived working draft (formerly
+- [ISCC Specification v1.x](legacy/specification.md) - the archived working draft (formerly
   published at this page).
-- [ISCC Specification v1.0](https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md)
-  — the 2018 draft, on the `version-1.0` branch.
+- [ISCC Specification v1.0](https://github.com/iscc/iscc-codes/blob/version-1.0/docs/specification.md):
+  the 2018 draft, on the `version-1.0` branch.
 
 For the history of how these drafts became an International Standard, see the
 [History](history.md) page.

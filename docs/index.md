@@ -1,15 +1,15 @@
 ---
 title: iscc-codes
-description: Open, decentralized content identification — derived from the content itself.
+description: Open, decentralized content identification - derived from the content itself.
 authors: Titusz Pan
 icon: lucide/house
 hide:
   - toc
 ---
 
-# ISCC — International Standard Content Code
+# ISCC - International Standard Content Code
 
-## Open, decentralized content identification — derived from the content itself
+## Open, decentralized content identification - derived from the content itself
 
 **ISCC** ([ISO 24138:2024](https://www.iso.org/standard/77899.html)) is an open standard for content
 identification that works directly from the digital file. Generate a compact, similarity-preserving
@@ -74,7 +74,7 @@ An **ISCC-CODE** is a composite, hierarchically structured fingerprint. It combi
 content-derived **ISCC-UNITs** covering embedded metadata, normalized content, and the raw bytes.
 Each unit is a compact, similarity-preserving hash.
 
-[![ISCC algorithmic design](images/iscc-algo-design.svg)](images/iscc-algo-design.svg)
+[![ISCC algorithmic design](images/iscc-algo-design3.svg)](images/iscc-algo-design3.svg)
 
 [See the full specification →](specification.md)
 
@@ -85,12 +85,12 @@ Each unit is a compact, similarity-preserving hash.
 
 ## Developer entry points
 
-- [**iscc-core**](https://github.com/iscc/iscc-core) — Python reference implementation of the ISO 24138 core algorithms
-- [**iscc-sdk**](https://github.com/iscc/iscc-sdk) — high-level Python toolkit for generating ISCCs from media files
+- [**iscc-core**](https://github.com/iscc/iscc-core) - Python reference implementation of the ISO 24138 core algorithms
+- [**iscc-sdk**](https://github.com/iscc/iscc-sdk) - high-level Python toolkit for generating ISCCs from media files
 
 See the [Resources](resources.md) page for the wider ISCC ecosystem of tools and services.
 
-!!! note "ISCC Standard — ISO 24138:2024"
+!!! note "ISCC Standard - ISO 24138:2024"
     The ISCC is published as [ISO 24138:2024](https://www.iso.org/standard/77899.html) by
     ISO/TC 46/SC 9. Current implementation guidance lives at
     [core.iscc.codes](https://core.iscc.codes) and [sdk.iscc.codes](https://sdk.iscc.codes).
