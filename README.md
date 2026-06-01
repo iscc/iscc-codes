@@ -1,6 +1,9 @@
-# ISCC Codes Documentation Site
+# ISCC - Documentation Site
 
-[![DOI](https://zenodo.org/badge/96668860.svg)](https://zenodo.org/badge/latestdoi/96668860)
+[![ISO 24138:2024](https://img.shields.io/badge/ISO-24138%3A2024-EC1C24)](https://www.iso.org/standard/77899.html)
+[![Documentation](https://img.shields.io/badge/docs-iscc.codes-1a73e8)](https://iscc.codes)
+[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-lightgrey)](https://creativecommons.org/licenses/by/4.0/)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/iscc/iscc-codes)
 
 | WARNING: This repository is the source for the `iscc.codes` documentation site and preserves historical ISCC Version 1.1 material for continuity. The old Python proof-of-concept code has been retired from the repository root and is not the current ISCC implementation. |
 | --- |
