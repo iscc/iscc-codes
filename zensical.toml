@@ -10,7 +10,7 @@ copyright = "Documentation licensed under <a href=\"https://creativecommons.org/
 extra_css = ["stylesheets/custom.css"]
 
 nav = [
-    { "Overview" = "index.md" },
+    { "iscc-codes" = "index.md" },
     { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
     { "Resources" = "resources.md" },

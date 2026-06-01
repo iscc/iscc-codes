@@ -298,3 +298,174 @@ a code {
 .md-typeset .iscc-card p:last-child a {
   font-weight: 600;
 }
+
+/* ---------- Resources: repository cards ---------- */
+
+/* Responsive grid of repository cards: one column on phones, two on tablets,
+ * three on wide screens. Mirrors the audience-card breakpoints. */
+.iscc-repos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 1.4em 0 2.2em;
+}
+
+@media screen and (min-width: 48em) {
+  .iscc-repos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Three across only on large monitors, where the capped content column is
+ * wide enough for the repository name and status badge to share a line. */
+@media screen and (min-width: 100em) {
+  .iscc-repos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* The whole card is a single link to the GitHub repository. */
+.md-typeset .iscc-repo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.3rem 1.3rem 1.1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background-color: var(--md-default-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+/* ISCC-blue gradient accent bar across the top of each card */
+.md-typeset .iscc-repo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--md-primary-fg-color),
+    var(--md-primary-fg-color--light)
+  );
+}
+
+.md-typeset .iscc-repo:hover {
+  transform: translateY(-4px);
+  border-color: var(--md-primary-fg-color--light);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 84, 178, 0.15);
+}
+
+/* Repository name as the card title */
+.md-typeset .iscc-repo__name {
+  font-family: var(--md-code-font), monospace;
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--md-primary-fg-color);
+  word-break: break-word;
+}
+
+/* Status badge on its own line under the name, sized to its content so the
+ * name keeps full width and never truncates regardless of card size. */
+.md-typeset .iscc-repo > .iscc-badge {
+  align-self: flex-start;
+  margin: 0.5rem 0 0.9rem;
+}
+
+.iscc-repo__desc {
+  font-size: 0.82em;
+  line-height: 1.5;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 1rem;
+}
+
+/* CTA pins to the bottom so it aligns across every card in a row */
+.md-typeset .iscc-repo__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  white-space: nowrap;
+}
+
+.iscc-repo__icon {
+  flex: 0 0 auto;
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--md-default-fg-color--light);
+}
+
+/* The GitHub mark tints to the link color when the card is hovered */
+.md-typeset .iscc-repo:hover .iscc-repo__icon {
+  color: var(--md-primary-fg-color);
+}
+
+/* ---------- Status badges ---------- */
+
+.md-typeset .iscc-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--md-code-font), monospace;
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.md-typeset .iscc-badge--stable {
+  background-color: #a6db50;
+  color: #1d3800;
+}
+
+.md-typeset .iscc-badge--beta {
+  background-color: #4596f5;
+  color: #ffffff;
+}
+
+.md-typeset .iscc-badge--dev {
+  background-color: #ffc300;
+  color: #3a2d00;
+}
+
+.md-typeset .iscc-badge--exp {
+  background-color: #f56169;
+  color: #ffffff;
+}
+
+.md-typeset .iscc-badge--draft {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+/* ---------- Status legend ---------- */
+
+.iscc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin: 0.5em 0 2em;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background-color: var(--md-code-bg-color);
+}
+
+.iscc-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78em;
+  color: var(--md-default-fg-color--light);
+}

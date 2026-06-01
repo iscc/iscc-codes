@@ -173,12 +173,12 @@ The ISCC is the work of a community, but a few roles are central to its history:
   implementation, **Principal Editor of ISO 24138:2024**, and **Chairman of the
   [ISCC Foundation](https://iscc.io)**
 - **Kira Lemke** - director of the ISCC Foundation and convenor of ISO/TC 46/SC
-  9/WG 18 since May 2025
+  9/WG 18 since 05/2025
 - **Martin Etzrodt** - director of the ISCC Foundation (since 2025) and a driving force
   behind the BioCodes project, which brings the ISCC to scientific and bioimaging data
 - **Sebastian Posth** - evangelist and early adopter of the ISCC, convenor of
-  ISO/TC 46/SC 9/WG 18 until May 2025
-- **Sabine Rüsch** - first convenor of ISO/TC 46/SC 9/WG 18 (2019)
+  ISO/TC 46/SC 9/WG 18 (05/2022- 05/2025)
+- **Sabine Rüsch** - first convenor of ISO/TC 46/SC 9/WG 18 (05/2019-05/2022)
 - **Gregor Roschkowski** - project manager at DIN who managed the ISCC standardization
   process from the German side, coordinating the national mirror committee for ISO/TC 46/SC
   9/WG 18
