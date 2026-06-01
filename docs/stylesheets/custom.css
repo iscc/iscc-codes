@@ -469,3 +469,9 @@ a code {
   font-size: 0.78em;
   color: var(--md-default-fg-color--light);
 }
+
+/* Draft marks proposal documents rather than software maturity, so it breaks
+ * onto its own line below the Stable and Beta badges. */
+.iscc-legend__item--break {
+  flex-basis: 100%;
+}

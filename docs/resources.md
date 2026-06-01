@@ -105,9 +105,7 @@ Every repository below is developed in the open under the **Apache-2.0** license
 <div class="iscc-legend">
 <span class="iscc-legend__item"><span class="iscc-badge iscc-badge--stable">Stable</span> Production-ready, stable API, ISO-aligned where applicable</span>
 <span class="iscc-legend__item"><span class="iscc-badge iscc-badge--beta">Beta</span> Feature-complete, API may change before v1.0, suitable for pilots</span>
-<span class="iscc-legend__item"><span class="iscc-badge iscc-badge--dev">Active Dev</span> Under active development for an upcoming release</span>
-<span class="iscc-legend__item"><span class="iscc-badge iscc-badge--exp">Exp</span> Experimental proof-of-concept, not recommended for production</span>
-<span class="iscc-legend__item"><span class="iscc-badge iscc-badge--draft">Draft</span> Proposal documents under discussion</span>
+<span class="iscc-legend__item iscc-legend__item--break"><span class="iscc-badge iscc-badge--draft">Draft</span> Proposal documents under discussion</span>
 </div>
 
 ## Try it live
