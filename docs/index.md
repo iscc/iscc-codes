@@ -17,7 +17,7 @@ code for any text, image, audio, or video. Anyone can derive the same **ISCC-COD
 content, with no registry and no assignment step.
 
 [Learn how it works](concept.md){ .iscc-btn .iscc-btn--primary }
-[Try it live](https://demo.iscc.io){ .iscc-btn }
+[Try it live](https://web.iscc.io){ .iscc-btn }
 
 *Open source · ISO 24138:2024 · maintained by the [ISCC Foundation](https://iscc.io)*
 
@@ -80,7 +80,7 @@ Each unit is a compact, similarity-preserving hash.
 
 ## Try it
 
-- **Web demo:** <https://demo.iscc.io>
+- **Web demo:** <https://web.iscc.io>
 - **Playground:** <https://huggingface.co/spaces/iscc/iscc-playground>
 
 ## Developer entry points

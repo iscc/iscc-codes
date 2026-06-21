@@ -57,7 +57,7 @@ Every repository below is developed in the open under the **Apache-2.0** license
 <div class="iscc-repos">
 <a class="iscc-repo" href="https://github.com/iscc/iscc-web">
 <span class="iscc-repo__name">iscc-web</span><span class="iscc-badge iscc-badge--stable">Stable</span>
-<span class="iscc-repo__desc">REST API service for ISCC generation. Powers the public web demo at demo.iscc.io.</span>
+<span class="iscc-repo__desc">REST API service for ISCC generation. Powers the public web demo at web.iscc.io.</span>
 <span class="iscc-repo__cta"><svg class="iscc-repo__icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#gh-mark"></use></svg>View on GitHub &rarr;</span>
 </a>
 <a class="iscc-repo" href="https://github.com/iscc/iscc-hub">
@@ -115,7 +115,7 @@ Every repository below is developed in the open under the **Apache-2.0** license
 Three million book covers from the Amazon Reviews'23 dataset, indexed and searchable through ISCC
 similarity matching.
 
-### [ISCC Web Demo](https://demo.iscc.io/)
+### [ISCC Web Demo](https://web.iscc.io/)
 
 Minimal web application for generating ISCCs directly in the browser. Live instance of
 [iscc-web](https://github.com/iscc/iscc-web).
