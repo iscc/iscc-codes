@@ -6,7 +6,7 @@ site_url = "https://iscc.codes"
 repo_url = "https://github.com/iscc/iscc-codes"
 repo_name = "iscc/iscc-codes"
 edit_uri = "edit/main/docs/"
-copyright = "Documentation licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> | Copyright &copy; 2016-2026 The Authors | <a href=\"https://iscc.foundation/privacy\">Privacy Policy</a> | <a href=\"https://iscc.foundation/cookies\">Cookie Policy</a> | <a href=\"https://iscc.foundation/imprint\">Imprint</a> | <a href=\"https://iscc.foundation/disclaimer\">Disclaimer</a>"
+copyright = "<a href=\"https://iscc.io/foundation\">ISCC Foundation</a> | <a href=\"https://iscc.io/news\">News</a> | Documentation licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> | Copyright &copy; 2016-2026 The Authors | <a href=\"https://iscc.io/privacy\">Privacy Policy</a> | <a href=\"https://iscc.io/cookies\">Cookie Policy</a> | <a href=\"https://iscc.io/imprint\">Imprint</a>"
 extra_css = ["stylesheets/custom.css"]
 extra_javascript = [
     "https://iscc.ai/copilot/index.js",

@@ -1,6 +1,6 @@
 ---
 title: iscc-codes
-description: Open, decentralized content identification - derived from the content itself.
+description: Open content identification - derived from the content itself - International Standard Content Code (ISCC - ISO 24138:2024)
 authors: Titusz Pan
 icon: lucide/house
 hide:
@@ -9,12 +9,10 @@ hide:
 
 # ISCC - International Standard Content Code
 
-## Open, decentralized content identification - derived from the content itself
+## Open source content identification
 
-**ISCC** ([ISO 24138:2024](https://www.iso.org/standard/77899.html)) is an open standard for content
-identification that works directly from the digital file. Generate a compact, similarity-preserving
-code for any text, image, audio, or video. Anyone can derive the same **ISCC-CODE** from the same
-content, with no registry and no assignment step.
+**ISCC** ([ISO 24138:2024](https://www.iso.org/standard/77899.html)) is an international ISO standard for content identification with an open source reference implementation that works directly from the digital file. Generate compact, similarity-preserving
+codes for any text, image, audio, or video. Anyone can derive the same **ISCC** from the same content, with no registry and no assignment step required.
 
 [Learn how it works](concept.md){ .iscc-btn .iscc-btn--primary }
 [Try it live](https://web.iscc.io){ .iscc-btn }
@@ -56,6 +54,8 @@ See how the ISCC relates to ISO 24138 and to established identifiers like ISBN, 
 </div>
 
 </div>
+
+New to the ISCC? Start with the [introduction on iscc.io](https://iscc.io/learn).
 
 ## One code, derived from the bytes themselves
 
