@@ -334,10 +334,75 @@ def figure_calculated_not_assigned():
     return fig
 
 
+# Genuine codes computed with iscc-core for one image (visual-art.webp from the brand kit,
+# saved as PNG) and a copy trimmed by 2 % on each side and saved as JPEG at quality 50.
+# Each entry: unit name, verdict, and the 64-bit bodies of A and B as bit strings.
+COMPARISON = [
+    ("Content-Code", "6 of 64 bits differ: close",
+     "1110101100001101100100001101000011001100011101110011010101101100",
+     "1110101100001101100100001111000011001110000100110011110101101100"),
+    ("Data-Code", "36 of 64 bits differ: far apart",
+     "0100000011001100001100101110111011111110000000101100101001011000",
+     "0110011111010000000101100010000100100101110101100111010011110011"),
+    ("Instance-Code", "no exact match",
+     "0011001010110011011010000001010101010100110010001000110100110010",
+     "1000101101101010000001010111101110101001100010101110100010101101"),
+]
+
+
+def figure_similarity_comparison():
+    """Figure 4: comparing the units of an image and a cropped, re-compressed copy bit by bit."""
+    fig = Figure(
+        1200, 620, "Comparing ISCC-UNITs",
+        "An original image and a cropped, re-compressed copy: their Content-Codes differ in 6 of "
+        "64 bits and are close, their Data-Codes differ in 36 bits, and their Instance-Codes "
+        "have no exact match.",
+    )
+    x0, right = 44, 1156
+    # The two files being compared.
+    for x, letter, title, subtitle in [
+        (x0, "A", "Original image", "PNG, 1.5 MB"),
+        (620, "B", "Cropped copy", "2 % trimmed each side, JPEG quality 50, 108 KB"),
+    ]:
+        fig.rect(x, 44, 536, 72)
+        fig.text(x + 22, 89, letter, 24, "mono")
+        fig.text(x + 62, 77, title, 22, "medium")
+        fig.text(x + 62, 101, subtitle, 16, "regular", MUTED)
+
+    cell, cells_x = 16.5, 100
+    for index, (name, verdict, bits_a, bits_b) in enumerate(COMPARISON):
+        y = 150 + index * 140
+        colour = UNIT_COLOURS[name][0]
+        fig.rect(x0, y - 12, 14, 14, fill=colour, stroke=None)
+        fig.text(x0 + 24, y, name, 20, "medium")
+        fig.text(right, y, verdict, 18, "regular", INK, "right")
+        rows = [(y + 18, "A", bits_a), (y + 48, "B", bits_b)]
+        for position, (a, b) in enumerate(zip(bits_a, bits_b)):
+            if a != b:
+                fig.rect(cells_x + position * cell, y + 14, cell, 60, fill=CORAL, stroke=None)
+        for row_y, letter, bits in rows:
+            fig.text(x0 + 16, row_y + 17, letter, 14, "mono", MUTED)
+            fig.rect(cells_x, row_y, 64 * cell, 22, fill="none", stroke=RULE, stroke_width=1)
+            for position, bit in enumerate(bits):
+                if bit == "1":
+                    fig.rect(cells_x + position * cell + 1.5, row_y + 1.5, cell - 3, 19, fill=INK, stroke=None)
+
+    # Legend, in words.
+    y, x = 590, x0
+    fig.rect(x, y - 12, 14, 14, fill=INK, stroke=None)
+    x += fig.text(x + 24, y, "bit set", 16) + 24 + 40
+    fig.rect(x, y - 12, 14, 14, fill="none", stroke=MUTED, stroke_width=1)
+    x += fig.text(x + 24, y, "bit clear", 16) + 24 + 40
+    fig.rect(x, y - 12, 14, 14, fill=CORAL, stroke=None)
+    fig.text(x + 24, y, "position where A and B differ", 16)
+    return fig
+
+
 FIGURES = {
     "iscc-algo-design3": figure_iscc_code_units,
     "iscc-similarity-hash": figure_similarity_hash,
     "iscc-decentralized-issuance": figure_calculated_not_assigned,
+    "iscc-similarity-comparison": figure_similarity_comparison,
 }
 
 

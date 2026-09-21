@@ -41,7 +41,7 @@ self-describing and can also be used in isolation.
 
 <div class="iscc-cols" markdown>
 
-![Three input hash digests are combined bit by bit into one similarity hash digest: each output bit is 1 where more inputs have it set than not](images/iscc-similarity-hash.svg){ .left }
+![An original image and a cropped, re-compressed copy compared unit by unit: the Content-Codes differ in 6 of 64 bits and are close, the Data-Codes differ in 36 bits, the Instance-Codes have no exact match](images/iscc-similarity-comparison.svg){ .left }
 
 Each ISCC-UNIT, except for the Instance-Code, is a **similarity-preserving** hash: similar inputs produce codes that are close in
 [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance). Likeness can therefore be
