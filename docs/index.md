@@ -55,6 +55,8 @@ See how the ISCC relates to ISO 24138 and to established identifiers like ISBN, 
 
 </div>
 
+New to the ISCC? Start with the [introduction on iscc.io](https://iscc.io/learn).
+
 ## One code, derived from the bytes themselves
 
 Most identifiers (ISBN, ISRC, DOI) are assigned by an authority and attached to a work. The ISCC
