@@ -1,0 +1,38 @@
+# ISCC theme for Zensical documentation sites.
+#
+# Loaded by Zensical when a project points `custom_dir` at this directory, and
+# by the `mkdocs.themes` entry point once the directory is published as a
+# package. Keys here are defaults; a project's `[project.theme]` table
+# overrides them key by key.
+extends: material
+variant: modern
+language: en
+font: false
+favicon: assets/iscc/favicon.svg
+features:
+  - content.code.annotate
+  - content.code.copy
+  - content.tooltips
+  - navigation.expand
+  - navigation.footer
+  - navigation.indexes
+  - navigation.sections
+  - navigation.top
+  - navigation.tracking
+  - search.highlight
+  - toc.follow
+palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: custom
+    accent: custom
+    toggle:
+      icon: lucide/sun
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: custom
+    accent: custom
+    toggle:
+      icon: lucide/moon
+      name: Switch to light mode

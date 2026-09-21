@@ -1,0 +1,12 @@
+{#-
+  Plausible analytics, selected with `provider = "plausible"` in
+  `[project.extra.analytics]`. `domain` names the tracked site and `src`
+  optionally points at a self-hosted script.
+-#}
+{% if config.extra.analytics %}
+  {% set domain = config.extra.analytics.domain | d("", true) %}
+  {% set src = config.extra.analytics.src | d("https://stats.iscc.codes/js/plausible.js", true) %}
+{% endif %}
+{% if domain %}
+<script defer data-domain="{{ domain }}" src="{{ src }}"></script>
+{% endif %}

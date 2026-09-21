@@ -11,7 +11,9 @@ on:
       - "pyproject.toml"
       - "uv.lock"
       - "zensical.toml"
+      - "zensical_iscc/**"
       - "scripts/check_site_paths.py"
+      - "scripts/gen_markdown_pages.py"
       - ".github/workflows/deploy-docs.yml"
   workflow_dispatch:
 
@@ -34,6 +36,8 @@ jobs:
         run: uv run python scripts/check_site_paths.py
       - name: Build site
         run: uv run zensical build --clean
+      - name: Publish Markdown sources beside the rendered pages
+        run: uv run python scripts/gen_markdown_pages.py
       - name: Check generated site compatibility
         run: uv run python scripts/check_site_paths.py --site-dir site
       - name: Publish to gh-pages

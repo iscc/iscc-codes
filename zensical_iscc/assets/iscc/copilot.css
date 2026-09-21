@@ -1,0 +1,94 @@
+/* iscc.ai chat widget stylesheet, injected into the Chainlit shadow DOM.
+ *
+ * Zensical sets html { font-size: 125% } (20px), which inflates every
+ * rem-based size inside the widget by a quarter. Tailwind text utilities are
+ * pinned to their intended pixel values and the toggle button is scaled back.
+ * Colours follow the ISCC identity: near-black text, coral calls to action
+ * with near-black icons, blue links, navy code fields. */
+
+#chainlit-copilot-button {
+  zoom: 0.8;
+}
+
+.text-xs  { font-size: 12px !important; line-height: 16px !important; }
+.text-sm  { font-size: 14px !important; line-height: 20px !important; }
+.text-base { font-size: 16px !important; line-height: 24px !important; }
+.text-lg  { font-size: 18px !important; line-height: 28px !important; }
+.text-xl  { font-size: 20px !important; line-height: 28px !important; }
+.text-2xl { font-size: 24px !important; line-height: 32px !important; }
+
+.copilot-container-collapsed {
+  min-width: 420px !important;
+}
+
+[data-radix-popper-content-wrapper] {
+  font-size: 16px;
+}
+
+#chainlit-copilot-chat p,
+#chainlit-copilot-chat li,
+#chainlit-copilot-chat span:not([class]),
+#chainlit-copilot-chat div:not([class]) > span {
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+/* Widget palette in Tailwind HSL triplets: white ground, near-black text,
+ * coral primary with near-black foreground, sky ring. Applied to both widget themes. */
+:root,
+:host,
+.light,
+.dark {
+  --background: 0 0% 100% !important;
+  --foreground: 210 11% 15% !important;
+  --primary: 357 88% 67% !important;
+  --primary-foreground: 210 11% 15% !important;
+  --secondary: 210 17% 95% !important;
+  --secondary-foreground: 210 11% 15% !important;
+  --accent: 210 17% 95% !important;
+  --accent-foreground: 210 11% 15% !important;
+  --muted: 210 17% 96% !important;
+  --muted-foreground: 206 7% 42% !important;
+  --card: 0 0% 100% !important;
+  --card-foreground: 210 11% 15% !important;
+  --popover: 0 0% 100% !important;
+  --popover-foreground: 210 11% 15% !important;
+  --border: 206 8% 84% !important;
+  --input: 0 0% 100% !important;
+  --ring: 214 90% 62% !important;
+}
+
+/* Floating toggle and primary actions: coral, near-black on hover */
+button.bg-primary,
+button[class*="bg-primary"],
+.bg-primary {
+  background-color: #f56169 !important;
+  background: #f56169 !important;
+  color: #212529 !important;
+}
+
+button.bg-primary:hover,
+button[class*="bg-primary"]:hover,
+.bg-primary:hover {
+  background-color: #212529 !important;
+  background: #212529 !important;
+  color: #f8f9fa !important;
+}
+
+a {
+  color: #0054b2 !important;
+}
+
+pre,
+pre code,
+.hljs {
+  background-color: #123663 !important;
+  color: #f8f9fa !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+}
+
+code:not(pre code):not(.hljs) {
+  background-color: #e9ecef !important;
+  color: inherit !important;
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+}
