@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="212.5" height="212.5" viewBox="0 0 212.5 212.5" role="img" aria-labelledby="iscc-icon-white-coral-title iscc-icon-white-coral-desc">
+  <title id="iscc-icon-white-coral-title">ISCC icon (International Standard Content Code)</title>
+  <desc id="iscc-icon-white-coral-desc">The ISCC icon, a square with a circle set into its lower-left corner. The International Standard Content Code (ISCC) is a similarity-aware code for digital content, standardized as ISO 24138:2024. White version with a coral circle, for dark backgrounds.</desc>
+  <rect width="212.5" height="212.5" fill="#212529" />
+  <g id="iscc-icon-white-coral-icon" fill="#FFFFFF">
+    <path d="M87.5 25H187.5V125H162.5A75 75 0 0 0 87.5 50Z" />
+    <circle cx="87.5" cy="125" r="62.5" fill="#F56169" />
+  </g>
+</svg>
