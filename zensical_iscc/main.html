@@ -1,0 +1,92 @@
+{#-
+  ISCC theme entry template.
+
+  Extends the Zensical base template with brand stylesheets, social metadata,
+  optional client-side redirects and the theme's page widgets (copy page,
+  chat). Site-specific behaviour is driven by `[project.extra.iscc]`:
+
+    tagline    Title suffix for the home page (default below)
+    copy_page  Show the "Copy page" split button (default true)
+    chat       Mount the iscc.ai chat widget (default false)
+    og_image   Site-relative path of the link preview image
+-#}
+{% extends "base.html" %}
+
+{% set iscc = config.extra.iscc or {} %}
+{% set tagline = iscc.tagline | d("International Standard Content Code", true) %}
+{% set og_image = iscc.og_image | d("assets/iscc/social-share.png", true) %}
+{% set meta = page.meta or {} %}
+{% set description = meta.description | d(config.site_description, true) %}
+{% set is_home = page.is_homepage or page.url == "" %}
+
+{% block htmltitle %}
+  {% if is_home %}
+    <title>{{ config.site_name }} - {{ tagline }}</title>
+  {% elif meta.title %}
+    <title>{{ meta.title }} - {{ config.site_name }}</title>
+  {% elif page.title %}
+    <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
+  {% else %}
+    <title>{{ config.site_name }}</title>
+  {% endif %}
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ 'assets/iscc/tokens/iscc.css' | url }}">
+  <link rel="stylesheet" href="{{ 'assets/iscc/theme.css' | url }}">
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="alternate icon" href="{{ 'assets/iscc/favicon.ico' | url }}" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="{{ 'assets/iscc/apple-touch-icon.png' | url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  {% if is_home %}
+  <meta property="og:title" content="{{ config.site_name }} - {{ tagline }}">
+  {% else %}
+  <meta property="og:title" content="{{ page.title | striptags }} - {{ config.site_name }}">
+  {% endif %}
+  <meta property="og:description" content="{{ description }}">
+  {% if page.canonical_url %}
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  {% endif %}
+  {% if config.site_url %}
+  <meta property="og:image" content="{{ config.site_url | trim('/') }}/{{ og_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% else %}
+  <meta name="twitter:card" content="summary">
+  {% endif %}
+  {% if is_home %}
+  <meta name="twitter:title" content="{{ config.site_name }} - {{ tagline }}">
+  {% else %}
+  <meta name="twitter:title" content="{{ page.title | striptags }} - {{ config.site_name }}">
+  {% endif %}
+  <meta name="twitter:description" content="{{ description }}">
+  {% if meta.location %}
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ meta.location }}">
+  </noscript>
+  <script>window.location.replace(["{{ meta.location }}", window.location.search, window.location.hash].join(""))</script>
+  {% endif %}
+  <script>
+    window.iscc = {
+      base: "{{ base_url }}",
+      pageUrl: "{{ page.url }}",
+      editUrl: "{{ page.edit_url | d('', true) }}",
+      copyPage: {{ "false" if iscc.copy_page == false else "true" }},
+      chat: {{ "true" if iscc.chat else "false" }}
+    };
+  </script>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% if iscc.copy_page != false %}
+  <script src="{{ 'assets/iscc/copypage.js' | url }}"></script>
+  {% endif %}
+  {% if iscc.chat %}
+  <script src="https://iscc.ai/copilot/index.js" defer></script>
+  <script src="{{ 'assets/iscc/copilot.js' | url }}" defer></script>
+  {% endif %}
+{% endblock %}

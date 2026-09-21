@@ -4,12 +4,12 @@ repos:
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: ^docs/(?!license\.md$|\.isccignore$)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)|^zensical_iscc/assets/iscc/(fonts/|.*\.svg$)
       - id: end-of-file-fixer
-        exclude: ^docs/(?!license\.md$|\.isccignore$)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)|^zensical_iscc/assets/iscc/(fonts/|.*\.svg$)
       - id: mixed-line-ending
         args: [--fix=lf]
-        exclude: ^docs/(?!license\.md$|\.isccignore$)
+        exclude: ^docs/(?!license\.md$|\.isccignore$)|^zensical_iscc/assets/iscc/(fonts/|.*\.svg$)
       - id: check-yaml
       - id: check-json
       - id: check-toml

@@ -1,0 +1,13 @@
+{#-
+  Header and drawer logo: the ISCC primary signature with coral circle.
+
+  Both colourways are rendered; theme.css shows the near-black one on light
+  fields and the white one on the dark scheme. A project can still set
+  `theme.logo` to replace the signature with its own single image.
+-#}
+{% if config.theme.logo %}
+  <img src="{{ config.theme.logo | url }}" alt="{{ config.site_name }}">
+{% else %}
+  <img class="iscc-logo iscc-logo--light" src="{{ 'assets/iscc/logos/iscc-logo-black-coral.svg' | url }}" alt="ISCC" width="784" height="218">
+  <img class="iscc-logo iscc-logo--dark" src="{{ 'assets/iscc/logos/iscc-logo-white-coral.svg' | url }}" alt="ISCC" width="784" height="218">
+{% endif %}

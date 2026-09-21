@@ -1,0 +1,56 @@
+/* ISCC identity tokens. Colours are sRGB; logo geometry remains in the SVG masters. */
+@font-face { font-family: "Readex Pro"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/readex-pro-400.woff2") format("woff2"); }
+@font-face { font-family: "Readex Pro"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/readex-pro-300.woff2") format("woff2"); }
+@font-face { font-family: "Readex Pro"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/readex-pro-500.woff2") format("woff2"); }
+@font-face { font-family: "Readex Pro"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/readex-pro-600.woff2") format("woff2"); }
+@font-face { font-family: "Readex Pro"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/readex-pro-700.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/jetbrains-mono-400.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/jetbrains-mono-500.woff2") format("woff2"); }
+:root {
+  --iscc-ink: #212529;
+  --iscc-paper: #F8F9FA;
+  --iscc-white: #FFFFFF;
+  --iscc-coral: #F56169;
+  --iscc-muted: #636B71;
+  --iscc-rule: #D2D6D9;
+  --iscc-blue: #0054B2;
+  --iscc-navy: #123663;
+  --iscc-sky: #4596F5;
+  --iscc-cyan: #7AC2F7;
+  --iscc-lime: #A6DB50;
+  --iscc-yellow: #FFC300;
+  --iscc-unit-meta: #7AC2F7;
+  --iscc-unit-semantic: #4596F5;
+  --iscc-unit-content: #0054B2;
+  --iscc-unit-data: #123663;
+  --iscc-unit-instance: #A6DB50;
+  --iscc-font-body: "Readex Pro", Arial, sans-serif;
+  --iscc-font-detail: "JetBrains Mono", Consolas, monospace;
+  --iscc-space-4: 4px;
+  --iscc-space-8: 8px;
+  --iscc-space-16: 16px;
+  --iscc-space-24: 24px;
+  --iscc-space-32: 32px;
+  --iscc-space-48: 48px;
+  --iscc-space-64: 64px;
+  --iscc-space-96: 96px;
+  --iscc-space-128: 128px;
+  --iscc-type-display: 64px;
+  --iscc-leading-display: 72px;
+  --iscc-type-h1: 48px;
+  --iscc-leading-h1: 56px;
+  --iscc-type-h2: 32px;
+  --iscc-leading-h2: 40px;
+  --iscc-type-body: 18px;
+  --iscc-leading-body: 28px;
+  --iscc-type-small: 14px;
+  --iscc-leading-small: 20px;
+  --iscc-type-label: 12px;
+  --iscc-leading-label: 16px;
+  --iscc-motion-fast: 160ms;
+  --iscc-motion-standard: 240ms;
+  --iscc-motion-easing: ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --iscc-motion-fast: 0ms; --iscc-motion-standard: 0ms; }
+}
