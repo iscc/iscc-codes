@@ -21,14 +21,17 @@ and points `custom_dir` at it.
 | `assets/iscc/theme.css` | Maps tokens onto Zensical variables and styles components |
 | `assets/iscc/fonts/` | Readex Pro and JetBrains Mono WOFF2 subsets with OFL notices |
 | `assets/iscc/logos/` | Signature and symbol SVGs from the brand kit |
-| `assets/iscc/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` | Icons from the brand kit |
+| `assets/iscc/favicon.svg`, `favicon.ico` | Favicon as on iscc.io: the near-black symbol with its coral circle on a transparent ground (copies of `../iscc-io/public/favicon.*`) |
+| `assets/iscc/apple-touch-icon.png` | App tile from the brand kit: white symbol, coral circle, near-black ground |
 | `assets/iscc/social-share.png` | Default Open Graph image |
 | `assets/iscc/circle-rhythm-*.svg` | Decorative pattern for landing or footer bands |
 | `assets/iscc/copypage.js` | "Copy page", "View as Markdown", "Edit on GitHub" |
 | `assets/iscc/copilot.js`, `copilot.css` | iscc.ai chat widget loader and shadow-DOM styles |
 
 Brand assets are copied from `../iscc-brand`. Refresh them from there rather
-than editing the copies.
+than editing the copies. The favicon is the one exception: ISCC websites use
+the transparent near-black/coral symbol instead of the kit's framed white/coral
+tile, so refresh `favicon.svg` and `favicon.ico` from `../iscc-io/public/`.
 
 ## Using the theme in a site
 
