@@ -3,8 +3,8 @@
  * Zensical sets html { font-size: 125% } (20px), which inflates every
  * rem-based size inside the widget by a quarter. Tailwind text utilities are
  * pinned to their intended pixel values and the toggle button is scaled back.
- * Colours follow the ISCC identity: near-black text, ISCC Blue actions, navy
- * code fields. */
+ * Colours follow the ISCC identity: near-black text, coral calls to action
+ * with near-black icons, blue links, navy code fields. */
 
 #chainlit-copilot-button {
   zoom: 0.8;
@@ -33,16 +33,16 @@
   line-height: 1.4 !important;
 }
 
-/* Widget palette in Tailwind HSL triplets: paper ground, near-black text,
- * ISCC Blue primary, sky ring. Applied to both widget themes. */
+/* Widget palette in Tailwind HSL triplets: white ground, near-black text,
+ * coral primary with near-black foreground, sky ring. Applied to both widget themes. */
 :root,
 :host,
 .light,
 .dark {
   --background: 0 0% 100% !important;
   --foreground: 210 11% 15% !important;
-  --primary: 212 100% 35% !important;
-  --primary-foreground: 0 0% 100% !important;
+  --primary: 357 88% 67% !important;
+  --primary-foreground: 210 11% 15% !important;
   --secondary: 210 17% 95% !important;
   --secondary-foreground: 210 11% 15% !important;
   --accent: 210 17% 95% !important;
@@ -58,19 +58,21 @@
   --ring: 214 90% 62% !important;
 }
 
-/* Floating toggle and primary actions: ISCC Blue, navy on hover */
+/* Floating toggle and primary actions: coral, near-black on hover */
 button.bg-primary,
 button[class*="bg-primary"],
 .bg-primary {
-  background-color: #0054b2 !important;
-  background: #0054b2 !important;
+  background-color: #f56169 !important;
+  background: #f56169 !important;
+  color: #212529 !important;
 }
 
 button.bg-primary:hover,
 button[class*="bg-primary"]:hover,
 .bg-primary:hover {
-  background-color: #123663 !important;
-  background: #123663 !important;
+  background-color: #212529 !important;
+  background: #212529 !important;
+  color: #f8f9fa !important;
 }
 
 a {

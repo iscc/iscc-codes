@@ -1,8 +1,8 @@
 /* ISCC theme for Zensical: maps the identity tokens from iscc.css onto the
  * Material/Zensical variables and styles the components the tokens do not
  * reach. Light scheme is the paper canvas; the slate scheme is near-black
- * with navy code fields. Coral is reserved for the active navigation marker,
- * text selection and the logo circle; blue marks links and primary actions. */
+ * with navy code fields. Coral marks calls to action, the active navigation
+ * marker, text selection and the logo circle; blue marks links. */
 
 /* ---------- Fonts ---------- */
 
@@ -166,9 +166,10 @@
   outline-color: var(--iscc-sky);
 }
 
+/* Content width: cap at 1385px on large screens, capped to 90vw to keep margins. */
 @media screen and (min-width: 76.25em) {
   .md-grid {
-    max-width: 64rem;
+    max-width: min(1385px, 90vw);
   }
 }
 
@@ -506,12 +507,15 @@
 
 /* ---------- Buttons ---------- */
 
+/* Calls to action are coral with near-black text (4.99:1); the secondary
+ * button is an outlined near-black field. Both invert to near-black on hover. */
 .md-typeset .md-button {
-  border: 1px solid var(--iscc-blue);
+  border: 1px solid var(--md-default-fg-color);
   border-radius: 0.15rem;
-  color: var(--iscc-blue);
+  color: var(--md-default-fg-color);
   font-weight: 500;
   padding: 0.55em 1.2em;
+  text-decoration: none;
   transition: background-color var(--iscc-motion-fast) var(--iscc-motion-easing),
     color var(--iscc-motion-fast) var(--iscc-motion-easing),
     border-color var(--iscc-motion-fast) var(--iscc-motion-easing);
@@ -519,33 +523,23 @@
 
 .md-typeset .md-button:hover,
 .md-typeset .md-button:focus {
-  background-color: var(--iscc-blue);
-  border-color: var(--iscc-blue);
-  color: var(--iscc-white);
+  background-color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+  text-decoration: none;
 }
 
 .md-typeset .md-button--primary {
-  background-color: var(--iscc-blue);
-  color: var(--iscc-white);
+  background-color: var(--iscc-coral);
+  border-color: var(--iscc-coral);
+  color: var(--iscc-ink);
 }
 
 .md-typeset .md-button--primary:hover,
 .md-typeset .md-button--primary:focus {
-  background-color: var(--iscc-navy);
-  border-color: var(--iscc-navy);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .md-button {
-  border-color: var(--iscc-sky);
-  color: var(--iscc-sky);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .md-button:hover,
-[data-md-color-scheme="slate"] .md-typeset .md-button:focus,
-[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
-  background-color: var(--iscc-blue);
-  border-color: var(--iscc-blue);
-  color: var(--iscc-white);
+  background-color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
 }
 
 /* ---------- Header ---------- */

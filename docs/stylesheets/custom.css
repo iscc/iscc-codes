@@ -40,15 +40,16 @@
 
 /* ---------- Landing page ---------- */
 
-/* Hero call-to-action buttons: blue for the primary action, outlined second */
+/* Hero call-to-action buttons: coral for the primary action, outlined
+ * near-black for the second. Both invert to near-black on hover. */
 .md-typeset .iscc-btn {
   display: inline-block;
   text-decoration: none;
   margin: 0.4em 0.5em 0.4em 0;
   padding: 0.55em 1.2em;
-  border: 1px solid var(--iscc-blue);
+  border: 1px solid var(--md-default-fg-color);
   border-radius: 0.15rem;
-  color: var(--iscc-blue);
+  color: var(--md-default-fg-color);
   font-weight: 500;
   transition: background-color var(--iscc-motion-fast) var(--iscc-motion-easing),
     color var(--iscc-motion-fast) var(--iscc-motion-easing),
@@ -56,31 +57,16 @@
 }
 
 .md-typeset .iscc-btn:hover {
-  background-color: var(--iscc-blue);
-  color: var(--iscc-white);
+  background-color: var(--md-default-fg-color);
+  border-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
   text-decoration: none;
 }
 
 .md-typeset .iscc-btn--primary {
-  background-color: var(--iscc-blue);
-  color: var(--iscc-white);
-}
-
-.md-typeset .iscc-btn--primary:hover {
-  background-color: var(--iscc-navy);
-  border-color: var(--iscc-navy);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .iscc-btn {
-  border-color: var(--iscc-sky);
-  color: var(--iscc-sky);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .iscc-btn:hover,
-[data-md-color-scheme="slate"] .md-typeset .iscc-btn--primary {
-  background-color: var(--iscc-blue);
-  border-color: var(--iscc-blue);
-  color: var(--iscc-white);
+  background-color: var(--iscc-coral);
+  border-color: var(--iscc-coral);
+  color: var(--iscc-ink);
 }
 
 /* Audience cards: stacked on narrow screens, three across once there is room */

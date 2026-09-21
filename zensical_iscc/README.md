@@ -72,8 +72,9 @@ allows, so it stays silent on localhost.
 - Light scheme: paper canvas, near-black text, white fields and code blocks
   with thin rules. Dark scheme: near-black canvas, navy code blocks, Sky Blue
   links.
-- Blue is the link and primary action colour. Coral appears only in the logo,
-  the current-page marker in navigation and text selection.
+- Blue is the link colour. Coral marks calls to action (primary buttons, the
+  chat button) with near-black text, the current-page marker in navigation,
+  text selection and the logo circle.
 - Admonitions are labelled and coloured by role: note and info Sky Blue, tip
   and success Lime, warning Yellow, danger Coral. The dark scheme uses a left
   rule and coloured title instead of a filled field.
