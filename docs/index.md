@@ -74,7 +74,7 @@ An **ISCC-CODE** is a composite, hierarchically structured fingerprint. It combi
 content-derived **ISCC-UNITs** covering embedded metadata, normalized content, and the raw bytes.
 Each unit is a compact, similarity-preserving hash.
 
-[![ISCC algorithmic design](images/iscc-algo-design3.svg)](images/iscc-algo-design3.svg)
+[![Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to Instance-Code, which combine into one ISCC-CODE](images/iscc-algo-design3.svg)](images/iscc-algo-design3.svg)
 
 [See the full specification →](specification.md)
 

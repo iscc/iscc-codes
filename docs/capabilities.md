@@ -16,7 +16,7 @@ follow from that design.
 
 <div class="iscc-cols" markdown>
 
-![ISCC algorithmic design](images/iscc-algo-design3.svg){ .left }
+![Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to Instance-Code, which combine into one ISCC-CODE](images/iscc-algo-design3.svg){ .left }
 
 An **ISCC-CODE** is a made of several **ISCC-UNITs**, each using a distinct algorithm and capturing a different layer of identity. An ISCC-CODE contains at minimum a Data-Code and an Instance-Code. The units are
 self-describing and can also be used in isolation.
@@ -41,7 +41,7 @@ self-describing and can also be used in isolation.
 
 <div class="iscc-cols" markdown>
 
-![ISCC similarity hash](images/iscc-similarity-hash.svg){ .left }
+![Three input hash digests are combined bit by bit into one similarity hash digest: each output bit is 1 where more inputs have it set than not](images/iscc-similarity-hash.svg){ .left }
 
 Each ISCC-UNIT, except for the Instance-Code, is a **similarity-preserving** hash: similar inputs produce codes that are close in
 [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance). Likeness can therefore be
@@ -65,7 +65,7 @@ codes alone.
 
 <div class="iscc-cols" markdown>
 
-![ISCC decentralized issuance](images/iscc-decentralized-issuance.svg){ .left }
+![An author, a publisher, a library and anyone else calculate the same ISCC-CODE from the same file with the open ISO 24138 algorithm: calculated, not assigned](images/iscc-decentralized-issuance.svg){ .left }
 
 ISCCs are **generated from the content**, not assigned by an authority. No registration, account, or
 central database is involved: anyone with the open-source software and the asset derives the same
