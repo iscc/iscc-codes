@@ -2,8 +2,10 @@
   ISCC theme entry template.
 
   Extends the Zensical base template with brand stylesheets, social metadata,
-  optional client-side redirects and the theme's page widgets (copy page,
-  chat). Site-specific behaviour is driven by `[project.extra.iscc]`:
+  optional client-side redirects, a self-hosted GLightbox and the theme's page
+  widgets (copy page, chat). Every request stays on the site's own origin
+  except Plausible analytics and, with chat enabled, iscc.ai. Site-specific
+  behaviour is driven by `[project.extra.iscc]`:
 
     tagline    Title suffix for the home page (default below)
     copy_page  Show the "Copy page" split button (default true)
@@ -18,6 +20,7 @@
 {% set meta = page.meta or {} %}
 {% set description = meta.description | d(config.site_description, true) %}
 {% set is_home = page.is_homepage or page.url == "" %}
+{% set lightbox = 'class="glightbox"' in page.content %}
 
 {% block htmltitle %}
   {% if is_home %}
@@ -33,8 +36,23 @@
 
 {% block styles %}
   {{ super() }}
+  {% if lightbox %}
+  <link rel="stylesheet" href="{{ 'assets/iscc/vendor/glightbox/glightbox.min.css' | url }}">
+  {% endif %}
   <link rel="stylesheet" href="{{ 'assets/iscc/tokens/iscc.css' | url }}">
   <link rel="stylesheet" href="{{ 'assets/iscc/theme.css' | url }}">
+{% endblock %}
+
+{#-
+  Zensical's bundle fetches GLightbox from unpkg.com unless the global is
+  already defined, so the theme loads its own copy before the bundle runs,
+  on the pages whose content carries lightbox anchors.
+-#}
+{% block libs %}
+  {{ super() }}
+  {% if lightbox %}
+  <script src="{{ 'assets/iscc/vendor/glightbox/glightbox.min.js' | url }}"></script>
+  {% endif %}
 {% endblock %}
 
 {% block extrahead %}

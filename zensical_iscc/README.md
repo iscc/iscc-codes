@@ -20,6 +20,7 @@ and points `custom_dir` at it.
 | `assets/iscc/tokens/iscc.css` | Identity tokens, verbatim from the brand kit (`build/tokens/iscc.css`) |
 | `assets/iscc/theme.css` | Maps tokens onto Zensical variables and styles components |
 | `assets/iscc/fonts/` | Readex Pro and JetBrains Mono WOFF2 subsets with OFL notices |
+| `assets/iscc/vendor/glightbox/` | GLightbox 3.3.1 (MIT), loaded on pages with lightbox anchors so Zensical's bundle does not fetch it from unpkg.com |
 | `assets/iscc/logos/` | Signature and symbol SVGs from the brand kit |
 | `assets/iscc/favicon.svg`, `favicon.ico` | Favicon as on iscc.io: the near-black symbol with its coral circle on a transparent ground (copies of `../iscc-io/public/favicon.*`) |
 | `assets/iscc/apple-touch-icon.png` | App tile from the brand kit: white symbol, coral circle, near-black ground |
@@ -58,6 +59,23 @@ custom_dir = "zensical_iscc"
 The theme sets `font = false` and serves the brand fonts itself. Do not set
 `theme.logo` or `theme.favicon` unless a site needs a different mark; the
 theme provides both.
+
+## Third-party requests
+
+Pages request nothing from other origins except Plausible analytics and, with
+chat enabled, iscc.ai. Fonts and GLightbox are served by the theme; Zensical's
+bundle would otherwise load GLightbox from unpkg.com, which privacy tools such
+as Privacy Badger flag as a tracker. Keep it that way when adding content:
+
+- Store images and badges under the site's `docs/` tree instead of hot-linking
+  them (the Creative Commons badge lives in `docs/images/cc-by-4.0.svg`).
+- The bundle still fetches Mermaid from unpkg.com when a page contains a
+  Mermaid diagram. No ISCC site uses one; vendor Mermaid the same way as
+  GLightbox before adding any.
+- GLightbox is loaded per page, keyed on lightbox anchors in the content.
+  Do not enable `navigation.instant`: the bundle would then reach a lightbox
+  page without a full load and fall back to unpkg.com.
+- The chat widget loads the fonts declared in iscc.ai's `public/theme.json`.
 
 "Copy page" and "View as Markdown" read `index.md` next to each rendered page.
 Generate those files after every build:
