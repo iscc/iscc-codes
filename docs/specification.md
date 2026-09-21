@@ -120,7 +120,7 @@ print(iscc_meta.iscc)
 ## Historical specification drafts
 
 Before standardization, the ISCC was developed as a public working specification by Titusz Pan
-within the [Content Blockchain Project](https://content-blockchain.org). These
+within the Content Blockchain Project. These
 early drafts predate ISO 24138:2024 and current implementations. They are **superseded** and
 retained for historical reference and URL continuity only:
 

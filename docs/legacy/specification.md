@@ -33,7 +33,7 @@ Public review, discussion and contributions are welcome.
 
     This page preserves the historical ISCC Version 1.1 specification material for URL continuity and reference. For current implementation guidance see [iscc-core](https://github.com/iscc/iscc-core) and [iscc-sdk](https://github.com/iscc/iscc-sdk). For the standardized specification see [ISO 24138:2024](https://www.iso.org/standard/77899.html).
 
-This document proposes an open and vendor neutral ISCC standard and describes the technical procedures to create and manage ISCC codes. The first version of this document resulted from a prototyping project by the [Content Blockchain Project](https://content-blockchain.org) and received funding from the [Google Digital News Initiative (DNI)](https://digitalnewsinitiative.com/dni-projects/content-blockchain-project/). The content of this document results from a voluntary effort of the authors with an open and public consensus process.
+This document proposes an open and vendor neutral ISCC standard and describes the technical procedures to create and manage ISCC codes. The first version of this document resulted from a prototyping project by the Content Blockchain Project and received funding from the [Google Digital News Initiative (DNI)](https://digitalnewsinitiative.com/dni-projects/content-blockchain-project/). The content of this document results from a voluntary effort of the authors with an open and public consensus process.
 
 ## Conventions and Terminology
 
