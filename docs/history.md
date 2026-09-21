@@ -3,9 +3,14 @@ title: ISCC - History
 description: "From a 2016 idea to an international standard: the history of the International Standard Content Code."
 authors: Titusz Pan
 icon: lucide/history
+canonical_url: https://iscc.io/standard/history
 ---
 
 # ISCC - History
+
+!!! info "Maintained on iscc.io"
+    The maintained version of this page lives at
+    [iscc.io/standard/history](https://iscc.io/standard/history).
 
 The **International Standard Content Code (ISCC)** started as a single idea in 2016. Eight
 years later it became an International Standard, **ISO 24138:2024**. This page traces that

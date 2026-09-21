@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 
+{#
+  Mirrors the site_meta block of Zensical's base.html so a page can point its
+  canonical URL at another domain via a `canonical_url` front-matter key.
+  Without the key the theme's default (site_url + page path) applies.
+#}
+{% block site_meta %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {% if page.meta and page.meta.description %}
+    <meta name="description" content="{{ page.meta.description }}">
+  {% elif config.site_description %}
+    <meta name="description" content="{{ config.site_description }}">
+  {% endif %}
+  {% if page.meta and page.meta.author %}
+    <meta name="author" content="{{ page.meta.author }}">
+  {% elif config.site_author %}
+    <meta name="author" content="{{ config.site_author }}">
+  {% endif %}
+  {% set canonical = page.meta.canonical_url if page.meta and page.meta.canonical_url else page.canonical_url %}
+  {% if canonical %}
+    <link rel="canonical" href="{{ canonical }}">
+  {% endif %}
+  {% if page.previous_page %}
+    <link rel="prev" href="{{ page.previous_page.url | url }}">
+  {% endif %}
+  {% if page.next_page %}
+    <link rel="next" href="{{ page.next_page.url | url }}">
+  {% endif %}
+  {% if config.extra.alternate is iterable %}
+    {% for alt in config.extra.alternate %}
+      <link rel="alternate" href="{{ alt.link | url }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
+    {% endfor %}
+  {% endif %}
+  {% set href = config.theme.favicon | d("assets/images/favicon.png") %}
+  <link rel="icon" href="{{ href | url }}">
+  <meta name="generator" content="{{ generator }}">
+{% endblock %}
+
 {% block htmltitle %}
   {% if page.title == config.site_name %}
     <title>{{ config.site_name }} - International Standard Content Code</title>
@@ -17,7 +55,8 @@
   <meta property="og:title" content="{{ page.title }} - {{ config.site_name }}">
   {% endif %}
   <meta property="og:description" content="{% if page.meta and page.meta.description %}{{ page.meta.description }}{% else %}{{ config.site_description }}{% endif %}">
-  <meta property="og:url" content="{{ page.canonical_url }}">
+  {% set canonical = page.meta.canonical_url if page.meta and page.meta.canonical_url else page.canonical_url %}
+  <meta property="og:url" content="{{ canonical }}">
   <meta name="twitter:card" content="summary">
   {% if page.title == config.site_name %}
   <meta name="twitter:title" content="{{ config.site_name }} - International Standard Content Code">
