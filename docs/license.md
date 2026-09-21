@@ -7,7 +7,7 @@ icon: lucide/scale
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AEK2KP4ACMSSY4KV7ORSDHNCRSD5U367T2SQ2GX2SSMM3IPXR3Z4Y`
+**Documentation source ISCC-SUM**: `ISCC:K4AEK2KP4ACMSSY4KV7ORSDHNCRSD4FUCJVF7SLWOKJOAX5E2YC2OYI`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via
@@ -23,7 +23,7 @@ Copyright © 2016-2026 Titusz Pan and contributors.
 
 Published by the ISCC Foundation.
 
-<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" class="off-glb" width="88" src="images/cc-by-4.0.svg" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 ## Source code license
 
