@@ -11,7 +11,7 @@ The open-source software and live demos that make up the ISCC ecosystem. Everyth
 on [ISO 24138:2024](https://www.iso.org/standard/77899.html), the International Standard Content
 Code.
 
-Looking for the standard text, independent assessments, research, or press coverage? Those are
+Looking for independent assessments, research, or press coverage? Those are
 collected on [iscc.io/standard/adoption](https://iscc.io/standard/adoption). The ISCC Foundation's
 own papers and talks are listed at
 [iscc.io/foundation/publications](https://iscc.io/foundation/publications).

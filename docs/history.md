@@ -14,7 +14,7 @@ prototyping project, to ISO standardization and a role in content provenance and
 authenticity.
 
 !!! note "Creator and steward"
-    The ISCC was invented by **[Titusz Pan](https://titusz.org)**, who designed it in 2016 and
+    The ISCC was created by **[Titusz Pan](https://titusz.org)**, who designed it in 2016 and
     wrote its open-source reference implementation. He served as the **Principal Editor of
     ISO 24138:2024**, authoring the standard's normative text, and is today the **Chairman
     of the [ISCC Foundation](https://iscc.io)**, the non-profit organization that maintains
