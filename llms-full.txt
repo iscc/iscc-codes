@@ -65,7 +65,7 @@ An **ISCC-CODE** is a composite, hierarchically structured fingerprint. It combi
 content-derived **ISCC-UNITs** covering embedded metadata, normalized content, and the raw bytes.
 Each unit is a compact, similarity-preserving hash.
 
-[![ISCC algorithmic design](images/iscc-algo-design3.svg)](images/iscc-algo-design3.svg)
+[![Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to Instance-Code, which combine into one ISCC-CODE; the Semantic-Code is reserved in ISO 24138:2024 and its example string comes from an experimental implementation](images/iscc-algo-design3.svg)](images/iscc-algo-design3.svg)
 
 [See the full specification →](specification.md)
 
@@ -98,7 +98,7 @@ follow from that design.
 
 <div class="iscc-cols" markdown>
 
-![ISCC algorithmic design](images/iscc-algo-design3.svg){ .left }
+![Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to Instance-Code, which combine into one ISCC-CODE; the Semantic-Code is reserved in ISO 24138:2024 and its example string comes from an experimental implementation](images/iscc-algo-design3.svg){ .left }
 
 An **ISCC-CODE** is a made of several **ISCC-UNITs**, each using a distinct algorithm and capturing a different layer of identity. An ISCC-CODE contains at minimum a Data-Code and an Instance-Code. The units are
 self-describing and can also be used in isolation.
@@ -123,7 +123,7 @@ self-describing and can also be used in isolation.
 
 <div class="iscc-cols" markdown>
 
-![ISCC similarity hash](images/iscc-similarity-hash.svg){ .left }
+![An original image and a cropped, re-compressed copy compared unit by unit: the Content-Codes differ in 6 of 64 bits and are close, the Data-Codes differ in 36 bits and are far apart, the Instance-Codes have no exact match; re-encoding changes the bitstream while the perceptual Content-Code stays close](images/iscc-similarity-comparison.svg){ .left }
 
 Each ISCC-UNIT, except for the Instance-Code, is a **similarity-preserving** hash: similar inputs produce codes that are close in
 [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance). Likeness can therefore be
@@ -147,7 +147,7 @@ codes alone.
 
 <div class="iscc-cols" markdown>
 
-![ISCC decentralized issuance](images/iscc-decentralized-issuance.svg){ .left }
+![An author, a publisher, a library and anyone else calculate the same ISCC-CODE from the same file with ISO 24138:2024: calculated, not assigned](images/iscc-decentralized-issuance.svg){ .left }
 
 ISCCs are **generated from the content**, not assigned by an authority. No registration, account, or
 central database is involved: anyone with the open-source software and the asset derives the same
@@ -824,7 +824,7 @@ to the many others who have helped along the way.
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AEK2KP4ACMSSY4KV7ORSDHNCRSD5U367T2SQ2GX2SSMM3IPXR3Z4Y`
+**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSBZIJKVTYJ7LP4ETN356NNZRGQNI`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via
@@ -840,7 +840,7 @@ Copyright © 2016-2026 Titusz Pan and contributors.
 
 Published by the ISCC Foundation.
 
-<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" class="off-glb" width="88" src="images/cc-by-4.0.svg" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 ## Source code license
 
@@ -1354,7 +1354,7 @@ Signature: `similarity_hash(hash_digests: Sequence[ByteString]) -> bytes `
 
 The `similarity_hash` function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to `0` if the count is negative or `1` if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also [Charikar2002][Charikar2002].
 
-![iscc-similarity-hash](../images/iscc-similarity-hash.svg)
+![Three input hash digests are combined bit by bit into one similarity hash digest: each output bit is 1 where more inputs have it set than not](../images/iscc-similarity-hash.svg)
 
 See also: [Similarity hash reference code](https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L239)
 
@@ -1430,7 +1430,7 @@ Outputs that are expected to be raw bytes are embedded as HEX encoded strings in
 
 Copyright © 2016 - 2020 The Authors, Content Blockchain Project
 
-<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" class="off-glb" width="88" src="../images/cc-by-4.0.svg" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.
 
 
 *[CDC]: Content defined chunking

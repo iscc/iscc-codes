@@ -48,12 +48,20 @@
 
 
     
+  
+  <link rel="stylesheet" href="../assets/iscc/vendor/glightbox/glightbox.min.css">
+  
   <link rel="stylesheet" href="../assets/iscc/tokens/iscc.css">
   <link rel="stylesheet" href="../assets/iscc/theme.css">
 
     
+  
       
     
+  
+  <script src="../assets/iscc/vendor/glightbox/glightbox.min.js"></script>
+  
+
     
       
     
@@ -784,7 +792,7 @@ itself, independent parties can derive the same code from the same asset. The ca
 follow from that design.</p>
 <h2 id="multi-layer-content-identification">Multi-layer content identification<a class="headerlink" href="#multi-layer-content-identification" title="Permanent link">&para;</a></h2>
 <div class="iscc-cols">
-<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-algo-design3.svg"><img alt="ISCC algorithmic design" class="left" src="../images/iscc-algo-design3.svg" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-algo-design3.svg"><img alt="Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to Instance-Code, which combine into one ISCC-CODE; the Semantic-Code is reserved in ISO 24138:2024 and its example string comes from an experimental implementation" class="left" src="../images/iscc-algo-design3.svg" /></a></p>
 <p>An <strong>ISCC-CODE</strong> is a made of several <strong>ISCC-UNITs</strong>, each using a distinct algorithm and capturing a different layer of identity. An ISCC-CODE contains at minimum a Data-Code and an Instance-Code. The units are
 self-describing and can also be used in isolation.</p>
 </div>
@@ -806,7 +814,7 @@ yet define an algorithm for them. Experimental implementations exist for text
 </div>
 <h2 id="similarity-preserving-fingerprints">Similarity-preserving fingerprints<a class="headerlink" href="#similarity-preserving-fingerprints" title="Permanent link">&para;</a></h2>
 <div class="iscc-cols">
-<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-similarity-hash.svg"><img alt="ISCC similarity hash" class="left" src="../images/iscc-similarity-hash.svg" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-similarity-comparison.svg"><img alt="An original image and a cropped, re-compressed copy compared unit by unit: the Content-Codes differ in 6 of 64 bits and are close, the Data-Codes differ in 36 bits and are far apart, the Instance-Codes have no exact match; re-encoding changes the bitstream while the perceptual Content-Code stays close" class="left" src="../images/iscc-similarity-comparison.svg" /></a></p>
 <p>Each ISCC-UNIT, except for the Instance-Code, is a <strong>similarity-preserving</strong> hash: similar inputs produce codes that are close in
 <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a>. Likeness can therefore be
 estimated by comparing codes directly, without access to the original files.</p>
@@ -824,7 +832,7 @@ estimated by comparing codes directly, without access to the original files.</p>
 codes alone.</p>
 <h2 id="decentralized-algorithmic-generation">Decentralized, algorithmic generation<a class="headerlink" href="#decentralized-algorithmic-generation" title="Permanent link">&para;</a></h2>
 <div class="iscc-cols">
-<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-decentralized-issuance.svg"><img alt="ISCC decentralized issuance" class="left" src="../images/iscc-decentralized-issuance.svg" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../images/iscc-decentralized-issuance.svg"><img alt="An author, a publisher, a library and anyone else calculate the same ISCC-CODE from the same file with ISO 24138:2024: calculated, not assigned" class="left" src="../images/iscc-decentralized-issuance.svg" /></a></p>
 <p>ISCCs are <strong>generated from the content</strong>, not assigned by an authority. No registration, account, or
 central database is involved: anyone with the open-source software and the asset derives the same
 code. Generation is implemented in <a href="https://github.com/iscc/iscc-core">iscc-core</a>, the ISO 24138

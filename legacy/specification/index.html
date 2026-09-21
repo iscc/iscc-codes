@@ -44,12 +44,20 @@
 
 
     
+  
+  <link rel="stylesheet" href="../../assets/iscc/vendor/glightbox/glightbox.min.css">
+  
   <link rel="stylesheet" href="../../assets/iscc/tokens/iscc.css">
   <link rel="stylesheet" href="../../assets/iscc/theme.css">
 
     
+  
       
     
+  
+  <script src="../../assets/iscc/vendor/glightbox/glightbox.min.js"></script>
+  
+
     
       
     
@@ -1738,7 +1746,7 @@
 <h4 id="similarity_hash">similarity_hash<a class="headerlink" href="#similarity_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>similarity_hash(hash_digests: Sequence[ByteString]) -&gt; bytes</code></p>
 <p>The <code>similarity_hash</code> function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to <code>0</code> if the count is negative or <code>1</code> if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also <a href="http://dx.doi.org/10.1145/509907.509965" title="Charikar, M.S., 2002, May. Similarity estimation techniques from rounding algorithms. In Proceedings of the thirty-fourth annual ACM symposium on theory of computing (pp. 380-388). ACM.">Charikar2002</a>.</p>
-<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-similarity-hash.svg"><img alt="iscc-similarity-hash" src="../../images/iscc-similarity-hash.svg" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="90vw" href="../../images/iscc-similarity-hash.svg"><img alt="Three input hash digests are combined bit by bit into one similarity hash digest: each output bit is 1 where more inputs have it set than not" src="../../images/iscc-similarity-hash.svg" /></a></p>
 <p>See also: <a href="https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L239">Similarity hash reference code</a></p>
 <h4 id="minimum_hash">minimum_hash<a class="headerlink" href="#minimum_hash" title="Permanent link">&para;</a></h4>
 <p>Signature: <code>minimum_hash(features: Iterable[int], n: int = 64) -&gt; List[int]</code></p>
@@ -1790,7 +1798,7 @@
 </div>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>Copyright © 2016 - 2020 The Authors, Content Blockchain Project</p>
-<p><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><a class="glightbox" href="https://i.creativecommons.org/l/by/4.0/88x31.png" data-type="image" data-width="90vw"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
+<p><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" class="off-glb" width="88" src="../../images/cc-by-4.0.svg" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>.</p>
 
 
 
