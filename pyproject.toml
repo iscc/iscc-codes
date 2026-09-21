@@ -14,6 +14,11 @@ dev = [
   "mdformat-mkdocs[recommended]>=4.1.0",
   "prek>=0.2.19",
 ]
+figures = [
+    "brotli>=1.2.0",
+    "fonttools>=4.65.0",
+    "iscc-core>=1.3.0",
+]
 
 [tool.uv]
 package = false

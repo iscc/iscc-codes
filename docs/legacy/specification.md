@@ -498,7 +498,7 @@ Signature: `similarity_hash(hash_digests: Sequence[ByteString]) -> bytes `
 
 The `similarity_hash` function takes a sequence of hash digests that represent a set of features. Each of the digests MUST be of equal size. The function returns a new hash digest (raw 8-Bit bytes) of the same size. For each bit in the input-hashes calculate the number of hashes with that bit set and subtract the count of hashes where it is not set. For the output-hash set the same bit position to `0` if the count is negative or `1` if it is zero or positive. The resulting hash digest will retain similarity for similar sets of input hashes. See also [Charikar2002][Charikar2002].
 
-![iscc-similarity-hash](../images/iscc-similarity-hash.svg)
+![Three input hash digests are combined bit by bit into one similarity hash digest: each output bit is 1 where more inputs have it set than not](../images/iscc-similarity-hash.svg)
 
 See also: [Similarity hash reference code](https://github.com/iscc/iscc-codes/blob/main/src/iscc/iscc.py#L239)
 
