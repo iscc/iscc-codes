@@ -1060,7 +1060,7 @@ to the many others who have helped along the way.
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSAH5LH5CT3DD7LAO67H5HTV7K3VQ`
+**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSBPX7EMDHTLIHPAPX5VLXVP2I4XI`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via
@@ -1081,20 +1081,6 @@ Published by the ISCC Foundation.
 ## Source code license
 
 Historical reference code archived in this repository remains licensed under BSD-2-Clause unless otherwise noted in the corresponding source files.
-
-
-# Features
-
-The features page has moved to [Capabilities](../capabilities/).
-
-If you are not redirected automatically, follow the link above.
-
-
-# Implementations
-
-The implementations page has moved to [Resources](../resources/).
-
-If you are not redirected automatically, follow the link above.
 
 
 # ISCC - Specification v1.x

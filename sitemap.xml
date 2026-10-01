@@ -10,18 +10,21 @@
         <loc>https://iscc.codes/concept/</loc>
       </url>
       <url>
-        <loc>https://iscc.codes/discovery/</loc>
+        <loc>https://iscc.codes/history/</loc>
+      </url>
+      <url>
+        <loc>https://iscc.codes/iscc-discovery-protocol-idp/</loc>
+      </url>
+      <url>
+        <loc>https://iscc.codes/legacy/specification/</loc>
+      </url>
+      <url>
+        <loc>https://iscc.codes/license/</loc>
       </url>
       <url>
         <loc>https://iscc.codes/resources/</loc>
       </url>
       <url>
         <loc>https://iscc.codes/specification/</loc>
-      </url>
-      <url>
-        <loc>https://iscc.codes/history/</loc>
-      </url>
-      <url>
-        <loc>https://iscc.codes/license/</loc>
       </url>
 </urlset>
