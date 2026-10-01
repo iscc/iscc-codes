@@ -13,7 +13,7 @@ nav = [
     { "iscc-codes" = "index.md" },
     { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
-    { "Discovery" = "discovery.md" },
+    { "Discovery" = "iscc-discovery-protocol-idp.md" },
     { "Resources" = "resources.md" },
     { "Specification" = "specification.md" },
     { "History" = "history.md" },
@@ -103,5 +103,6 @@ width = "90vw"
 # Historical paths forward to their current page. The generated redirect pages
 # carry a canonical link and stay out of the sitemap and search index.
 [project.plugins.redirects.redirect_maps]
+"discovery.md" = "iscc-discovery-protocol-idp.md"
 "features.md" = "capabilities.md"
 "implementations.md" = "resources.md"

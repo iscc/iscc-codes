@@ -1,5 +1,5 @@
 ---
-title: ISCC - Discovery Protocol
+title: ISCC - Discovery Protocol (IDP)
 description: An open proposal for declaring ISCC-CODEs, so that anyone can start from digital content and discover who declared it, when, and where to find its metadata.
 authors: Titusz Pan, Martin Etzrodt
 icon: lucide/compass

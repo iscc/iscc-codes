@@ -42,6 +42,8 @@ a canonical link to the current page and stay out of the sitemap and search inde
   configuration.
 - `/features/` → `/capabilities/`, after the `Features` page was renamed to
   `Capabilities`.
+- `/discovery/` → `/iscc-discovery-protocol-idp/`, after the Discovery Protocol
+  page moved from its first published path to a descriptive one.
 
 Keep these compatibility paths covered in future content architecture changes.
 `/implementations/` may become a redirect to a future implementations, ecosystem,
@@ -54,10 +56,11 @@ Current source files for the public paths:
 - `/` → `docs/index.md`
 - `/capabilities/` → `docs/capabilities.md`
 - `/concept/` → `docs/concept.md`
+- `/iscc-discovery-protocol-idp/` → `docs/iscc-discovery-protocol-idp.md`
 - `/license/` → `docs/license.md`
 - `/resources/` → `docs/resources.md`
 - `/specification/` → `docs/specification.md`
-- `/implementations/` and `/features/` → redirects in `zensical.toml`
+- `/implementations/`, `/features/` and `/discovery/` → redirects in `zensical.toml`
 
 ## Migration rules
 
@@ -65,6 +68,8 @@ Current source files for the public paths:
 - Preserve all current public paths listed above.
 - Preserve `/implementations/` as a compatibility path.
 - Preserve `/features/` as a compatibility path forwarding to `/capabilities/`.
+- Preserve `/discovery/` as a compatibility path forwarding to
+  `/iscc-discovery-protocol-idp/`.
 - Prefer neutral maintainer vocabulary such as "site migration", "URL
   preservation", "link compatibility", "redirect map", and "canonical paths".
 - Avoid repository structure or public docs that frame this work as marketing.

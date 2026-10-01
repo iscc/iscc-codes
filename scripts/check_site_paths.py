@@ -18,6 +18,7 @@ REQUIRED_SOURCE_PATHS = {
     "/": Path("docs/index.md"),
     "/capabilities/": Path("docs/capabilities.md"),
     "/concept/": Path("docs/concept.md"),
+    "/iscc-discovery-protocol-idp/": Path("docs/iscc-discovery-protocol-idp.md"),
     "/license/": Path("docs/license.md"),
     "/resources/": Path("docs/resources.md"),
     "/specification/": Path("docs/specification.md"),
@@ -28,6 +29,7 @@ REQUIRED_SOURCE_PATHS = {
 COMPATIBILITY_REDIRECTS = {
     "/implementations/": ("implementations.md", "resources.md"),
     "/features/": ("features.md", "capabilities.md"),
+    "/discovery/": ("discovery.md", "iscc-discovery-protocol-idp.md"),
 }
 
 EXPECTED_SITE_SETTINGS = {
