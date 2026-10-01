@@ -2,7 +2,7 @@
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSBZIJKVTYJ7LP4ETN356NNZRGQNI`
+**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSAH5LH5CT3DD7LAO67H5HTV7K3VQ`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via
