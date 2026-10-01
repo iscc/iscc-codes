@@ -2,9 +2,20 @@
  *
  * Fonts, palette, header, navigation, code and admonition styling come from
  * the theme. This file only styles markup that exists on this site: the
- * landing page hero and cards, the resources page repository cards, and the
- * status badges and legend. Colours reference the identity tokens from the
- * theme's iscc.css. */
+ * landing page hero and cards, the lead paragraph of a page, the resources
+ * page repository cards, and the status badges and legend. Colours reference
+ * the identity tokens from the theme's iscc.css. */
+
+/* ---------- Lead paragraph ---------- */
+
+/* Opening paragraph set apart from the body copy by size, at the same light
+ * weight. Applied with { .iscc-lead } on the line after the paragraph. */
+.md-typeset .iscc-lead {
+  font-size: 1.2em;
+  line-height: 1.55;
+  color: var(--md-default-fg-color);
+  margin-bottom: 1.4em;
+}
 
 /* ---------- Floated figures ---------- */
 

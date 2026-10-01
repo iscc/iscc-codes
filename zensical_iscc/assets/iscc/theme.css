@@ -670,6 +670,77 @@
   box-shadow: inset 0 -2px 0 var(--iscc-coral);
 }
 
+/* ---------- Content tabs ---------- */
+
+/* A bordered panel under a tinted tab bar. Labels take the link colour so they
+ * read as clickable; the active tab opens onto the panel and carries the coral
+ * current-item marker. The marker is the theme's sliding indicator, restyled
+ * from an underline into the active tab's field. */
+.md-typeset .tabbed-set {
+  border: 1px solid var(--iscc-rule);
+  border-radius: 0;
+  background-color: var(--iscc-field);
+}
+
+.md-typeset .tabbed-labels {
+  background-color: var(--md-default-bg-color);
+  box-shadow: inset 0 -1px 0 var(--iscc-rule);
+}
+
+.md-typeset .tabbed-labels > label {
+  position: relative;
+  z-index: 1;
+  border-bottom: 0;
+  border-right: 1px solid var(--iscc-rule);
+  border-radius: 0;
+  color: var(--md-typeset-a-color);
+  font-weight: 500;
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  color: var(--md-default-fg-color);
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+.js .md-typeset .tabbed-labels::before {
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  height: auto;
+  background: var(--iscc-field);
+  box-shadow: inset 0 2px 0 var(--iscc-coral);
+}
+
+.md-typeset .tabbed-set > input.focus-visible ~ .tabbed-labels::before {
+  background-color: var(--iscc-field);
+  box-shadow: inset 0 2px 0 var(--iscc-coral), inset 0 0 0 2px var(--md-accent-fg-color);
+}
+
+.md-typeset .tabbed-content {
+  padding: 0 1.2rem;
+}
+
+/* A tab that holds only a code block shows the code flush to the panel edges,
+ * framed by the panel border instead of a box of its own. */
+.md-typeset .tabbed-block > .highlight:only-child {
+  margin: 0 -1.2rem;
+}
+
+.md-typeset .tabbed-block > .highlight:only-child pre {
+  margin: 0;
+}
+
+.md-typeset .tabbed-block > .highlight:only-child pre > code {
+  border: 0;
+  border-radius: 0;
+}
+
+.md-typeset .tabbed-block > .highlight:only-child span.filename {
+  border: 0;
+  border-bottom: 1px solid var(--iscc-rule);
+  border-radius: 0;
+}
+
 /* ---------- Navigation ---------- */
 
 .md-nav {

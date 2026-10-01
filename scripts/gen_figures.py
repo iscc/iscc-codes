@@ -113,10 +113,11 @@ class Figure:
         """Append raw markup."""
         self.body.append(markup)
 
-    def rect(self, x, y, w, h, fill=WHITE, stroke=INK, stroke_width=2):
-        """Draw a square-cornered field, optionally without a stroke."""
+    def rect(self, x, y, w, h, fill=WHITE, stroke=INK, stroke_width=2, dashed=False):
+        """Draw a square-cornered field, optionally without a stroke or with a dashed one."""
         stroke_attrs = f' stroke="{stroke}" stroke-width="{stroke_width}"' if stroke else ""
-        self.add(f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" fill="{fill}"{stroke_attrs}/>')
+        dash = ' stroke-dasharray="7 6"' if dashed else ""
+        self.add(f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" fill="{fill}"{stroke_attrs}{dash}/>')
 
     def line(self, x1, y1, x2, y2, stroke=RULE, width=1, dashed=False):
         """Draw a thin rule or connector segment."""
@@ -426,11 +427,127 @@ def figure_similarity_comparison():
     return fig
 
 
+# The three layers of the ISCC Discovery Protocol, top to bottom: name and two lines of
+# description.
+IDP_LAYERS = [
+    ("ISCC-HUB", "issues ISCC-IDs for signed declarations,", "keeps a public log, stores no metadata"),
+    ("Gateway", "lists the metadata and services", "available for an ISCC-ID"),
+    ("Registry", "holds the metadata and offers", "services such as licensing"),
+]
+
+
+def figure_idp_layers():
+    """Figure 5: the three layers of the ISCC Discovery Protocol and who uses them."""
+    fig = Figure(
+        1200, 680, "Three layers of the ISCC Discovery Protocol",
+        "A declarer declares content at an ISCC-HUB and provides metadata to a registry. Anyone "
+        "with a file or an ISCC-ID looks it up at the ISCC-HUB, which links to a gateway that "
+        "routes to the registry holding the metadata. ISCC-HUBs timestamp, gateways route, "
+        "registries hold the metadata. The layers are separated by function, not by operator: "
+        "one operator can run all three layers, or just one.",
+    )
+    x_mid, w_mid, h_mid = 380, 440, 112
+    rows = [48, 232, 416]
+    centre = x_mid + w_mid / 2
+    for (name, line1, line2), y in zip(IDP_LAYERS, rows):
+        fig.rect(x_mid, y, w_mid, h_mid)
+        fig.text(x_mid + 24, y + 40, name, 22, "medium")
+        fig.text(x_mid + 24, y + 70, line1, 16, "regular", MUTED)
+        fig.text(x_mid + 24, y + 94, line2, 16, "regular", MUTED)
+    hub_mid, registry_mid = rows[0] + h_mid / 2, rows[2] + h_mid / 2
+
+    # The declarer declares at an ISCC-HUB and provides metadata to a registry.
+    label_box(fig, 44, hub_mid - 44, 240, 88, "Declarer", "signs with their own key")
+    fig.arrow([(284, hub_mid), (x_mid, hub_mid)])
+    fig.text(332, hub_mid - 10, "declares", 15, "regular", MUTED, "center")
+    fig.arrow([(164, hub_mid + 44), (164, registry_mid), (x_mid, registry_mid)])
+    fig.text(272, registry_mid - 10, "provides metadata", 15, "regular", MUTED, "center")
+
+    # Anyone starts at the ISCC-HUB and follows the links down to the metadata.
+    label_box(fig, 916, hub_mid - 44, 240, 88, "Anyone", "with a file or an ISCC-ID")
+    fig.arrow([(916, hub_mid), (x_mid + w_mid, hub_mid)])
+    fig.text(868, hub_mid - 10, "looks up", 15, "regular", MUTED, "center")
+    for (top, bottom), label in zip([(rows[0], rows[1]), (rows[1], rows[2])], ["links to", "routes to"]):
+        fig.arrow([(centre, top + h_mid), (centre, bottom)])
+        fig.text(centre + 14, (top + h_mid + bottom) / 2 + 5, label, 15, "regular", MUTED)
+    fig.arrow([(x_mid + w_mid, registry_mid), (1036, registry_mid), (1036, hub_mid + 44)])
+    fig.text(928, registry_mid - 10, "returns metadata", 15, "regular", MUTED, "center")
+
+    # The single emphasis: the point of the figure, in words.
+    fig.rect(44, 572, 1112, 60, fill=CORAL, stroke=None)
+    w = fig.text(68, 610, "Separate by function, not by operator.", 24, "medium")
+    fig.text(68 + w + 28, 610, "One operator can run all three layers, or just one.", 18)
+    return fig
+
+
+# Example ISCC-HUBs in the network figure: name, the policy its operator sets, and the
+# number of entries drawn in its log.
+IDP_HUBS = [
+    ("ISCC-HUB 1", "policy: open to any declarer", 15),
+    ("ISCC-HUB 2", "policy: approved keys only", 9),
+    ("ISCC-HUB n", "policy: keys tied to a web domain", 12),
+]
+
+
+def figure_idp_network():
+    """Figure 6: independent ISCC-HUBs in the HUB-LIST, each with its own policy and log."""
+    fig = Figure(
+        1200, 664, "The ISCC-HUB network",
+        "Declarers choose an ISCC-HUB in the HUB-LIST. Each ISCC-HUB sets its own policy and "
+        "keeps its own public log. Monitors verify the logs over time, and aggregators index "
+        "many logs for search. No single operator runs the IDP, and anyone can verify every log.",
+    )
+    x_hub, w_hub, h_hub = 360, 432, 112
+    rows = [96, 232, 392]
+    mids = [y + h_hub / 2 for y in rows]
+    x_in, x_out = 304, 856
+
+    # The HUB-LIST encloses the ISCC-HUBs it names.
+    fig.rect(336, 40, 480, 488, fill="none", stroke=MUTED, stroke_width=2, dashed=True)
+    w = fig.text(x_hub, 74, "HUB-LIST", 18, "medium")
+    fig.text(x_hub + w + 12, 74, "every ISCC-HUB with its key and address", 15, "regular", MUTED)
+    for (name, policy, entries), y in zip(IDP_HUBS, rows):
+        fig.rect(x_hub, y, w_hub, h_hub)
+        fig.text(x_hub + 24, y + 38, name, 22, "medium")
+        fig.text(x_hub + 24, y + 66, policy, 16, "regular", MUTED)
+        fig.text(x_hub + 24, y + 94, "log", 15, "regular", MUTED)
+        for index in range(entries):
+            fig.rect(x_hub + 64 + index * 18, y + 82, 12, 12, fill=MUTED, stroke=None)
+    for offset in (0, 12, 24):
+        fig.rect(x_hub + w_hub / 2 - 3, rows[1] + h_hub + 9 + offset, 6, 6, fill=MUTED, stroke=None)
+
+    # Declarers choose an ISCC-HUB.
+    label_box(fig, 44, mids[1] - 44, 220, 88, "Declarers", "choose an ISCC-HUB")
+    fig.line(264, mids[1], x_in, mids[1], INK, 2)
+    fig.line(x_in, mids[0], x_in, mids[2], INK, 2)
+    for mid in mids:
+        fig.arrow([(x_in, mid), (x_hub, mid)])
+
+    # Monitors and aggregators read the logs of many ISCC-HUBs.
+    readers = [("Monitors", "verify each log over time"), ("Aggregators", "index many logs for search")]
+    reader_mids = [220, 356]
+    for mid in mids:
+        fig.line(x_hub + w_hub, mid, x_out, mid, INK, 2)
+    fig.line(x_out, mids[0], x_out, mids[2], INK, 2)
+    fig.text(x_out + 12, 293, "read the logs", 15, "regular", MUTED)
+    for (title, subtitle), mid in zip(readers, reader_mids):
+        fig.arrow([(x_out, mid), (896, mid)])
+        label_box(fig, 896, mid - 44, 260, 88, title, subtitle)
+
+    # The single emphasis: the point of the figure, in words.
+    fig.rect(44, 560, 1112, 60, fill=CORAL, stroke=None)
+    w = fig.text(68, 598, "No single operator runs the IDP.", 24, "medium")
+    fig.text(68 + w + 28, 598, "Each ISCC-HUB keeps its own log, and anyone can verify it.", 18)
+    return fig
+
+
 FIGURES = {
     "iscc-algo-design3": figure_iscc_code_units,
     "iscc-similarity-hash": figure_similarity_hash,
     "iscc-decentralized-issuance": figure_calculated_not_assigned,
     "iscc-similarity-comparison": figure_similarity_comparison,
+    "idp-three-layers": figure_idp_layers,
+    "idp-network": figure_idp_network,
 }
 
 
