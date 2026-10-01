@@ -5,7 +5,7 @@ description = "Documentation site and historical material for the International 
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-  "zensical==0.0.43",
+  "zensical==0.0.67",
 ]
 
 [dependency-groups]
