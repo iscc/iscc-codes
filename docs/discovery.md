@@ -83,9 +83,9 @@ content finds both.
 
 ## Three layers
 
-![A declarer declares content at an ISCC-HUB and provides metadata to a registry; anyone with a file or an ISCC-ID looks it up at the ISCC-HUB, whose gateway link leads to a gateway that routes to the registry holding the metadata and services: ISCC-HUBs timestamp, gateways route, registries hold the metadata](images/idp-three-layers.svg)
+![A declarer declares content at an ISCC-HUB and provides metadata to a registry; anyone with a file or an ISCC-ID looks it up at the ISCC-HUB, which links to a gateway that routes to the registry holding the metadata: the layers are separated by function, not by operator, so one operator can run all three layers, or just one](images/idp-three-layers.svg)
 
-The IDP separates three functions, so that different parties can run them:
+The IDP separates three functions:
 
 - **ISCC-HUBs** handle declaration and timestamping. They issue ISCC-IDs and publish transparency
   logs that anyone can read and verify. They stay lean and neutral and store no descriptive
@@ -97,6 +97,10 @@ The IDP separates three functions, so that different parties can run them:
   schemas and verification rules, and offer services. Existing
   registries keep their identifiers and their role; the IDP makes them discoverable from the
   content.
+
+The separation is functional, not organizational. A single operator can combine all three
+functions or run only one of them. A registry, for example, can run its own ISCC-HUB and
+gateway, or rely on those run by others.
 
 ## Three ways to discover
 
@@ -138,7 +142,9 @@ deleted" stays verifiable.
 
 ## A polycentric network
 
-No single operator runs the IDP. It runs on independent ISCC-HUBs - up to 4,096 in the
+![Declarers choose an ISCC-HUB in the HUB-LIST; each ISCC-HUB sets its own policy and keeps its own log; monitors and aggregators read the logs of many ISCC-HUBs: no single operator runs the IDP, and anyone can verify every log](images/idp-network.svg)
+
+The IDP runs on independent ISCC-HUBs - up to 4,096 in the
 operational network - each listed in a public HUB-LIST. Each ISCC-HUB writes only its own log and
 depends on no other ISCC-HUB. Around them, others observe:
 
