@@ -99,3 +99,9 @@ combine_header_slug = true
 [project.plugins.glightbox]
 auto = true
 width = "90vw"
+
+# Historical paths forward to their current page. The generated redirect pages
+# carry a canonical link and stay out of the sitemap and search index.
+[project.plugins.redirects.redirect_maps]
+"features.md" = "capabilities.md"
+"implementations.md" = "resources.md"

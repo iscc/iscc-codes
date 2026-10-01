@@ -23,9 +23,12 @@ REQUIRED_SOURCE_PATHS = {
     "/specification/": Path("docs/specification.md"),
 }
 
-# Historical paths kept as compatibility pages that forward to a current page.
-# /implementations/ forwards to /resources/; /features/ forwards to /capabilities/.
-COMPATIBILITY_PATHS = ("/implementations/", "/features/")
+# Historical paths kept as redirects to a current page, with the source and
+# destination Markdown files expected in redirect_maps of zensical.toml.
+COMPATIBILITY_REDIRECTS = {
+    "/implementations/": ("implementations.md", "resources.md"),
+    "/features/": ("features.md", "capabilities.md"),
+}
 
 EXPECTED_SITE_SETTINGS = {
     "site_url": "https://iscc.codes",
@@ -63,22 +66,6 @@ def check_source_files(repo_root: Path) -> list[str]:
     elif cname.read_text(encoding="utf-8").strip() != "iscc.codes":
         errors.append("docs/CNAME must contain exactly: iscc.codes")
 
-    implementations_source = repo_root / "docs/implementations.md"
-    if not implementations_source.is_file():
-        errors.append("missing compatibility source for /implementations/: docs/implementations.md")
-    else:
-        implementations_text = implementations_source.read_text(encoding="utf-8")
-        if "../resources/" not in implementations_text and "/resources/" not in implementations_text:
-            errors.append("docs/implementations.md should forward to /resources/")
-
-    features_source = repo_root / "docs/features.md"
-    if not features_source.is_file():
-        errors.append("missing compatibility source for /features/: docs/features.md")
-    else:
-        features_text = features_source.read_text(encoding="utf-8")
-        if "../capabilities/" not in features_text and "/capabilities/" not in features_text:
-            errors.append("docs/features.md should forward to /capabilities/")
-
     zensical_config = repo_root / "zensical.toml"
     if not zensical_config.is_file():
         errors.append("missing Zensical configuration: zensical.toml")
@@ -87,6 +74,10 @@ def check_source_files(repo_root: Path) -> list[str]:
         for key, expected_value in EXPECTED_SITE_SETTINGS.items():
             if project.get(key) != expected_value:
                 errors.append(f"zensical.toml should set {key}: {expected_value}")
+        redirects = project.get("plugins", {}).get("redirects", {}).get("redirect_maps", {})
+        for url_path, (source, destination) in COMPATIBILITY_REDIRECTS.items():
+            if redirects.get(source) != destination:
+                errors.append(f"zensical.toml should redirect {url_path}: {source} = {destination}")
 
     old_slug_files = (
         repo_root / "README.md",
@@ -95,7 +86,6 @@ def check_source_files(repo_root: Path) -> list[str]:
         repo_root / "pyproject.toml",
         repo_root / "docs/resources.md",
         repo_root / "docs/specification.md",
-        repo_root / "docs/implementations.md",
         repo_root / "maintainers/site-migration.md",
     )
     for path in old_slug_files:
@@ -117,7 +107,7 @@ def check_generated_site(site_dir: Path) -> list[str]:
         if not index_file.is_file():
             errors.append(f"missing generated page for {url_path}: {index_file}")
 
-    for url_path in COMPATIBILITY_PATHS:
+    for url_path in COMPATIBILITY_REDIRECTS:
         index_file = generated_index_for(site_dir, url_path)
         if not index_file.is_file():
             errors.append(f"missing generated compatibility path for {url_path}: {index_file}")

@@ -34,15 +34,14 @@ or configure an explicit redirect to the new location.
 
 ## Historical and compatibility paths
 
-The previous MkDocs configuration contained this redirect, now preserved as a
-Zensical forwarding page:
+Historical paths are kept as redirects in `zensical.toml`
+(`[project.plugins.redirects.redirect_maps]`). The generated redirect pages carry
+a canonical link to the current page and stay out of the sitemap and search index.
 
-- `/implementations/` → `/resources/`
-
-The `Features` page was renamed to `Capabilities`. Its original path is kept as a
-Zensical forwarding page:
-
-- `/features/` → `/capabilities/`
+- `/implementations/` → `/resources/`, carried over from the previous MkDocs
+  configuration.
+- `/features/` → `/capabilities/`, after the `Features` page was renamed to
+  `Capabilities`.
 
 Keep these compatibility paths covered in future content architecture changes.
 `/implementations/` may become a redirect to a future implementations, ecosystem,
@@ -58,8 +57,7 @@ Current source files for the public paths:
 - `/license/` → `docs/license.md`
 - `/resources/` → `docs/resources.md`
 - `/specification/` → `docs/specification.md`
-- `/implementations/` → `docs/implementations.md` compatibility forwarding page
-- `/features/` → `docs/features.md` compatibility forwarding page
+- `/implementations/` and `/features/` → redirects in `zensical.toml`
 
 ## Migration rules
 
