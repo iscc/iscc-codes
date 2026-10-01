@@ -113,12 +113,59 @@ gateway, or rely on those run by others.
   index them across ISCC-HUBs, so that re-encoded, resized, or edited versions of a work can be
   found from any one of them.
 
+## A polycentric network
+
+![Declarers choose an ISCC-HUB in the HUB-LIST; each ISCC-HUB sets its own policy and keeps its own log; monitors and aggregators read the logs of many ISCC-HUBs: no single operator runs the IDP, and anyone can verify every log](images/idp-network.svg)
+
+The IDP runs on independent ISCC-HUBs - up to 4,096 in the
+operational network - each listed in a public HUB-LIST. Each ISCC-HUB writes only its own log and
+depends on no other ISCC-HUB. Around them, others observe:
+
+- **Monitors** verify each log over time and detect rewritten histories.
+- **Aggregators** read the logs of many ISCC-HUBs and build network-wide indexes for lookup and
+  similarity search.
+- **Anyone** can verify a log with standard tools for transparency logs.
+
+Each operator sets and announces the policies and fees of its own ISCC-HUB: open to any
+declarer, limited to approved keys, or with extra requirements such as an identity tied to a web
+domain. Such policies can only narrow what the protocol allows, never extend it. Public-interest
+and commercial operators can run ISCC-HUBs side by side.
+
+How ISCC-HUBs join the HUB-LIST, how they announce their policies, and how the list is governed
+are part of this proposal and open for discussion.
+
 ## Trust through transparency
 
-**Anyone may declare any content.** Creators and publishers have reasons to identify content, and
-so do libraries, archives, distributors, platforms, researchers, and users. The IDP therefore
-makes no assumptions about authorship or rights. It records who declared what, and when. A
-declaration is a claim, not a proof of ownership.
+**The protocol is open. Trust is configured.** The IDP itself does not limit who may declare
+what. Creators and publishers have reasons to identify content, and so do libraries, archives,
+distributors, platforms, researchers, and users. The IDP therefore makes no assumptions about
+authorship or rights. It records who declared what, and when. A declaration is not a proof of
+ownership, but it is a proof of existence: timestamped, verifiable evidence that the content
+existed by the time of declaration, and that a specific key claimed it.
+
+Trust is configured at two points. Each ISCC-HUB decides who may declare there and announces its
+policy. Each participant decides which ISCC-HUBs it relies on:
+
+=== "Curated registry"
+
+    An institution runs its own ISCC-HUB, accepts declarations only from approved keys, and
+    relies only on its own records.
+
+    **It works like a central registry, but its records can be discovered from the content
+    anywhere.**
+
+=== "Sector federation"
+
+    A consortium or sector curates its own subset of ISCC-HUBs, and monitors and indexes only
+    those.
+
+    **The federation decides. Nobody outside it has to agree.**
+
+=== "Open network"
+
+    A search service indexes every public log and finds declarations across the whole network.
+
+    **Indexing is not endorsing. The log shows who claimed what, and when.**
 
 **Conflicts stay visible.** Different parties may declare the same content with conflicting
 claims. The IDP does not decide between them. It keeps every claim public, attributed to a key,
@@ -139,27 +186,6 @@ declarations, and registries with transparent policies.
 **Deletion leaves a trace.** Only the key that made a declaration can delete it. The deletion is
 recorded as a new log entry and the original entry remains, so the history "declared, then
 deleted" stays verifiable.
-
-## A polycentric network
-
-![Declarers choose an ISCC-HUB in the HUB-LIST; each ISCC-HUB sets its own policy and keeps its own log; monitors and aggregators read the logs of many ISCC-HUBs: no single operator runs the IDP, and anyone can verify every log](images/idp-network.svg)
-
-The IDP runs on independent ISCC-HUBs - up to 4,096 in the
-operational network - each listed in a public HUB-LIST. Each ISCC-HUB writes only its own log and
-depends on no other ISCC-HUB. Around them, others observe:
-
-- **Monitors** verify each log over time and detect rewritten histories.
-- **Aggregators** read the logs of many ISCC-HUBs and build network-wide indexes for lookup and
-  similarity search.
-- **Anyone** can verify a log with standard tools for transparency logs.
-
-Each operator sets the policies and fees of its own ISCC-HUB: open to any declarer, limited to
-approved keys, or with extra requirements such as an identity tied to a web domain. Such policies
-can only narrow what the protocol allows, never extend it. Public-interest and commercial
-operators can run ISCC-HUBs side by side.
-
-How ISCC-HUBs join the HUB-LIST, and how the list is governed, is part of this proposal and open
-for discussion.
 
 ## Built on open standards
 

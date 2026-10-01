@@ -86,6 +86,10 @@ pygments_lang_class = true
 [project.markdown_extensions.pymdownx.superfences]
 custom_fences = [{ name = "mermaid", class = "mermaid" }]
 
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+combine_header_slug = true
+
 # GLightbox image lightbox. The zensical_iscc theme serves the library itself,
 # so the Zensical bundle does not fetch it from unpkg.com.
 # With auto = true (default), bare images are wrapped
