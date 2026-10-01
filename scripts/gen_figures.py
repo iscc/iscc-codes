@@ -426,11 +426,64 @@ def figure_similarity_comparison():
     return fig
 
 
+# The three layers of the ISCC Discovery Protocol, top to bottom: name and two lines of
+# description.
+IDP_LAYERS = [
+    ("ISCC-HUB", "issues ISCC-IDs for signed declarations,", "keeps a public log, stores no metadata"),
+    ("Gateway", "lists the metadata and services", "available for an ISCC-ID"),
+    ("Registry", "holds the metadata and offers", "services such as licensing"),
+]
+
+
+def figure_idp_layers():
+    """Figure 5: the three layers of the ISCC Discovery Protocol and who uses them."""
+    fig = Figure(
+        1200, 680, "Three layers of the ISCC Discovery Protocol",
+        "A declarer declares content at an ISCC-HUB and provides metadata to a registry. Anyone "
+        "with a file or an ISCC-ID looks it up at the ISCC-HUB, which links to a gateway that "
+        "routes to the registry holding the metadata. Different parties can run each layer: "
+        "ISCC-HUBs timestamp, gateways route, registries hold the metadata.",
+    )
+    x_mid, w_mid, h_mid = 380, 440, 112
+    rows = [48, 232, 416]
+    centre = x_mid + w_mid / 2
+    for (name, line1, line2), y in zip(IDP_LAYERS, rows):
+        fig.rect(x_mid, y, w_mid, h_mid)
+        fig.text(x_mid + 24, y + 40, name, 22, "medium")
+        fig.text(x_mid + 24, y + 70, line1, 16, "regular", MUTED)
+        fig.text(x_mid + 24, y + 94, line2, 16, "regular", MUTED)
+    hub_mid, registry_mid = rows[0] + h_mid / 2, rows[2] + h_mid / 2
+
+    # The declarer declares at an ISCC-HUB and provides metadata to a registry.
+    label_box(fig, 44, hub_mid - 44, 240, 88, "Declarer", "signs with their own key")
+    fig.arrow([(284, hub_mid), (x_mid, hub_mid)])
+    fig.text(332, hub_mid - 10, "declares", 15, "regular", MUTED, "center")
+    fig.arrow([(164, hub_mid + 44), (164, registry_mid), (x_mid, registry_mid)])
+    fig.text(272, registry_mid - 10, "provides metadata", 15, "regular", MUTED, "center")
+
+    # Anyone starts at the ISCC-HUB and follows the links down to the metadata.
+    label_box(fig, 916, hub_mid - 44, 240, 88, "Anyone", "with a file or an ISCC-ID")
+    fig.arrow([(916, hub_mid), (x_mid + w_mid, hub_mid)])
+    fig.text(868, hub_mid - 10, "looks up", 15, "regular", MUTED, "center")
+    for (top, bottom), label in zip([(rows[0], rows[1]), (rows[1], rows[2])], ["links to", "routes to"]):
+        fig.arrow([(centre, top + h_mid), (centre, bottom)])
+        fig.text(centre + 14, (top + h_mid + bottom) / 2 + 5, label, 15, "regular", MUTED)
+    fig.arrow([(x_mid + w_mid, registry_mid), (1036, registry_mid), (1036, hub_mid + 44)])
+    fig.text(928, registry_mid - 10, "returns metadata", 15, "regular", MUTED, "center")
+
+    # The single emphasis: the point of the figure, in words.
+    fig.rect(44, 572, 1112, 60, fill=CORAL, stroke=None)
+    w = fig.text(68, 610, "Different parties can run each layer.", 24, "medium")
+    fig.text(68 + w + 28, 610, "ISCC-HUBs timestamp, gateways route, registries hold the metadata.", 18)
+    return fig
+
+
 FIGURES = {
     "iscc-algo-design3": figure_iscc_code_units,
     "iscc-similarity-hash": figure_similarity_hash,
     "iscc-decentralized-issuance": figure_calculated_not_assigned,
     "iscc-similarity-comparison": figure_similarity_comparison,
+    "idp-three-layers": figure_idp_layers,
 }
 
 

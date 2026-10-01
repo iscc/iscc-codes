@@ -13,6 +13,7 @@ nav = [
     { "iscc-codes" = "index.md" },
     { "Capabilities" = "capabilities.md" },
     { "Concept" = "concept.md" },
+    { "Discovery" = "discovery.md" },
     { "Resources" = "resources.md" },
     { "Specification" = "specification.md" },
     { "History" = "history.md" },
