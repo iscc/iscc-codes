@@ -29,6 +29,10 @@ WHITE = "#FFFFFF"
 CORAL = "#F56169"
 MUTED = "#636B71"
 RULE = "#D2D6D9"
+# Every figure is drawn on one canvas width, sized for the content column (about 620 to
+# 800 px wide), so that its text renders larger than a wide canvas scaled down would.
+WIDTH = 960
+X0, RIGHT = 44, WIDTH - 44
 UNIT_COLOURS = {
     "Meta-Code": "#7AC2F7",
     "Semantic-Code": "#4596F5",
@@ -174,11 +178,11 @@ class Figure:
         path.write_text(markup, encoding="utf-8", newline="\n")
 
 
-def label_box(fig, x, y, w, h, title, subtitle=None, icon=None, fill=WHITE, colour=INK, sub_colour=MUTED):
+def label_box(fig, x, y, w, h, title, subtitle=None, icon=None, fill=WHITE, colour=INK, sub_colour=MUTED, sub_size=16):
     """Draw a node with a medium-weight title and a smaller muted subtitle.
 
     Without an icon the text is centred; with one, the icon sits at the left and the text
-    is left-aligned beside it.
+    is left-aligned beside it. A subtitle given as a tuple sets one line per item.
     """
     fig.rect(x, y, w, h, fill=fill)
     mid = y + h / 2
@@ -187,11 +191,21 @@ def label_box(fig, x, y, w, h, title, subtitle=None, icon=None, fill=WHITE, colo
         tx, align = x + 66, "left"
     else:
         tx, align = x + w / 2, "center"
-    if subtitle:
-        fig.text(tx, mid - 3, title, 22, "medium", colour, align)
-        fig.text(tx, mid + 21, subtitle, 16, "regular", sub_colour, align)
-    else:
+    lines = (subtitle,) if isinstance(subtitle, str) else tuple(subtitle or ())
+    if not lines:
         fig.text(tx, mid + 8, title, 22, "medium", colour, align)
+        return
+    top = mid - 3 - (len(lines) - 1) * 11
+    fig.text(tx, top, title, 22, "medium", colour, align)
+    for index, line in enumerate(lines):
+        fig.text(tx, top + 24 + index * 22, line, sub_size, "regular", sub_colour, align)
+
+
+def coral_band(fig, y, lead, sentence):
+    """Set a figure's single emphasis: a coral band with a medium lead above one sentence."""
+    fig.rect(X0, y, RIGHT - X0, 92, fill=CORAL, stroke=None)
+    fig.text(X0 + 24, y + 37, lead, 24, "medium")
+    fig.text(X0 + 24, y + 69, sentence, 18)
 
 
 def bit_row(fig, x, y, cell, bits, fill=WHITE, colour=INK, size=24, key="mono"):
@@ -206,12 +220,12 @@ def bit_row(fig, x, y, cell, bits, fill=WHITE, colour=INK, size=24, key="mono"):
 def figure_iscc_code_units():
     """Figure 1: how an ISCC-CODE is composed of five ISCC-UNITs derived from the content."""
     fig = Figure(
-        1200, 600, "ISCC-CODE structure",
+        WIDTH, 620, "ISCC-CODE structure",
         "Metadata, normalized content and raw bytes feed five ISCC-UNITs, from Meta-Code to "
         "Instance-Code, which combine into one ISCC-CODE. The Semantic-Code is reserved in "
         "ISO 24138:2024; its example string comes from an experimental implementation.",
     )
-    field_w, gap, x0 = 216, 8, 44
+    field_w, gap, x0 = 168, 8, X0
     centres = [x0 + i * (field_w + gap) + field_w / 2 for i in range(5)]
     right = x0 + 5 * field_w + 4 * gap
 
@@ -232,7 +246,7 @@ def figure_iscc_code_units():
     ]
     top, height = 82, 80
     for x, w, title, subtitle, targets, dashes in sources:
-        label_box(fig, x, top, w, height, title, subtitle)
+        label_box(fig, x, top, w, height, title, subtitle, sub_size=15)
         for cx, dashed in zip(targets, dashes):
             fig.arrow([(cx, top + height), (cx, 222)], dashed)
 
@@ -248,31 +262,30 @@ def figure_iscc_code_units():
         fig.line(x, top + band, x, top + band + body, INK, 2)
         fig.line(x + field_w, top + band, x + field_w, top + band + body, INK, 2)
         fig.line(x - 1, top + band + body, x + field_w + 1, top + band + body, INK, 2)
-        fig.text(cx, top + band + 38, name, 22, "medium", INK, "center")
-        fig.text(cx, top + band + 66, code, 15, "mono", INK, "center")
+        fig.text(cx, top + band + 38, name, 20, "medium", INK, "center")
+        fig.text(cx, top + band + 66, code, 14, "mono", INK, "center")
         fig.text(cx, top + band + 92, essence, 15, "regular", MUTED, "center")
 
     # Collect the units into the composite ISCC-CODE.
+    centre = (x0 + right) / 2
     fig.line(centres[0], 374, centres[4], 374, INK, 1)
     for cx in centres:
         fig.line(cx, 366, cx, 374, INK, 1)
-    fig.arrow([(600, 374), (600, 412)])
+    fig.arrow([(centre, 374), (centre, 412)])
     fig.rect(x0, 412, right - x0, 60, fill=CORAL, stroke=None)
-    label_w = fig.text(x0 + 24, 449, "ISCC-CODE", 20, "medium", INK)
-    fig.text(x0 + 24 + label_w + 28, 449, ISCC_CODE, 17, "mono", INK)
+    label_w = fig.text(x0 + 24, 448, "ISCC-CODE", 18, "medium", INK)
+    fig.text(x0 + 24 + label_w + 28, 448, ISCC_CODE, 14, "mono", INK)
 
-    # Legend: what the colours and the dashed connector mean, in words.
-    y, x = 532, x0
-    for colour in ("#7AC2F7", "#4596F5", "#0054B2", "#123663"):
-        fig.rect(x, y - 12, 14, 14, fill=colour, stroke=None)
-        x += 18
-    fig.text(x + 10, y, "Similarity-preserving, compared by Hamming distance", 16)
-    x = x0 + 600
-    fig.rect(x, y - 12, 14, 14, fill="#A6DB50", stroke=None)
-    fig.text(x + 28, y, "Cryptographic checksum, exact match or none", 16)
-    y = 562
-    fig.line(x0, y - 5, x0 + 40, y - 5, INK, 2, dashed=True)
-    fig.text(x0 + 52, y, "Reserved in ISO 24138:2024, not yet standardized", 16)
+    # Legend: what the colours and the dashed connector mean, in words. The symbols end
+    # on one edge so that the three explanations start on one edge.
+    text_x = x0 + 82
+    for index, colour in enumerate(("#7AC2F7", "#4596F5", "#0054B2", "#123663")):
+        fig.rect(x0 + index * 18, 512, 14, 14, fill=colour, stroke=None)
+    fig.text(text_x, 524, "Similarity-preserving, compared by Hamming distance", 16)
+    fig.rect(x0 + 54, 542, 14, 14, fill="#A6DB50", stroke=None)
+    fig.text(text_x, 554, "Cryptographic checksum, exact match or none", 16)
+    fig.line(x0 + 28, 579, x0 + 68, 579, INK, 2, dashed=True)
+    fig.text(text_x, 584, "Reserved in ISO 24138:2024, not yet standardized", 16)
     return fig
 
 
@@ -287,63 +300,61 @@ def similarity_hash_rows():
 def figure_similarity_hash():
     """Figure 2: the similarity hash as a bitwise majority vote over equal-size digests."""
     fig = Figure(
-        1200, 500, "Similarity hash",
+        WIDTH, 404, "Similarity hash",
         "Three input hash digests are combined bit by bit: each output bit is 1 where more "
         "inputs have that bit set than not, which keeps similar inputs close.",
     )
     inputs, counts, output = similarity_hash_rows()
-    cell, x0 = 46, 44
+    cell, x0 = 32, X0
     rows_right = x0 + 16 * cell
-    label_x = rows_right + 64
-    rows = [56, 128, 200]
+    label_x = rows_right + 52
+    rows = [44, 98, 152]
     for y, bits in zip(rows, inputs):
         bit_row(fig, x0, y, cell, bits)
     # Bracket and label for the inputs.
     bx = rows_right + 22
+    mid = (rows[0] + rows[-1] + cell) / 2
     fig.line(bx, rows[0], bx, rows[-1] + cell, INK, 1)
     fig.line(bx - 8, rows[0], bx, rows[0], INK, 1)
     fig.line(bx - 8, rows[-1] + cell, bx, rows[-1] + cell, INK, 1)
-    fig.line(bx, (rows[0] + rows[-1] + cell) / 2, bx + 8, (rows[0] + rows[-1] + cell) / 2, INK, 1)
-    fig.text(label_x, 148, "Input hash digests", 22, "medium")
-    fig.text(label_x, 174, "equal size, one per feature", 16, "regular", MUTED)
+    fig.line(bx, mid, bx + 8, mid, INK, 1)
+    fig.text(label_x, mid - 3, "Input hash digests", 22, "medium")
+    fig.text(label_x, mid + 23, "equal size, one per feature", 16, "regular", MUTED)
 
-    fig.arrow([(x0 + 8 * cell, rows[-1] + cell), (x0 + 8 * cell, 300)])
-    bit_row(fig, x0, 300, cell, counts, PAPER, INK, 20)
-    fig.text(label_x, 328, "Bit counts", 22, "medium")
-    fig.text(label_x, 354, "ones minus zeros per position", 16, "regular", MUTED)
+    centre = x0 + 8 * cell
+    fig.arrow([(centre, rows[-1] + cell), (centre, 240)])
+    bit_row(fig, x0, 240, cell, counts, PAPER, INK, 18)
+    fig.text(label_x, 253, "Bit counts", 22, "medium")
+    fig.text(label_x, 279, "ones minus zeros per position", 16, "regular", MUTED)
 
-    fig.arrow([(x0 + 8 * cell, 300 + cell), (x0 + 8 * cell, 410)])
-    bit_row(fig, x0, 410, cell, output, CORAL)
-    fig.text(label_x, 438, "Similarity hash digest", 22, "medium")
-    fig.text(label_x, 464, "1 where the count is zero or positive", 16, "regular", MUTED)
+    fig.arrow([(centre, 240 + cell), (centre, 328)])
+    bit_row(fig, x0, 328, cell, output, CORAL)
+    fig.text(label_x, 341, "Similarity hash digest", 22, "medium")
+    fig.text(label_x, 367, "1 where the count is zero or positive", 16, "regular", MUTED)
     return fig
 
 
 def figure_calculated_not_assigned():
     """Figure 3: independent parties calculate the same ISCC-CODE from the same file."""
     fig = Figure(
-        1280, 660, "Calculated, not assigned",
+        WIDTH, 660, "Calculated, not assigned",
         "An author, a publisher, a library and anyone else calculate the ISCC-CODE of the same "
         "file with ISO 24138:2024 and each obtain the same code, without registration or a "
         "central database. Calculated, not assigned.",
     )
     parties = ["Author", "Publisher", "Library", "Anyone"]
-    x_party, x_calc, x_code, w_node, w_code = 44, 340, 636, 256, 600
-    height = 88
+    w_party, w_code, height = 200, 582, 88
+    x_code = RIGHT - w_code
     for index, party in enumerate(parties):
-        y = 52 + index * 120
+        y = 44 + index * 120
         mid = y + height / 2
-        label_box(fig, x_party, y, w_node, height, party, "same file", icon="document")
-        fig.arrow([(x_party + w_node, mid), (x_calc, mid)])
-        label_box(fig, x_calc, y, w_node, height, "Calculate", "ISO 24138:2024", icon="generate-codes")
-        fig.arrow([(x_calc + w_node, mid), (x_code, mid)])
+        label_box(fig, X0, y, w_party, height, party, "same file", icon="document")
+        fig.arrow([(X0 + w_party, mid), (x_code, mid)])
+        fig.text((X0 + w_party + x_code) / 2, mid - 10, "calculates", 15, "regular", MUTED, "center")
         fig.rect(x_code, y, w_code, height)
-        fig.text(x_code + w_code / 2, mid + 6, ISCC_CODE_FOUR_UNITS, 16, "mono", INK, "center")
+        fig.text(x_code + w_code / 2, mid + 5, ISCC_CODE_FOUR_UNITS, 14, "mono", INK, "center")
 
-    # The single emphasis: the point of the figure, in words.
-    fig.rect(44, 548, 1192, 60, fill=CORAL, stroke=None)
-    w = fig.text(68, 586, "Calculated, not assigned.", 24, "medium")
-    fig.text(68 + w + 28, 586, "The same file gives the same code, wherever it is calculated.", 18)
+    coral_band(fig, 524, "Calculated, not assigned.", "The same file gives the same code, wherever it is calculated.")
     return fig
 
 
@@ -376,24 +387,25 @@ def verify():
 def figure_similarity_comparison():
     """Figure 4: comparing the units of an image and a cropped, re-compressed copy bit by bit."""
     fig = Figure(
-        1200, 640, "Comparing ISCC-UNITs",
+        WIDTH, 648, "Comparing ISCC-UNITs",
         "An original image and a cropped, re-compressed copy: their Content-Codes differ in 6 of "
         "64 bits and are close, their Data-Codes differ in 36 bits and are far apart, and their "
         "Instance-Codes have no exact match. Re-encoding changes the bitstream, so the "
         "Data-Code moves far while the perceptual Content-Code stays close.",
     )
-    x0, right = 44, 1156
+    x0, right = X0, RIGHT
     # The two files being compared.
+    w_file = (right - x0 - 8) / 2
     for x, letter, title, subtitle in [
         (x0, "A", "Original image", "PNG, 1.5 MB"),
-        (620, "B", "Cropped copy", "2 % trimmed each side, JPEG quality 50, 108 KB"),
+        (x0 + w_file + 8, "B", "Cropped copy", "2 % trimmed each side, JPEG quality 50, 108 KB"),
     ]:
-        fig.rect(x, 44, 536, 72)
+        fig.rect(x, 44, w_file, 72)
         fig.text(x + 22, 89, letter, 24, "mono")
         fig.text(x + 62, 77, title, 22, "medium")
-        fig.text(x + 62, 101, subtitle, 16, "regular", MUTED)
+        fig.text(x + 62, 101, subtitle, 15, "regular", MUTED)
 
-    cell, cells_x = 16.5, 100
+    cell, cells_x = 12.5, 92
     for index, (name, code_a, code_b, word) in enumerate(COMPARISON):
         y = 150 + index * 140
         bits_a, bits_b = body_bits(code_a), body_bits(code_b)
@@ -413,11 +425,11 @@ def figure_similarity_comparison():
                 if bit == "1":
                     fig.rect(cells_x + position * cell + 1.5, row_y + 1.5, cell - 3, 19, fill=INK, stroke=None)
 
-    fig.text(x0, 566, "Re-encoding changes the bitstream: the Data-Code moves far apart while the "
-             "perceptual Content-Code stays close.", 17)
+    fig.text(x0, 548, "Re-encoding changes the bitstream: the Data-Code moves far apart", 17)
+    fig.text(x0, 572, "while the perceptual Content-Code stays close.", 17)
 
     # Legend, in words.
-    y, x = 610, x0
+    y, x = 616, x0
     fig.rect(x, y - 12, 14, 14, fill=INK, stroke=None)
     x += fig.text(x + 24, y, "bit set", 16) + 24 + 40
     fig.rect(x, y - 12, 14, 14, fill="none", stroke=MUTED, stroke_width=1)
@@ -439,14 +451,15 @@ IDP_LAYERS = [
 def figure_idp_layers():
     """Figure 5: the three layers of the ISCC Discovery Protocol and who uses them."""
     fig = Figure(
-        1200, 680, "Three layers of the ISCC Discovery Protocol",
+        WIDTH, 696, "Three layers of the ISCC Discovery Protocol",
         "A declarer declares content at an ISCC-HUB and provides metadata to a registry. Anyone "
         "with a file or an ISCC-ID looks it up at the ISCC-HUB, which links to a gateway that "
         "routes to the registry holding the metadata. ISCC-HUBs timestamp, gateways route, "
         "registries hold the metadata. The layers are separated by function, not by operator: "
         "one operator can run all three layers, or just one.",
     )
-    x_mid, w_mid, h_mid = 380, 440, 112
+    x_mid, w_mid, h_mid = 296, 368, 112
+    w_side, h_side = 160, 104
     rows = [48, 232, 416]
     centre = x_mid + w_mid / 2
     for (name, line1, line2), y in zip(IDP_LAYERS, rows):
@@ -455,28 +468,29 @@ def figure_idp_layers():
         fig.text(x_mid + 24, y + 70, line1, 16, "regular", MUTED)
         fig.text(x_mid + 24, y + 94, line2, 16, "regular", MUTED)
     hub_mid, registry_mid = rows[0] + h_mid / 2, rows[2] + h_mid / 2
+    side_bottom = hub_mid + h_side / 2
 
     # The declarer declares at an ISCC-HUB and provides metadata to a registry.
-    label_box(fig, 44, hub_mid - 44, 240, 88, "Declarer", "signs with their own key")
-    fig.arrow([(284, hub_mid), (x_mid, hub_mid)])
-    fig.text(332, hub_mid - 10, "declares", 15, "regular", MUTED, "center")
-    fig.arrow([(164, hub_mid + 44), (164, registry_mid), (x_mid, registry_mid)])
-    fig.text(272, registry_mid - 10, "provides metadata", 15, "regular", MUTED, "center")
+    declarer_x = X0 + w_side / 2
+    label_box(fig, X0, hub_mid - h_side / 2, w_side, h_side, "Declarer", ("signs with", "their own key"))
+    fig.arrow([(X0 + w_side, hub_mid), (x_mid, hub_mid)])
+    fig.text((X0 + w_side + x_mid) / 2, hub_mid - 10, "declares", 15, "regular", MUTED, "center")
+    fig.arrow([(declarer_x, side_bottom), (declarer_x, registry_mid), (x_mid, registry_mid)])
+    fig.text((declarer_x + x_mid) / 2, registry_mid - 10, "provides metadata", 15, "regular", MUTED, "center")
 
     # Anyone starts at the ISCC-HUB and follows the links down to the metadata.
-    label_box(fig, 916, hub_mid - 44, 240, 88, "Anyone", "with a file or an ISCC-ID")
-    fig.arrow([(916, hub_mid), (x_mid + w_mid, hub_mid)])
-    fig.text(868, hub_mid - 10, "looks up", 15, "regular", MUTED, "center")
+    anyone_x = RIGHT - w_side
+    label_box(fig, anyone_x, hub_mid - h_side / 2, w_side, h_side, "Anyone", ("with a file", "or an ISCC-ID"))
+    fig.arrow([(anyone_x, hub_mid), (x_mid + w_mid, hub_mid)])
+    fig.text((anyone_x + x_mid + w_mid) / 2, hub_mid - 10, "looks up", 15, "regular", MUTED, "center")
     for (top, bottom), label in zip([(rows[0], rows[1]), (rows[1], rows[2])], ["links to", "routes to"]):
         fig.arrow([(centre, top + h_mid), (centre, bottom)])
         fig.text(centre + 14, (top + h_mid + bottom) / 2 + 5, label, 15, "regular", MUTED)
-    fig.arrow([(x_mid + w_mid, registry_mid), (1036, registry_mid), (1036, hub_mid + 44)])
-    fig.text(928, registry_mid - 10, "returns metadata", 15, "regular", MUTED, "center")
+    return_x = anyone_x + w_side / 2
+    fig.arrow([(x_mid + w_mid, registry_mid), (return_x, registry_mid), (return_x, side_bottom)])
+    fig.text((x_mid + w_mid + return_x) / 2, registry_mid - 10, "returns metadata", 15, "regular", MUTED, "center")
 
-    # The single emphasis: the point of the figure, in words.
-    fig.rect(44, 572, 1112, 60, fill=CORAL, stroke=None)
-    w = fig.text(68, 610, "Separate by function, not by operator.", 24, "medium")
-    fig.text(68 + w + 28, 610, "One operator can run all three layers, or just one.", 18)
+    coral_band(fig, 560, "Separate by function, not by operator.", "One operator can run all three layers, or just one.")
     return fig
 
 
@@ -492,18 +506,19 @@ IDP_HUBS = [
 def figure_idp_network():
     """Figure 6: independent ISCC-HUBs in the HUB-LIST, each with its own policy and log."""
     fig = Figure(
-        1200, 664, "The ISCC-HUB network",
+        WIDTH, 696, "The ISCC-HUB network",
         "Declarers choose an ISCC-HUB in the HUB-LIST. Each ISCC-HUB sets its own policy and "
         "keeps its own public log. Monitors verify the logs over time, and aggregators index "
         "many logs for search. No single operator runs the IDP, and anyone can verify every log.",
     )
-    x_hub, w_hub, h_hub = 360, 432, 112
+    x_hub, w_hub, h_hub = 260, 400, 112
+    w_side, h_side = 140, 104
     rows = [96, 232, 392]
     mids = [y + h_hub / 2 for y in rows]
-    x_in, x_out = 304, 856
+    x_in, x_out = 214, 700
 
     # The HUB-LIST encloses the ISCC-HUBs it names.
-    fig.rect(336, 40, 480, 488, fill="none", stroke=MUTED, stroke_width=2, dashed=True)
+    fig.rect(x_hub - 24, 40, w_hub + 48, 488, fill="none", stroke=MUTED, stroke_width=2, dashed=True)
     w = fig.text(x_hub, 74, "HUB-LIST", 18, "medium")
     fig.text(x_hub + w + 12, 74, "every ISCC-HUB with its key and address", 15, "regular", MUTED)
     for (name, policy, entries), y in zip(IDP_HUBS, rows):
@@ -517,27 +532,24 @@ def figure_idp_network():
         fig.rect(x_hub + w_hub / 2 - 3, rows[1] + h_hub + 9 + offset, 6, 6, fill=MUTED, stroke=None)
 
     # Declarers choose an ISCC-HUB.
-    label_box(fig, 44, mids[1] - 44, 220, 88, "Declarers", "choose an ISCC-HUB")
-    fig.line(264, mids[1], x_in, mids[1], INK, 2)
+    label_box(fig, X0, mids[1] - h_side / 2, w_side, h_side, "Declarers", ("choose an", "ISCC-HUB"))
+    fig.line(X0 + w_side, mids[1], x_in, mids[1], INK, 2)
     fig.line(x_in, mids[0], x_in, mids[2], INK, 2)
     for mid in mids:
         fig.arrow([(x_in, mid), (x_hub, mid)])
 
     # Monitors and aggregators read the logs of many ISCC-HUBs.
-    readers = [("Monitors", "verify each log over time"), ("Aggregators", "index many logs for search")]
-    reader_mids = [220, 356]
+    readers = [("Monitors", ("verify each log", "over time")), ("Aggregators", ("index many logs", "for search"))]
+    reader_mids, w_reader = [220, 356], 170
+    x_reader = RIGHT - w_reader
     for mid in mids:
         fig.line(x_hub + w_hub, mid, x_out, mid, INK, 2)
     fig.line(x_out, mids[0], x_out, mids[2], INK, 2)
-    fig.text(x_out + 12, 293, "read the logs", 15, "regular", MUTED)
     for (title, subtitle), mid in zip(readers, reader_mids):
-        fig.arrow([(x_out, mid), (896, mid)])
-        label_box(fig, 896, mid - 44, 260, 88, title, subtitle)
+        fig.arrow([(x_out, mid), (x_reader, mid)])
+        label_box(fig, x_reader, mid - h_side / 2, w_reader, h_side, title, subtitle)
 
-    # The single emphasis: the point of the figure, in words.
-    fig.rect(44, 560, 1112, 60, fill=CORAL, stroke=None)
-    w = fig.text(68, 598, "No single operator runs the IDP.", 24, "medium")
-    fig.text(68 + w + 28, 598, "Each ISCC-HUB keeps its own log, and anyone can verify it.", 18)
+    coral_band(fig, 560, "No single operator runs the IDP.", "Each ISCC-HUB keeps its own log, and anyone can verify it.")
     return fig
 
 
