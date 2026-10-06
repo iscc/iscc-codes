@@ -358,15 +358,15 @@ its design:
 # ISCC - Discovery Protocol
 
 The ISCC was first published in 2017 as an
-[open proposal](https://github.com/iscc/iscc-codes/blob/abf99ffe23bc03765161e2d8d967bdb20fc7afcf/docs/concept.md)
-to the community: a common code for digital content, derived from the content itself.
+[open proposal](https://github.com/iscc/iscc-codes/blob/abf99ffe23bc03765161e2d8d967bdb20fc7afcf/docs/concept.md):
+a common code for identifying digital content, derived from the content itself.
 In 2024 that code became an International Standard, [ISO 24138:2024](https://www.iso.org/standard/77899.html). 
 { .iscc-lead }
 
 The **ISCC Discovery Protocol (IDP)** is our next open proposal. It describes how anyone can start from a piece of digital content and find out who has declared it, when, and where to find its metadata and
-services. We share it as a draft to start a conversation with creators, publishers, journalists,
-libraries, archives, registries, rights organizations, AI developers, researchers, and everyone
-else who works with digital content.
+services. We share it as a draft to start a conversation with everyone who works with digital
+content: creators, publishers, journalists, libraries, archives, registries, rights organizations,
+AI developers, and researchers.
 { .iscc-lead }
 
 !!! note "Status: draft"
@@ -393,7 +393,7 @@ and needs no registration. Declaring it is a separate, optional step. A declarat
 ## Declare, then discover
 
 A **declaration** is a short, signed statement: *this ISCC-CODE applies to this content, and its
-metadata and services can be found here.* The declarer signs it with a key pair they generate
+metadata and services can be found at this link.* The declarer signs it with a key pair they generate
 themselves and submits it to an **ISCC-HUB** of their choice. The ISCC-HUB checks the
 message and its signature, issues an **ISCC-ID**, records the declaration in a public
 transparency log, and provides a signed receipt.
@@ -405,10 +405,10 @@ Each declaration binds four pieces of information:
 | **Who**   | the declarer's public key, optionally linked to a web domain or other identity |
 | **When**  | the time of declaration, assigned by the ISCC-HUB to the microsecond           |
 | **What**  | the ISCC-CODE and a cryptographic hash of the content                          |
-| **Where** | an optional link to a gateway for metadata and services                        |
+| **Where** | an optional link to a gateway to metadata and services                         |
 
-ISCC-HUBs store no descriptive metadata. Metadata stays with the declarer or with the registry
-that holds it. A declaration only points to it, and can commit to its exact state at the time of
+ISCC-HUBs store only the declaration, and no descriptive metadata. Metadata stays with the
+declarer or with the registry that holds it. A declaration only points to it, and can commit to its exact state at the time of
 declaration with a hash.
 
 ## ISCC-CODE and ISCC-ID
@@ -424,12 +424,13 @@ The IDP adds a second kind of ISCC. The two answer different questions:
 | Specified in | ISO 24138:2024                                   | IEP-0011 (draft)                                |
 
 An ISCC-ID has 64 bits: a 52-bit timestamp and the 12-bit HUB-ID of the ISCC-HUB that issued
-it. It is short, globally unique, sorts by time, and names the ISCC-HUB that can resolve it. For
+it. It is short, globally unique, sorts by time, and names the ISCC-HUB that can resolve it to its declaration. For
 example, [`ISCC:MEIGKV5N6NTVF4AB`](https://iscc.id/ISCC:MEIGKV5N6NTVF4AB?redirect=false) was issued by ISCC-HUB 1 at 2026-06-30T16:14:39.523119Z.
 
 When a photographer and a picture agency both declare the same image, each receives its own
-ISCC-ID, attributed to its own key. Both declarations carry the same ISCC-CODE, so a search by
-content finds both.
+ISCC-ID, attributed to its own key. Their declarations carry the same ISCC if they declare the
+identical file, and similar ISCCs if the agency has resized it or changed its embedded metadata.
+Either way, a search by content finds both.
 
 ## Three layers
 
@@ -443,7 +444,7 @@ The IDP separates three functions:
 - **Gateways** handle routing. Given an ISCC-ID, a gateway lists the metadata and services
   available for the content, as a W3C Controlled Identifier Document. A gateway holds no data of
   record, so it can change without invalidating the declaration.
-- **Registries** hold the metadata. They keep authority over their records, apply their own
+- **Registries** hold the descriptive metadata. They keep authority over their records, apply their own
   schemas and verification rules, and offer services. Existing
   registries keep their identifiers and their role; the IDP makes them discoverable from the
   content.
@@ -455,13 +456,14 @@ gateway, or rely on those run by others.
 ## Three ways to discover
 
 - **By ISCC-ID.** The HUB-ID inside the ISCC-ID names the issuing ISCC-HUB, and the public
-  HUB-LIST gives its address. The ISCC-HUB returns the declaration, and its gateway link leads on
-  to metadata and services.
+  HUB-LIST gives its address. The ISCC-HUB returns the declaration, and its gateway link leads to
+  metadata and services.
 - **By identical file.** From a file, anyone can compute its ISCC-CODE and content hash and find
   declarations of exactly that file, by any declarer.
 - **By similar content.** Declarations carry full-length, 256-bit ISCC-UNITs. Search services
-  index them across ISCC-HUBs, so that re-encoded, resized, or edited versions of a work can be
-  found from any one of them.
+  index them across ISCC-HUBs. Given any one version of the content, they find declared
+  versions that were re-encoded, resized, or slightly edited, as long as they index the
+  ISCC-HUBs where those were declared.
 
 ## A polycentric network
 
@@ -478,8 +480,10 @@ depends on no other ISCC-HUB. Around them, others observe:
 
 Each operator sets and announces the policies and fees of its own ISCC-HUB: open to any
 declarer, limited to approved keys, or with extra requirements such as an identity tied to a web
-domain. Such policies can only narrow what the protocol allows, never extend it. Public-interest
-and commercial operators can run ISCC-HUBs side by side.
+domain. Such policies can only narrow what the protocol allows, never extend it. Policies govern
+who may declare, not who may read: every log is public, so that anyone can verify it. Metadata
+that must stay confidential stays with its holder, behind the gateway. Public-interest and
+commercial operators can run ISCC-HUBs side by side.
 
 How ISCC-HUBs join the HUB-LIST, how they announce their policies, and how the list is governed
 are part of this proposal and open for discussion.
@@ -501,7 +505,7 @@ policy. Each participant decides which ISCC-HUBs it relies on:
     An institution runs its own ISCC-HUB, accepts declarations only from approved keys, and
     relies only on its own records.
 
-    **It works like a central registry, but its records can be discovered from the content
+    **It works like a conventional registry, but its records can be discovered from the content
     anywhere.**
 
 === "Sector federation"
@@ -513,7 +517,7 @@ policy. Each participant decides which ISCC-HUBs it relies on:
 
 === "Open network"
 
-    A search service indexes every public log and finds declarations across the whole network.
+    A search service indexes every log and finds declarations across the whole network.
 
     **Indexing is not endorsing. The log shows who claimed what, and when.**
 
@@ -539,7 +543,7 @@ deleted" stays verifiable.
 
 ## Built on open standards
 
-The IDP builds on established specifications rather than inventing its own:
+The IDP builds on established specifications rather than reinventing them:
 
 - **Signatures:** Ed25519 ([RFC 8032](https://www.rfc-editor.org/rfc/rfc8032)) over JSON
   canonicalized with JCS ([RFC 8785](https://www.rfc-editor.org/rfc/rfc8785))
@@ -558,7 +562,7 @@ specifies its value format: full-length, 256-bit ISCC-UNITs, as carried by IDP d
 
 ## Specifications
 
-All specifications are drafts and are developed in the open at
+All specifications are drafts and are openly developed at
 [ieps.iscc.codes](https://ieps.iscc.codes).
 
 | IEP                                           | Title                   | Specifies                                                      |
@@ -581,7 +585,7 @@ All specifications are drafts and are developed in the open at
 
 ## Take part
 
-The IDP is developed in the open. This proposal is meant to be discussed, tested, and improved:
+The IDP is openly developed. This proposal is meant to be discussed, tested, and improved:
 
 - **Comment** on a specification through the GitHub issue linked at the top of each IEP, for
   example [IEP-0013](https://github.com/iscc/iscc-ieps/issues/18).
@@ -1060,7 +1064,7 @@ to the many others who have helped along the way.
 
 <!-- iscc-sum:start -->
 
-**Documentation source ISCC-SUM**: `ISCC:K4AEOKKP7QAMSSQ5K47ORBCHNCTSBPX7EMDHTLIHPAPX5VLXVP2I4XI`
+**Documentation source ISCC-SUM**: `ISCC:K4AECKIP7QAMST24KE7KABDHHCTWCCZS7HSQI3HOEMYB4GMM4I7GRLQ`
 
 This wide ISCC-SUM identifies the documentation source tree generated with
 `iscc-sum --tree docs`. The license page itself is excluded from the tree via

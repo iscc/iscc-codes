@@ -860,13 +860,13 @@
 
 <h1 id="iscc-discovery-protocol">ISCC - Discovery Protocol<a class="headerlink" href="#iscc-discovery-protocol" title="Permanent link">&para;</a></h1>
 <p class="iscc-lead">The ISCC was first published in 2017 as an
-<a href="https://github.com/iscc/iscc-codes/blob/abf99ffe23bc03765161e2d8d967bdb20fc7afcf/docs/concept.md">open proposal</a>
-to the community: a common code for digital content, derived from the content itself.
+<a href="https://github.com/iscc/iscc-codes/blob/abf99ffe23bc03765161e2d8d967bdb20fc7afcf/docs/concept.md">open proposal</a>:
+a common code for identifying digital content, derived from the content itself.
 In 2024 that code became an International Standard, <a href="https://www.iso.org/standard/77899.html">ISO 24138:2024</a>. </p>
 <p class="iscc-lead">The <strong>ISCC Discovery Protocol (IDP)</strong> is our next open proposal. It describes how anyone can start from a piece of digital content and find out who has declared it, when, and where to find its metadata and
-services. We share it as a draft to start a conversation with creators, publishers, journalists,
-libraries, archives, registries, rights organizations, AI developers, researchers, and everyone
-else who works with digital content.</p>
+services. We share it as a draft to start a conversation with everyone who works with digital
+content: creators, publishers, journalists, libraries, archives, registries, rights organizations,
+AI developers, and researchers.</p>
 <div class="admonition note">
 <p class="admonition-title">Status: draft</p>
 <p>The IDP is specified in a set of ISCC Enhancement Proposals (<a href="#specifications">see below</a>).
@@ -887,7 +887,7 @@ who holds nothing but a file has no common way to discover metadata.</p>
 and needs no registration. Declaring it is a separate, optional step. A declaration creates timestamped, verifiable evidence of who declared the content and when, and links the content to its metadata and services.</p>
 <h2 id="declare-then-discover">Declare, then discover<a class="headerlink" href="#declare-then-discover" title="Permanent link">&para;</a></h2>
 <p>A <strong>declaration</strong> is a short, signed statement: <em>this ISCC-CODE applies to this content, and its
-metadata and services can be found here.</em> The declarer signs it with a key pair they generate
+metadata and services can be found at this link.</em> The declarer signs it with a key pair they generate
 themselves and submits it to an <strong>ISCC-HUB</strong> of their choice. The ISCC-HUB checks the
 message and its signature, issues an <strong>ISCC-ID</strong>, records the declaration in a public
 transparency log, and provides a signed receipt.</p>
@@ -914,12 +914,12 @@ transparency log, and provides a signed receipt.</p>
 </tr>
 <tr>
 <td><strong>Where</strong></td>
-<td>an optional link to a gateway for metadata and services</td>
+<td>an optional link to a gateway to metadata and services</td>
 </tr>
 </tbody>
 </table>
-<p>ISCC-HUBs store no descriptive metadata. Metadata stays with the declarer or with the registry
-that holds it. A declaration only points to it, and can commit to its exact state at the time of
+<p>ISCC-HUBs store only the declaration, and no descriptive metadata. Metadata stays with the
+declarer or with the registry that holds it. A declaration only points to it, and can commit to its exact state at the time of
 declaration with a hash.</p>
 <h2 id="iscc-code-and-iscc-id">ISCC-CODE and ISCC-ID<a class="headerlink" href="#iscc-code-and-iscc-id" title="Permanent link">&para;</a></h2>
 <p>The IDP adds a second kind of ISCC. The two answer different questions:</p>
@@ -960,11 +960,12 @@ declaration with a hash.</p>
 </tbody>
 </table>
 <p>An ISCC-ID has 64 bits: a 52-bit timestamp and the 12-bit HUB-ID of the ISCC-HUB that issued
-it. It is short, globally unique, sorts by time, and names the ISCC-HUB that can resolve it. For
+it. It is short, globally unique, sorts by time, and names the ISCC-HUB that can resolve it to its declaration. For
 example, <a href="https://iscc.id/ISCC:MEIGKV5N6NTVF4AB?redirect=false"><code>ISCC:MEIGKV5N6NTVF4AB</code></a> was issued by ISCC-HUB 1 at 2026-06-30T16:14:39.523119Z.</p>
 <p>When a photographer and a picture agency both declare the same image, each receives its own
-ISCC-ID, attributed to its own key. Both declarations carry the same ISCC-CODE, so a search by
-content finds both.</p>
+ISCC-ID, attributed to its own key. Their declarations carry the same ISCC if they declare the
+identical file, and similar ISCCs if the agency has resized it or changed its embedded metadata.
+Either way, a search by content finds both.</p>
 <h2 id="three-layers">Three layers<a class="headerlink" href="#three-layers" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" data-type="image" data-width="90vw" href="../images/idp-three-layers.svg"><img alt="A declarer declares content at an ISCC-HUB and provides metadata to a registry; anyone with a file or an ISCC-ID looks it up at the ISCC-HUB, which links to a gateway that routes to the registry holding the metadata: the layers are separated by function, not by operator, so one operator can run all three layers, or just one" src="../images/idp-three-layers.svg" /></a></p>
 <p>The IDP separates three functions:</p>
@@ -975,7 +976,7 @@ content finds both.</p>
 <li><strong>Gateways</strong> handle routing. Given an ISCC-ID, a gateway lists the metadata and services
   available for the content, as a W3C Controlled Identifier Document. A gateway holds no data of
   record, so it can change without invalidating the declaration.</li>
-<li><strong>Registries</strong> hold the metadata. They keep authority over their records, apply their own
+<li><strong>Registries</strong> hold the descriptive metadata. They keep authority over their records, apply their own
   schemas and verification rules, and offer services. Existing
   registries keep their identifiers and their role; the IDP makes them discoverable from the
   content.</li>
@@ -986,13 +987,14 @@ gateway, or rely on those run by others.</p>
 <h2 id="three-ways-to-discover">Three ways to discover<a class="headerlink" href="#three-ways-to-discover" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>By ISCC-ID.</strong> The HUB-ID inside the ISCC-ID names the issuing ISCC-HUB, and the public
-  HUB-LIST gives its address. The ISCC-HUB returns the declaration, and its gateway link leads on
-  to metadata and services.</li>
+  HUB-LIST gives its address. The ISCC-HUB returns the declaration, and its gateway link leads to
+  metadata and services.</li>
 <li><strong>By identical file.</strong> From a file, anyone can compute its ISCC-CODE and content hash and find
   declarations of exactly that file, by any declarer.</li>
 <li><strong>By similar content.</strong> Declarations carry full-length, 256-bit ISCC-UNITs. Search services
-  index them across ISCC-HUBs, so that re-encoded, resized, or edited versions of a work can be
-  found from any one of them.</li>
+  index them across ISCC-HUBs. Given any one version of the content, they find declared
+  versions that were re-encoded, resized, or slightly edited, as long as they index the
+  ISCC-HUBs where those were declared.</li>
 </ul>
 <h2 id="a-polycentric-network">A polycentric network<a class="headerlink" href="#a-polycentric-network" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" data-type="image" data-width="90vw" href="../images/idp-network.svg"><img alt="Declarers choose an ISCC-HUB in the HUB-LIST; each ISCC-HUB sets its own policy and keeps its own log; monitors and aggregators read the logs of many ISCC-HUBs: no single operator runs the IDP, and anyone can verify every log" src="../images/idp-network.svg" /></a></p>
@@ -1007,8 +1009,10 @@ depends on no other ISCC-HUB. Around them, others observe:</p>
 </ul>
 <p>Each operator sets and announces the policies and fees of its own ISCC-HUB: open to any
 declarer, limited to approved keys, or with extra requirements such as an identity tied to a web
-domain. Such policies can only narrow what the protocol allows, never extend it. Public-interest
-and commercial operators can run ISCC-HUBs side by side.</p>
+domain. Such policies can only narrow what the protocol allows, never extend it. Policies govern
+who may declare, not who may read: every log is public, so that anyone can verify it. Metadata
+that must stay confidential stays with its holder, behind the gateway. Public-interest and
+commercial operators can run ISCC-HUBs side by side.</p>
 <p>How ISCC-HUBs join the HUB-LIST, how they announce their policies, and how the list is governed
 are part of this proposal and open for discussion.</p>
 <h2 id="trust-through-transparency">Trust through transparency<a class="headerlink" href="#trust-through-transparency" title="Permanent link">&para;</a></h2>
@@ -1025,7 +1029,7 @@ policy. Each participant decides which ISCC-HUBs it relies on:</p>
 <div class="tabbed-block">
 <p>An institution runs its own ISCC-HUB, accepts declarations only from approved keys, and
 relies only on its own records.</p>
-<p><strong>It works like a central registry, but its records can be discovered from the content
+<p><strong>It works like a conventional registry, but its records can be discovered from the content
 anywhere.</strong></p>
 </div>
 <div class="tabbed-block">
@@ -1034,7 +1038,7 @@ those.</p>
 <p><strong>The federation decides. Nobody outside it has to agree.</strong></p>
 </div>
 <div class="tabbed-block">
-<p>A search service indexes every public log and finds declarations across the whole network.</p>
+<p>A search service indexes every log and finds declarations across the whole network.</p>
 <p><strong>Indexing is not endorsing. The log shows who claimed what, and when.</strong></p>
 </div>
 </div>
@@ -1058,7 +1062,7 @@ declarations, and registries with transparent policies.</p>
 recorded as a new log entry and the original entry remains, so the history "declared, then
 deleted" stays verifiable.</p>
 <h2 id="built-on-open-standards">Built on open standards<a class="headerlink" href="#built-on-open-standards" title="Permanent link">&para;</a></h2>
-<p>The IDP builds on established specifications rather than inventing its own:</p>
+<p>The IDP builds on established specifications rather than reinventing them:</p>
 <ul>
 <li><strong>Signatures:</strong> Ed25519 (<a href="https://www.rfc-editor.org/rfc/rfc8032">RFC 8032</a>) over JSON
   canonicalized with JCS (<a href="https://www.rfc-editor.org/rfc/rfc8785">RFC 8785</a>)</li>
@@ -1075,7 +1079,7 @@ content credential be found again from the content itself, after the credential 
 from the file or the file has been re-encoded. <a href="https://ieps.iscc.codes/iep-0020/">IEP-0020</a>
 specifies its value format: full-length, 256-bit ISCC-UNITs, as carried by IDP declarations.</p>
 <h2 id="specifications">Specifications<a class="headerlink" href="#specifications" title="Permanent link">&para;</a></h2>
-<p>All specifications are drafts and are developed in the open at
+<p>All specifications are drafts and are openly developed at
 <a href="https://ieps.iscc.codes">ieps.iscc.codes</a>.</p>
 <table>
 <thead>
@@ -1151,7 +1155,7 @@ specifies its value format: full-length, 256-bit ISCC-UNITs, as carried by IDP d
 </tbody>
 </table>
 <h2 id="take-part">Take part<a class="headerlink" href="#take-part" title="Permanent link">&para;</a></h2>
-<p>The IDP is developed in the open. This proposal is meant to be discussed, tested, and improved:</p>
+<p>The IDP is openly developed. This proposal is meant to be discussed, tested, and improved:</p>
 <ul>
 <li><strong>Comment</strong> on a specification through the GitHub issue linked at the top of each IEP, for
   example <a href="https://github.com/iscc/iscc-ieps/issues/18">IEP-0013</a>.</li>
